@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="sv">
+<head>
+    <meta charset="utf-8">
+    <title>Redovisningssida i kursen databas</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="icon" href="favicon.png">
+</head>
+
+<body>
+
+
+
+<header>
+    <nav>
+        <a href="me.html">Me</a> |
+        <a href="redovisning.html">Redovisning</a> |
+        <a href="om.html">Om</a>
+    </nav>
+</header>
+
+
+
+<article>
+
+<header id="top">
+<h1>Redovisning av kursmoment i kursen databas v1</h1>
+</header>
+
+<a href="#kmom01">Kmom01</a>
+<a href="#kmom02">Kmom02</a>
+
+Kmom02, Kmom03, Kmom04, Kmom05, Kmom06, Kmom07-10,
+
+
+<section>
+<h2 id="kmom01">Kmom01</h2>
+<p>Jag sitter med MySQL version 8.0.14, jag använder mig även av MySQL workbench för redigering. Själva filerna körs via Workshbench och terminalen på min macdator. Det är första gången jag jobbar med databaser förutom det som gavs i kursen hmtlphp då vi jobbade med SQLlite. Så SQL känns ändå igen.</p>
+<p>Guiden var jättebra! Det var ett par småfel (Snape istället för Severus) och någon del kunde förtydligas, t.ex. att i <a href="https://dbwebb.se/guide/kom-igang-med-sql-i-mysql/uppdatera-varden-lonerevision">Uppdatdera värden, lönerevisionen</a> kunde det framgå att vi skulle hårdkoda den gamla lönen. Annars var den jättebra. Jättebra att använda guiden som en del av kmom01 uppgifterna. Det gav i alla mig tid att verkligen försöka förstå varje steg och inte bara "läsa fort för att sedan göra uppgifter som ligger och väntar".</p>
+<p>Det är ofta jag tycker att manualerna som det hänvsisas till är krångligare än "alternativa källor". Jag försöker ändå alltid gå till den manual ni hänvisar till men det är inte altid jag förstår. Det funkar dock bra som komplement. Andra guider såsom w3schools kan vara lite "för enkla". Där hittas en enkel syntax och en väldigt enkel demo och miniförklaring. Men för att förstå lite mer kompletterar jag med referensmanualen. Förstår jag inte då blir det ytterligare googlande.</p>
+<p>Vet inte vad vi kan jämföra SQL. Vi skapar något, modifierar med hjälp av olika koder, och vi kan återställa ursprunget. Är det inte hur all programmering funkar? Beroende på vad vi "triggar" så körs en kod. Oftast finns det en reset så så du kan alltid komma tillbaka till ursprungsläget? Kanske att jag får javascripts-vibbar. Men det beror med största sannolikhet på att vi precis avslutat projektarbetet i javascript där vi stegvis hämtar olika kod i olika moduler. </p>
+<p>Även om TIL är today så veckans lärdom; ta hjälp i forumet! Satt lite för länge och undrade vad jag gjort för fel på Severus (se ovan)</p>
+<a href="top">Top</a>
+
+
+</section>
+
+<section>
+<h2 id="kmom02">Kmom02</h2>
+<p>Det är nytt att jobba med databaser på detta vis, men jag tycker ändå att det är något logiskt. Även om det är många steg, nya ord och sätt att tänka. Det som däremot inte är lika logiskt, nu till en början är hur själva SQL scriptet skrivs. T.ex. att en SELECT något som egentligen väljs "senare" i koden, som när vi använder join. Det blir ett nytt sätt att tänka. Även om kod generellt inte skrivs uppifrån och ner rakt av (utan att behöva hoppa tillbaka x antal gånger) så blir detta alltså systematiskt. </p>
+<p>Vad jag varje gång blandar ihop är hur jag kör de olika filerna. Jag skriver mina sql-filer i MySQL Workshbench, bash och js i Atom. Sql filerna har jag kört både i terminal och i Workbench. Har försökt skriva en egen lathund som jag varje dag tycker är superlogisk och när en ny dag är framme är det inte alltid lika förståeligt. Så jag har inte riktgit fått ihop alla delarna. Node är ett sätt att läsa javascript som vi nu i sin tur skriver SQL-kod i. SQL koderna kan vi testa direkt i workbench för att se om vi får ut rätt data. Men det ska gå att få ut allt i terminalen.</p>
+<p>Själva terminal1 uppgiften visste ja inte om vi skulle göra en "meny" för att låta användaren välja vilken fil som skulle köras. Då jag inte visste hur vi skulle välja vilken fil på annat sätt så fick det bli en meny. Dock är den inte loopad utan exekverar bara koden efter användarens val en gång. Oavsett om valet var giltigt eller ej.</p>
+<p>Att jobba med async och await fungerade. Någon gång under uppgift 1 fastnade jag vid att just promise svarade med "pending". Funderade länge på varför den inte hämtade datan från databasen tills jag upptäckte att jag glömt skriva in att scriptet skulle vänta på svar från databasen. Men summa summarum av alltihop är att det är väldigt många trådar ute. Det finns en bra sammanhållning både i kursinnehåll och i anvädningsområden. Allt eftersom jag också kodar så upprepas saker och ting. En IF-sats känns inte så främmande längre. Snarare är det så att jag kanske stött på en trevlig funktion i ett språk som jag vill använda i ett annat. </p>
+<p>Min smärtsamma TIL TA BACKUP!!! Av någon anledning hade jag lyckats radera allt i en fil och spara över den gamla. Har fortfarande ingen aning om hur detta gick till. Men jag gissar att det har att göra med att jag hade filer öppna i texeditor och i workbench. Jag hade döpt mina filer fel och behövde ändra detta. I samband med det stängde jag ner Workshbench - också för att jag ville se om jag kunde öppna allt och koppla upp mig till databasen osv. Någonstans där gissar jag att jag råkat köra en tom fil. Men det är bara gissning. </p>
+<a href="top">Top</a>
+
+</section>
+
+<section>
+<h2>Kmom03</h2>
+<p>Här är redovisningstexten</p>
+</section>
+
+<section>
+<h2>Kmom04</h2>
+<p>Här är redovisningstexten</p>
+</section>
+
+<section>
+<h2>Kmom05</h2>
+<p>Här är redovisningstexten</p>
+</section>
+
+<section>
+<h2>Kmom06</h2>
+<p>Här är redovisningstexten</p>
+</section>
+
+<section>
+<h2>Kmom07-10</h2>
+<p>Här är redovisningstexten</p>
+</section>
+
+<footer>
+<p>En footer till artikeln.</p>
+</footer>
+
+</article>
+
+
+
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
