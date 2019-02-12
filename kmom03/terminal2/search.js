@@ -7,7 +7,6 @@
 */
 "use strict";
 
-const utils = require("./table.js");
 
 module.exports = {
     "searchTeacher": searchTeacher
@@ -22,7 +21,6 @@ module.exports = {
 async function searchTeacher(db, search) {
     let sql;
     let res;
-    let str;
     let like = `%${search}%`;
 
     console.info(`Search result for: ${search}`);
@@ -49,7 +47,6 @@ async function searchTeacher(db, search) {
         `;
 
     res = await db.query(sql, [like, like, like, like, like, like, search]);
-    // str = utils.createTable(res);
 
     return res;
 }

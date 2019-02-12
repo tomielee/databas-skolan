@@ -7,7 +7,6 @@
  */
 "use strict";
 
-const utils = require("./table.js");
 
 module.exports = {
     "viewTeachers": viewTeachers
@@ -23,7 +22,6 @@ module.exports = {
 async function viewTeachers(db) {
     let sql;
     let res;
-    let str;
 
     sql = `
         SELECT
@@ -38,10 +36,7 @@ async function viewTeachers(db) {
         ORDER BY acronym;
         `;
 
-
     res = await db.query(sql); //will return a dict with all.
-    // str = utils.createTable(res); //send the res to get a table
-    //
-    // return str;
+
     return res;
 }

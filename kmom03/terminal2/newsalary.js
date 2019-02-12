@@ -7,8 +7,6 @@
 */
 "use strict";
 
-const utils = require("./table.js");
-
 module.exports = {
     "newSalary": newSalary
 };
@@ -22,6 +20,7 @@ module.exports = {
 async function newSalary(db, acro, salary) {
     let sql;
     let res;
+
     acro = acro.trim();
 
     let acronym = `${acro}`;
@@ -30,12 +29,13 @@ async function newSalary(db, acro, salary) {
     console.info(
         `\nUpdated the teacher with acro: ${acro} `
         + `with the new salary: ${salary}`
-        );
+    );
 
     sql = `
         UPDATE teacher
             SET salary = ?
-                WHERE acronym = ?;`
+                WHERE acronym = ?;
+        `;
 
     res = await db.query(sql, [newsalary, acronym, acronym]);
 
@@ -54,7 +54,6 @@ async function newSalary(db, acro, salary) {
         `;
 
     res = await db.query(sql, [acronym]);
-    // str = utils.createTable(res);
 
     return res;
 }

@@ -13,7 +13,7 @@ const readline = require('readline');
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
-})
+});
 
 const util = require('util');
 
@@ -22,7 +22,7 @@ rl.question[util.promisify.custom] = (arg) => {
         rl.question(arg, resolve);
     });
 };
-const question = util.promisify(rl.question);
+// const question = util.promisify(rl.question);
 
 /**
 * import own modules
@@ -45,7 +45,6 @@ const nylon = require('./newsalary.js');
 
     rl.setPrompt("Your choice: ");
     rl.prompt();
-
 })();
 
 /**Show menu*/
@@ -108,43 +107,12 @@ async function handleInput(line) {
             rl.prompt();
             break;
         default:
-            showMenu()
+            showMenu();
             break;
     }
     db.end();
 }
 
-
-/**
-* Function search for all param
-* @return string
-*/
-async function searchLarare(db) {
-    let result;
-    let search;
-
-    search = await question("Search for: ")
-    result = await sok.searchTeacher(db, search);
-
-    return result
-}
-
-
-/**
-* Function search for all param
-* @return string
-*/
-async function setSalary(db) {
-    let result;
-    let newsal;
-
-    console.log("Set a new salary. Please enter acronym and new salary. \n");
-
-    newsal = await question(":");
-    result = await nylon.newSalary(db, newsal);
-
-    return result
-}
 
 /**
 * Close down program and exit with a status code.
@@ -156,6 +124,5 @@ async function setSalary(db) {
 function exitProgram(code) {
     code = code || 0;
 
-    console.info("Exiting with status code " + code);
     process.exit(code);
 }

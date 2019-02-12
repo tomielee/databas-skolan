@@ -28,7 +28,7 @@ file='setup.sql'
 mysql -uroot -p skolan < $file > /dev/null
 
 # loadSqlIntoSkolan "root" "" "setup.sql" "Initiera database och användare"
-loadSqlIntoSkolan "user" "" "ddl.sql" "Create tables"
+loadSqlIntoSkolan "user" "pass" "ddl.sql" "Create tables"
 loadSqlIntoSkolan "user" "pass" "dml_insert.sql" "Insert into larare"
 loadSqlIntoSkolan "user" "pass" "ddl_migrate.sql" "Alter table larare"
 loadSqlIntoSkolan "user" "pass" "dml_update.sql" "Grundlön larare"

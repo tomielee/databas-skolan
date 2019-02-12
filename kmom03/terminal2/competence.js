@@ -7,8 +7,6 @@
 */
 "use strict";
 
-const utils = require("./table.js");
-
 module.exports = {
     "compDiff": compDiff
 };
@@ -22,7 +20,6 @@ module.exports = {
 async function compDiff(db) {
     let sql;
     let res;
-    let str;
 
     sql = `
         SELECT
