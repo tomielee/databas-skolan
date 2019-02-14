@@ -1,0 +1,5 @@
+--
+-- JPIN tables larare (aka teacher) kurs and kurstillfalle
+-- For kmom03 databas 
+-- By Jen Lee, course databas v1
+-- 2018-02-13

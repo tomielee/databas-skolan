@@ -1,0 +1,5 @@
+--
+-- Backup of databas Skolan
+-- For kmom03 databas 
+-- By Jen Lee, course databas v1
+-- 2018-02-13
