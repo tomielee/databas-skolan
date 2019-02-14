@@ -1,7 +1,7 @@
-# !/usr/local/bin/env bash
+#!/usr/local/bin/env bash
 #
-# Recreate and reset the database to be as after part 1
-# 08_dml_update_salaryrevision
+#Recreate and reset the database to be as after part 1
+#08_dml_update_salaryrevision
 #
 
 

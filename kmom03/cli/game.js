@@ -11,9 +11,9 @@ class Game {
     * @constructor
     * @this
     */
-   constructor() {
-       this.thinking = -1;
-   }
+    constructor() {
+        this.thinking = -1;
+    }
     /**
      * Init the game and guess the number.
      *
@@ -54,8 +54,7 @@ class Game {
     compare(guess) {
         if (guess > this.thinking) {
             return "You're thinking of a greater number than me.";
-        }
-        else if (guess < this.thinking) {
+        } else if (guess < this.thinking) {
             return "You're thinkning of a smaller number than me.";
         }
     }

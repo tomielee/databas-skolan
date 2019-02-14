@@ -1,7 +1,7 @@
-# !/usr/local/bin/env bash
+#!/usr/local/bin/env bash
 #
-# Recreate and reset the database to be as after part 2
-# shellcheck disable=SC2181
+#Recreate and reset the database to be as after part 2
+#shellcheck disable=SC2181
 
 #
 # Load a SQL file into skolan

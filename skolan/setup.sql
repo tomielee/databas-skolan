@@ -1,5 +1,6 @@
 -- Skapa databas om den ej redan finns
 CREATE DATABASE IF NOT EXISTS skolan;
+CREATE DATABASE IF NOT EXISTS skolan1;
 
 -- Välj vilken databas du vill använda
 USE skolan;
@@ -42,6 +43,11 @@ BY 'pass'
 -- Ge användaren alla rättigheter på en specifk databas.
 GRANT ALL PRIVILEGES
     ON skolan.*
+    TO 'user'@'%'
+;
+
+GRANT ALL PRIVILEGES
+    ON skolan1.*
     TO 'user'@'%'
 ;
 

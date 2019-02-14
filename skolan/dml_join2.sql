@@ -60,6 +60,28 @@ ORDER by Tillfallen DESC
 -- de kurser där som har de tre äldsta lärarna som ansvariga.
 --     DATE_FORMAT(birth, '%Y %m %d') AS birth,
 
+DROP VIEW IF EXISTS v_oldest;
+CREATE VIEW v_oldest
+AS
+SELECT
+	acronym,
+    TIMESTAMPDIFF(YEAR, birth, CURDATE())AS 'Age'
+FROM v_planering
+GROUP BY acronym
+ORDER BY AGE DESC LIMIT 3;
+
+-- SELECT * FROM v_oldest; bara för att kolla
+
+-- RÄTT SÄTT ATT GÖRA DET PÅ °°°
+SELECT
+	CONCAT_WS(' ', vp.namn, CONCAT('(',vp.kod,')')) AS kurs,
+    CONCAT_WS(' ', vp.fname, vp.sirname) AS Larare,
+    vo.Age
+FROM v_planering AS vp
+	JOIN v_oldest AS vo
+		ON vp.acronym = vo.acronym;
+
+-- FULT SÄTT ATT GÖRA DET PÅ °°°
 SELECT
 	CONCAT_WS(' ', k.namn, CONCAT('(',k.kod,')')) AS kurs,
     CONCAT_WS(' ', t.fname, t.sirname) AS Larare,

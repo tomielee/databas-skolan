@@ -9,8 +9,6 @@
 const Game = require('./game.js');
 const game = new Game(); //init a new object of Game.
 
-const mysql = require('promise-mysql');
-
 const readline = require('readline');
 const rl = readline.createInterface({
     input: process.stdin,
@@ -24,7 +22,6 @@ rl.question[util.promisify.custom] = (arg) => {
         rl.question(arg, resolve);
     });
 };
-const question = util.promisify(rl.question);
 
 /**
 * MAIN function
@@ -43,8 +40,6 @@ const question = util.promisify(rl.question);
 
     rl.setPrompt("Guess my number: "); //vad ska det stå i terminalen
     rl.prompt(); //visa $ på en gång
-
-
 })();
 
 /**
@@ -108,7 +103,6 @@ function exitProgram(code) {
 
     console.info("Exiting with status code " + code);
     process.exit(code);
-
 // (async function() {
 //     let guess;
 //     let match;
@@ -131,6 +125,4 @@ function exitProgram(code) {
 //
 //     exitProgram();
 // })();
-
-
 }
