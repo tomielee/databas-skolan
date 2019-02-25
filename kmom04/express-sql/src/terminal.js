@@ -1,5 +1,6 @@
 /**
 * Functions for kmom04, terminalbased bank assignment
+* Terminal works with node cli.js
 */
 "use strict";
 
