@@ -6,7 +6,9 @@ https://dbwebb.se/kunskap/koppla-appservern-express-till-databasen-mysql#srcbank
 "use strict";
 
 module.exports = {
-    showBalance: showBalance
+    showBalance: showBalance,
+    transactionAdam: transactionAdam,
+    transactionEva: transactionEva
 };
 
 const mysql = require("promise-mysql");
@@ -44,10 +46,56 @@ async function findAllInTable(table) {
     sql = `SELECT * FROM ??; `;
 
     res = await db.query(sql, [table]);
-    console.info(
-        `SQL: ${sql} from table ${table} got
-        ${res.length} rows.`
-    );
+    // console.info(
+    //     `SQL: ${sql} from table ${table} got
+    //     ${res.length} rows.`
+    // );
 
     return res;
+}
+
+async function transactionAdam(table) {
+    let sql;
+
+    sql =
+    `
+    START TRANSACTION;
+
+    UPDATE account
+    SET
+    	balance = balance + 1.5
+    WHERE id = "1111";
+
+    UPDATE account
+    SET
+        balance = balance - 1.5
+    WHERE
+        id = "2222";
+    COMMIT;
+    `
+    ;
+    await db.query(sql, [table]);
+}
+
+async function transactionEva(table) {
+    let sql;
+
+    sql =
+    `
+    START TRANSACTION;
+
+    UPDATE account
+    SET
+    	balance = balance + 1.5
+    WHERE id = "2222";
+
+    UPDATE account
+    SET
+        balance = balance - 1.5
+    WHERE
+        id = "1111";
+    COMMIT;
+    `
+    ;
+    await db.query(sql, [table]);
 }

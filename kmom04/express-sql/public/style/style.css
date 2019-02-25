@@ -13,7 +13,9 @@ main {
     letter-spacing: 1.5px;
 }
 
-table, th, td {
+table,
+th,
+td {
     border: 1px solid #1a4b4f;
     padding: 10px;
 }
@@ -26,8 +28,9 @@ header {
 footer {
     background-color: #3fb8c1;
     padding: 10px;
+}
 
-nav {
+.nav {
     text-transform: uppercase;
 }
 

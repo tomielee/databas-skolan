@@ -28,4 +28,14 @@ router.get("/balance", async (req, res) => {
     res.render("bank/balance", data);
 });
 
+router.get("/move-to-adam", async (req, res) => {
+    let data = {
+        title: "Moved money to Adam | The Bank"
+    };
+
+    data.res = await bank.transactionAdam();
+
+    res.render("bank/move-to-adam", data);
+});
+
 module.exports = router;
