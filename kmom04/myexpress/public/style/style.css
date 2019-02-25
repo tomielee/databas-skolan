@@ -1,0 +1,66 @@
+body {
+    margin: 8px auto;
+    background: #fff;
+    width: 700px;
+    font-family: Times;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+}
+
+h1 {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+nav {
+    border: #9a8da1 1px solid;
+    margin: 10px;
+    padding: 10px;
+}
+
+article {
+    border: #9a8da1 1px solid;
+    margin: 10px;
+    padding: 10px;
+    min-height: 250px;
+}
+
+a:link {
+    color: black;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #d7a9e0;
+    text-decoration: underline line-through;
+}
+
+a:active {
+    color: #d7a9e0;
+    text-decoration: underline line-through;
+}
+
+a:visited {
+    color: black;
+}
+
+.img-left {
+    float: left;
+    padding-right: 2em;
+    padding-bottom: 2em;
+    box-sizing: border-box;
+}
+
+.me-img {
+    width: 200px;
+}

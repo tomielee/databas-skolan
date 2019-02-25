@@ -1,0 +1,55 @@
+body {
+    margin: 8px auto;
+    background: #fff;
+    width: 700px;
+    font-family: helvetica;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+}
+
+main {
+    padding: 12px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+}
+
+table, th, td {
+    border: 1px solid #1a4b4f;
+    padding: 10px;
+}
+
+header {
+    background-color: #3fb8c1;
+    padding: 10px;
+}
+
+footer {
+    background-color: #3fb8c1;
+    padding: 10px;
+
+nav {
+    text-transform: uppercase;
+}
+
+a:link {
+    color: black;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #d7a9e0;
+    text-decoration: underline line-through;
+}
+
+a:active {
+    color: #d7a9e0;
+    text-decoration: underline line-through;
+}
+
+a:visited {
+    color: black;
+}
+
+.number-right {
+    text-align: right;
+}
