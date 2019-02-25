@@ -64,13 +64,13 @@ START TRANSACTION;
 UPDATE account
 SET
 	balance = balance + 1.5
-WHERE id = "2222";
+WHERE id = "1111";
 
 UPDATE account 
 SET
     balance = balance - 1.5
 WHERE
-    id = "1111";
+    id = "2222";
 
 -- ROLLBACK gör en undo på hela sekvensen som utfördes inom tranaktionen. 
 -- COMMIT utför alla ändrningar och ROLLBACK tar bort effekten av allt som utförst i transaktionen.

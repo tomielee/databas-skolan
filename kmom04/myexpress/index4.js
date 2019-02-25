@@ -29,7 +29,7 @@ app.use(middleware.logIncomingToConsole);
 //express.static //statiska filer vi vill skicka
 //den mapp vi är i , join med public
 //https://dbwebb.se/kunskap/grunderna-i-express-med-nodejs#publicexppress
-app.use(express.static(path.join(__dirname, "public")))
+app.use(express.static(path.join(__dirname, "public")));
 
 //ROUTES
 app.use("/", routeIndex);
@@ -72,4 +72,4 @@ function logStartUpDetailsToConsole() {
     console.info(`Server is listening on port ${port}.`);
     console.info("Available routes are:");
     console.info(routes);
-};
+}

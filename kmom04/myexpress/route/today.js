@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
 
     data.date = new Date(); //variabeln date i today.ejs
 
-    res.render("today", data)  //en vy + datan
+    res.render("today", data);  //en vy + datan
 });
 
 module.exports = router;
