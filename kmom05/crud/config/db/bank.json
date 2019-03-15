@@ -1,0 +1,7 @@
+{
+    "host": "localhost",
+    "user": "dbwebb",
+    "password": "password",
+    "database": "dbwebb",
+    "multipleStatements": true
+}

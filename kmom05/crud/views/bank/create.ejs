@@ -1,0 +1,32 @@
+<%- include("header", {title: title}); %>
+
+<main>
+<h1>Create</h1>
+
+<p>Create an account</p>
+
+<form method="post">
+    <fieldset>
+        <legend>CREATE ACCOUNT </legend>
+
+        <label for="id">Id</label>
+        <input id="id" type="text" name="id">
+<br>
+        <label for="name">Name</label>
+        <input id="name" type="text" name="name">
+<br>
+        <label for="balance">Balance</label>
+        <input id="balance" type="number" name="balance">
+<br>
+<br>
+        <input type="submit" name="doit" value="create">
+
+
+    </fieldset>
+</form>
+
+<br>
+<br>
+
+</main>
+<%- include("footer"); %>
