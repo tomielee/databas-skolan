@@ -1,7 +1,9 @@
 /**
 *
 * copied from kmom04 to KMOM05
-* Det går att lägga in alla funktioner i en och samma modul och exportea hela modulen istället för varje funktion för sig. Se genomgången med Emil.
+* Det går att lägga in alla funktioner i en och samma modul
+ och exportea hela modulen istället för varje funktion för
+ sig. Se genomgången med Emil.
 */
 "use strict";
 
@@ -45,7 +47,7 @@ async function showBalance() {
 */
 
 async function findAllInTable(table) {
-    let sql = `CALL show_balance();`
+    let sql = `CALL show_balance();`;
     let res;
 
     res = await db.query(sql, [table]);
@@ -108,7 +110,7 @@ async function createAccount(id, name, balance) {
     let res;
 
     res = await db.query(sql, [id, name, balance]);
-    console.log(res)
+    // console.log(res);
     console.info(`createAccount >> SQL: ${sql} got ${res.length} rows`);
 }
 
@@ -120,7 +122,6 @@ async function showAccount(id) {
     console.info(`showAccount >> SQL: ${sql} got ${res.length} rows`);
 
     return res[0];
-
 }
 
 async function editAccount(id, name, balance) {
@@ -129,14 +130,11 @@ async function editAccount(id, name, balance) {
 
     res = await db.query(sql, [id, name, balance]);
     console.info(`editAccount >> SQL: ${sql} got ${res.length} rows`);
-
 }
 
 async function deleteAccount(id) {
     let sql = `CALL delete_account(?);`;
-    let res;
 
-    res = await db.query(sql, [id]);
+    await db.query(sql, [id]);
     console.info(`deleteAccount >> SQL: ${sql} was run`);
-
 }

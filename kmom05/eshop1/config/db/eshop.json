@@ -1,7 +1,7 @@
 {
     "host": "localhost",
-    "user": "user",
-    "password": "pass",
-    "database": "dbwebb",
+    "user": "dbwebb",
+    "password": "password",
+    "database": "eshop",
     "multipleStatements": true
 }

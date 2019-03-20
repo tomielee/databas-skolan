@@ -1,0 +1,91 @@
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 8px auto;
+    background-image: linear-gradient(#ff7272, #fff);
+    width: 80%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+}
+
+main {
+    padding: 12px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    background-color: #fff;
+    min-height: 250px;
+}
+
+table,
+th,
+td {
+    border: 1px solid #210f0f;
+    padding: 10px;
+}
+
+header {
+    padding: 10px;
+}
+
+footer {
+    padding: 10px;
+}
+
+h1 {
+    font-family: 'Slabo 27px', serif;
+    font-size: 22px;
+}
+
+/* NAVBAR */
+
+.nav {
+    text-transform: uppercase;
+}
+
+/* A- LINK */
+
+a:link {
+    color: black;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #ffe5dc;
+    text-decoration: underline line-through;
+}
+
+a:active {
+    color: #ffe5dc;
+    text-decoration: underline line-through;
+}
+
+a:visited {
+    color: black;
+}
+
+.number-right {
+    text-align: right;
+}
+
+/* FORM FORM FORM
+* kolla mer på htmlphp kmom06 css stylesheet
+*/
+
+.form {
+    margin: 5px;
+    width: 80%;
+}
+
+legend {
+    font-size: 20px;
+}
+
+input[type=text] {
+    width: 80%;
+    padding: 5px;
+    margin: 5px;
+}

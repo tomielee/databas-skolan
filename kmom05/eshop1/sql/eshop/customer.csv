@@ -1,6 +1,6 @@
-"Mail","Firstname","Lastname","Adress","Zipcode","City"
-"jerald@cormier.com","Jerald","Cormier","Granville Lane",3182,"Newark"
-"carol@stephenson.com","Carol","Stephenson","Ridge Road",67801,"Dodge City"
-"christopher@robin.po","Christofer","Robin","Humanvillage",1234,"Pooh City"
-"piglet@thepig.se","Piglet","The pig","Scaredvillage",4567,"Pooh City"
-"mary@lamb.se","Mary","Had a little","Lambstreet",12356,"Imaginary"
+Mail,Firstname,Lastname,Adress,Zipcode,City
+jerald@cormier.com,Jerald,Cormier,Granville Lane,3182,Newark
+carol@stephenson.com,Carol,Stephenson,Ridge Road,67801,Dodge City
+christopher@robin.po,Christofer,Robin,Humanvillage,1234,Pooh City
+piglet@thepig.se,Piglet,The pig,Scaredvillage,4567,Pooh City
+mary@lamb.se,Mary,Had a little,Lambstreet,12356,Imaginary

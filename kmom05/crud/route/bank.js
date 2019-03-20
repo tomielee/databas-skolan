@@ -116,7 +116,6 @@ router.get("/delete/:id", async (req, res) => {
 });
 
 router.post("/delete", urlencodedParser, async (req, res) => {
-    console.log("borde deletea")
     await bank.deleteAccount(req.body.id);
 
     res.redirect(`/bank/balance`);

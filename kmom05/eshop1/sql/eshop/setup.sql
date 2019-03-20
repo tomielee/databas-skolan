@@ -24,3 +24,7 @@ GRANT ALL PRIVILEGES
     ON eshop.*
     TO 'user'@'%'
 ;
+
+SET GLOBAL local_infile = 1;
+GRANT TRIGGER ON *.* TO 'user'@'%';
+

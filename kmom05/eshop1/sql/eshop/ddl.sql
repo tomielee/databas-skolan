@@ -7,12 +7,16 @@
 
 
 -- set all names to be able to read swedish charecters
-SET NAMES utf8;
+SET NAMES utf8mb4;
+
 
 -- -------------------
 -- drop all tables if exists
 -- tables with most foreign keys last!
 --
+
+
+
 DROP TABLE IF EXISTS prod_2_cat;
 DROP TABLE IF EXISTS prod_cat;
 
@@ -25,9 +29,9 @@ DROP TABLE IF EXISTS invoice_row;
 DROP TABLE IF EXISTS invoice;
 
 DROP TABLE IF EXISTS prod_order;
+DROP TABLE IF EXISTS customer;
 
 DROP TABLE IF EXISTS product;
-DROP TABLE IF EXISTS customer;
 
 
 
@@ -35,7 +39,7 @@ DROP TABLE IF EXISTS customer;
 --
 CREATE TABLE product
 (
-	id VARCHAR(6),
+	id VARCHAR(10),
     title CHAR(100),
     info VARCHAR(300), 
     price FLOAT,
@@ -58,42 +62,43 @@ CREATE TABLE prod_cat
 --
 CREATE TABLE prod_2_cat
 (
-	id INT NOT NULL AUTO_INCREMENT,
-    prod_id VARCHAR(10),
+	`id` INT NOT NULL AUTO_INCREMENT,
+	prod_id VARCHAR(10),
     cat_id VARCHAR(10),
     
-    PRIMARY KEY (id),
+    PRIMARY KEY (`id`),
     FOREIGN KEY (prod_id) REFERENCES product(id),
     FOREIGN KEY (cat_id) REFERENCES prod_cat(id)
 );
 
--- INVENTORY (id, #prod_type)
+-- INVENTORY (id, #prod_id)
 --
 CREATE TABLE inventory
 (
-	id INT NOT NULL AUTO_INCREMENT,
-    prod_id VARCHAR(6),
-    shelf VARCHAR(6),
+	`id` INT NOT NULL AUTO_INCREMENT,
+    prod_id VARCHAR(10),
+    shelf VARCHAR(8),
     items INT,
     
-    PRIMARY KEY (id),
+    PRIMARY KEY (`id`),
     FOREIGN KEY (prod_id) REFERENCES product(id)
 );
 
--- customer (id)
+-- CUSTOMER (id)
 --
 CREATE TABLE customer
 (
-	id INT AUTO_INCREMENT,
+	`id` INT NOT NULL AUTO_INCREMENT,
     mail VARCHAR(50),
     fname CHAR(100),
     sirname CHAR(100),
     adress VARCHAR(300),
-    zip INT(6),
+    zip INT(10),
     city CHAR(30),
     
-    PRIMARY KEY (id)
+    PRIMARY KEY (`id`)
 );
+SHOW WARNINGS;
 
 -- prod_order (id, #customer_ID)
 -- 
@@ -115,9 +120,9 @@ CREATE TABLE prod_order
 -- 
 CREATE TABLE order_row
 (
-	id INT AUTO_INCREMENT,
+	id INT NOT NULL AUTO_INCREMENT,
     prod_order_id INT,
-    prod_id VARCHAR(6),
+    prod_id VARCHAR(10),
     amount INT,
     
     PRIMARY KEY(id),    
@@ -132,7 +137,7 @@ CREATE TABLE plock_list
 (
 	id INT AUTO_INCREMENT,
     prod_order_id INT,
-    prod_id VARCHAR(6),
+    prod_id VARCHAR(10),
     items INT,
     
     PRIMARY KEY (id),
@@ -156,7 +161,7 @@ CREATE TABLE invoice
 CREATE TABLE invoice_row
 (
 	id INT AUTO_INCREMENT,
-    prod_id VARCHAR(6),
+    prod_id VARCHAR(10),
     prod_order_id INT,
     inv_id INT,
     total FLOAT,
@@ -171,20 +176,326 @@ CREATE TABLE invoice_row
 -- --------------------------------------
 -- VIEWS
 
-DROP VIEW IF EXISTS v_prodcat;
+-- I webbklienten, skapa en sida /eshop/product som visar en översikt av de produkter som finns. 
+-- Visa (minst) produktens id, namn, pris och antal som finns i lagret. 
+-- Visa även information om vilken kategori som produkten tillhör (TIPS GROUP_CONCAT).
 
-CREATE VIEW v_prodcat
+
+DROP VIEW IF EXISTS v_products;
+
+CREATE VIEW v_products
 AS
 	SELECT 
-		prod.title as product
+		prod.id as 'ProdId',
+        prod.title as 'Title',
+        prod.price as 'Price',
+        inv.items as 'Items in stock'
+        
+    FROM product as prod
+		JOIN inventory as inv
+			ON inv.prod_id = prod.id
+;
+
+DROP VIEW IF EXISTS v_prodcat;
+CREATE VIEW v_prodcat
+AS
+	SELECT
+		pc.cat as "Categories"
+        
     FROM product as prod
 		JOIN prod_2_cat as p2
 			ON prod.id = p2.prod_id
             JOIN prod_cat as pc
-				ON p2.prod_id = pc.id
-	GROUP BY
-		product
+				ON p2.cat_id = pc.id
+	GROUP BY p2.cat_id
 ;
+
+
+-- --------------------------------------
+-- PROCEDURES
+
+-- SHOW ALL PRODUCTS
+DROP PROCEDURE IF EXISTS show_all_products;
+
+DELIMITER ;;
+CREATE PROCEDURE show_all_products
+(
+)
+BEGIN
+	SELECT 
+		prod.id as 'id',
+        prod.title as 'title',
+        prod.info as 'info',
+        prod.price as 'price',
+        inv.items as 'items'
+	FROM product as prod
+		JOIN inventory as inv
+			ON prod.id = inv.prod_id;
+-- 	GROUP BY prod.id;
+    
+END
+;;
+
+DELIMITER ;
+
+-- SHOW PRODUCTS
+DROP PROCEDURE IF EXISTS show_product;
+
+DELIMITER ;;
+CREATE PROCEDURE show_product
+(
+	a_id VARCHAR(10)
+)
+BEGIN
+	SELECT 
+		prod.id as 'id',
+        prod.title as 'title',
+        prod.info as 'info',
+        prod.price as 'price',
+        inv.items as 'items'
+	FROM product as prod
+		JOIN inventory as inv
+			ON prod.id = inv.prod_id
+ 	WHERE prod.id = a_id;
+    
+END
+;;
+
+DELIMITER ;
+
+-- SHOW CATEGORIES
+--
+DROP PROCEDURE IF EXISTS show_categories;
+
+DELIMITER ;;
+CREATE PROCEDURE show_categories
+(
+)
+BEGIN
+	SELECT * FROM v_prodcat;
+END
+;;
+DELIMITER ;
+
+-- ADD PRODUCT
+--
+DROP PROCEDURE IF EXISTS add_product;
+DELIMITER ;;
+CREATE PROCEDURE add_product
+(
+	a_id VARCHAR(10),
+    a_title CHAR(100),
+    a_info VARCHAR(300), 
+    a_price FLOAT,
+    a_shelf VARCHAR(8),
+    a_items INT
+)
+BEGIN
+   
+	INSERT INTO product
+		VALUES(a_id, a_title, a_info, a_price);
+        
+	INSERT INTO inventory (prod_id, shelf, items)
+		VALUES(a_id, a_shelf, a_items);
+	
+    INSERT INTO prod_2_cat (prod_id, cat_id)
+		VALUES(a_id, 'cat_new');
+    
+    COMMIT;
+
+END
+;;
+
+DELIMITER ;
+
+-- EDIT PRODUCT
+--
+DROP PROCEDURE IF EXISTS edit_product;
+
+DELIMITER ;;
+
+CREATE PROCEDURE edit_product
+(
+	a_id VARCHAR(10),
+    a_title CHAR(100),
+    a_info VARCHAR(300), 
+    a_price FLOAT,
+    a_items INT
+)
+BEGIN
+	UPDATE product
+		SET
+			title  = a_title,
+            info = a_info, 
+            price = a_price
+	WHERE
+		id = a_id;
+	
+    UPDATE inventory
+		SET
+			items = a_items
+	WHERE
+		prod_id = a_id;
+        
+	COMMIT;
+END
+;;
+
+DELIMITER ;
+
+
+-- DELETE PRODUCT
+--
+DROP PROCEDURE IF EXISTS delete_product;
+
+DELIMITER ;;
+
+CREATE PROCEDURE delete_product
+(
+	a_id VARCHAR(10)
+)
+BEGIN
+      
+	DELETE FROM inventory
+	WHERE prod_id = a_id;
+    
+    DELETE FROM prod_2_cat
+	WHERE prod_id = a_id;
+    
+	DELETE FROM product
+	WHERE id = a_id;
+	
+    COMMIT;
+END
+;;
+
+DELIMITER ;
+
+-- SHOW LOG
+--
+DROP PROCEDURE IF EXISTS show_log;
+DELIMITER ;;
+CREATE PROCEDURE show_log
+(
+	a_number INT
+)
+BEGIN
+	SELECT * FROM product_log
+	ORDER BY log DESC LIMIT a_number;
+	
+    
+END
+;;
+
+DELIMITER ;
+
+-- SHOW SHELFS
+--
+DROP PROCEDURE IF EXISTS show_shelfs;
+DELIMITER ;;
+CREATE PROCEDURE show_shelfs
+(
+	
+)
+BEGIN
+	SELECT 
+		shelf
+	FROM inventory;
+    
+END
+;;
+
+DELIMITER ;
+
+-- FILTER INVENTORY
+--
+DROP PROCEDURE IF EXISTS filter_inventory;
+DELIMITER ;;
+CREATE PROCEDURE filter_inventory
+(
+	a_value VARCHAR(20)
+)
+BEGIN
+	SELECT
+		inv.id,
+        inv.prod_id,
+        p.title,
+        inv.shelf,
+        inv.items
+    FROM inventory as inv
+		JOIN product as p
+			ON inv.prod_id = p.id
+	WHERE p.title = a_value
+	OR p.id = a_value
+	OR inv.shelf = a_value
+	ORDER BY inv.id;
+    
+END
+;;
+
+DELIMITER ;
+
+
+-- ADD INVENTORY
+--
+DROP PROCEDURE IF EXISTS add_inventory;
+DELIMITER ;;
+CREATE PROCEDURE add_inventory
+(
+	a_prodid VARCHAR(10),
+    a_shelf VARCHAR (10),
+    a_items INT
+)
+MAIN:BEGIN
+	DECLARE current_shelf VARCHAR(10);
+    
+	SELECT shelf INTO current_shelf FROM inventory WHERE prod_id = a_prodid;
+    
+    IF current_shelf != a_shelf THEN
+		ROLLBACK;
+        SELECT "Could not add products to different shelf. Check 'inventory' to see correct shelf." AS message;
+        LEAVE MAIN;
+	END IF;
+
+   	UPDATE inventory
+		SET items = items + a_items
+		WHERE prod_id = a_prodid;
+	    
+END
+;;
+
+DELIMITER ;
+
+-- DELETE INVENTORY
+--
+DROP PROCEDURE IF EXISTS del_inventory;
+DELIMITER ;;
+CREATE PROCEDURE del_inventory
+(
+	a_prodid VARCHAR(10),
+    a_shelf VARCHAR (10),
+    a_items INT
+)
+MAIN:BEGIN
+	DECLARE current_shelf VARCHAR(10);
+    
+	SELECT shelf INTO current_shelf FROM inventory WHERE prod_id = a_prodid;
+    
+    IF current_shelf != a_shelf THEN
+		ROLLBACK;
+        SELECT "The product is not on this shelf. Could not remove items." AS message;
+        LEAVE MAIN;
+	END IF;
+
+   	UPDATE inventory
+		SET items = items - a_items
+		WHERE prod_id = a_prodid;
+	    
+END
+;;
+
+DELIMITER ;
+
 
 
 -- --------------------------------------
@@ -194,7 +505,8 @@ DROP TABLE IF EXISTS product_log;
 -- TABLE FOR LOG
 CREATE TABLE product_log
 (
-	`id` INTEGER PRIMARY KEY AUTO_INCREMENT, 
+	`log` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `id` VARCHAR(10), 
     `when` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `what` VARCHAR(20),
     `title` VARCHAR(100),
@@ -204,13 +516,25 @@ CREATE TABLE product_log
 );
 
 CREATE TRIGGER log_insert_prod
-AFTER UPDATE
+AFTER INSERT
 ON product FOR EACH ROW
 	INSERT INTO product_log(`what`, `id`, `title`, `info`, `price`)
 		VALUES("trigger - insert", NEW.id, NEW.title, NEW.info, NEW.price);
 
-SHOW CREATE TRIGGER log_insert_prod;
+-- BÖR GÖRAS SNYGGARE...
+CREATE TRIGGER log_update_prod
+BEFORE UPDATE
+ON product FOR EACH ROW
+	INSERT INTO product_log(`what`, `id`, `title`, `info`, `price`)
+		VALUES("trigger - update", NEW.id, NEW.title, NEW.info, NEW.price);
+        
+CREATE TRIGGER log_delete_prod
+BEFORE DELETE
+ON product FOR EACH ROW
+	INSERT INTO product_log(`what`, `id`, `title`, `info`, `price`)
+		VALUES("trigger - delete", OLD.id, OLD.title, OLD.info, OLD.price);
 
+-- SHOW CREATE TRIGGER log_insert_prod;
 
-
+-- SHOW CREATE TRIGGER log_update_prod;
 
