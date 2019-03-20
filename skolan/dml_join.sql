@@ -23,7 +23,27 @@ ORDER BY acronym
 ;
 
 -- Skapa rapporten som visar resultatet enligt nedan.
-DROP VIEW IF EXISTS v_lonerevision;
+-- DROP VIEW IF EXISTS v_lonerevision;
+-- CREATE VIEW v_lonerevision
+-- AS
+-- SELECT
+-- 	t.acronym AS Acro,
+--     t.fname AS Fname,
+--     t.sirname AS SName,
+--     p.salary AS Presal,
+--     t.salary AS Nowsal,
+--     p.competence AS Precomp,
+--     t.competence AS Nowcomp,
+--  	ROUND(
+-- 		(t.salary - p.salary) / p.salary * 100
+--         , 2)
+--         AS "proc"
+-- FROM teacher AS t
+-- 	JOIN teacher_pre AS p
+-- 		ON t.acronym = p.acronym
+-- ORDER BY proc DESC;
+
+ DROP VIEW IF EXISTS v_lonerevision;
 CREATE VIEW v_lonerevision
 AS
 SELECT
@@ -34,15 +54,18 @@ SELECT
     t.salary AS Nowsal,
     p.competence AS Precomp,
     t.competence AS Nowcomp,
+    t.salary - p.salary as Diff,
  	ROUND(
 		(t.salary - p.salary) / p.salary * 100
         , 2)
-        AS "proc"
+        AS "proc",
+	IF (ROUND(
+		(t.salary - p.salary) / p.salary * 100
+        , 2) < 3, 'nok', 'ok') AS "mini"
 FROM teacher AS t
 	JOIN teacher_pre AS p
 		ON t.acronym = p.acronym
 ORDER BY proc DESC;
-
 
 -- Show diff in salary 
 SELECT 
@@ -51,9 +74,9 @@ SELECT
     Sname,
     Presal,
     Nowsal,
-    Nowsal - Presal AS "Diff salary",   
+    Diff , 
     proc,
-    IF (proc < 3, 'nok', 'ok') AS "mini"
+    mini
  FROM v_lonerevision;
 
 -- Show diff in competence

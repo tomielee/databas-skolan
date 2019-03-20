@@ -31,7 +31,8 @@
 <a href="#kmom02">Kmom02</a>
 <a href="#kmom03">Kmom03</a>
 <a href="#kmom04">Kmom04</a>
-Kmom05, Kmom06, Kmom07-10,
+<a href="#kmom05">Kmom05</a>
+Kmom06, Kmom07-10,
 
 
 <section>
@@ -91,8 +92,19 @@ Detta i sin tur är också för att jag kanske ville testa att göra det själv.
 </section>
 
 <section>
-<h2>Kmom05</h2>
-<p>Här är redovisningstexten</p>
+<h2 id="kmom05">Kmom05</h2>
+<p>Övningarna var väldigt bra och det gick att förstå uppbyggnaden av prodecurer och triggers. Jag använde mig dock inte av flera sätt att jobba med triggers utan använde mig enbart av att logga ändringar av med insert, delete och edit på specifikt tabellen product. I skrivande stund funderar jag på om flera av mina procedurer kunde ha fixats med triggers istället. T.ex. när jag lägger till en produkt så har jag i min procedur lagt in att jag ska insert detta i product samt att den också per auto tillhör kategori "new", just denna grej skulle gå att ordna med en trigger. Alltså när jag gör en INSERT på tabellen product så ska även product_2_cat triggas. </p>
+
+<p>Producedurer skulle jag beskriva är lite som att skriva funktioner eller kanske klasser. En produceur, likt en funktion, kan ta emot data och när ett anrop till proceduren görs så exekveras koden i proceduren. Det är ett sätt att programmera direkt i databasen. Triggers är lite som det låter, när något sker i databasen så kan en trigger göra att annat också sker. Triggers sker dock i "bakgrunden" och de returnerar inget. Att jobba programmera direkt i databasen har sina fördelar då det är kopplat till direkt till databasen, du har alltså din kod samlat. Nu när vi jobbar med JS och CRUD blir det en hel del andra funktioner att ha koll på det kan därför vara skönt att kunna dela upp sin kod. Nackdelen är dock att olika språk har olika programmeringstandard att skriva en funktion i JS kräver camelcase att skriva en procedur i SQL görs med små bokstäver och _ . Det gäller därför att döpa sina funktioner, metoder och procedurer konsekvent så att det går at hitta. </p>
+
+<p>CRUD gick bra att implementera, lite lurigt att förstå, till en början, hur datan ser ut som vi får av proceduren. Trots att jag gjorde console.log(). Det var också till en början svårt att strukturea upp var en ska börja koda. Men efter ett tag fick jag någon sorts rutin på det. 1. Skapa route 2. skapa SQL kod - kolla SQL kod 3. skapa funktion 4. skapa sidan 5. kolla att allt funkar.</p>
+
+<p>Kommentar till uppgiften: Något som jag inte är säker på om det fungerar är tabeller där jag skapat ID med AUTO_INC. Om jag kör min insert.sql två gånger så får jag varningsmeddelanden. Jag har hårdkodat själva ID men det blir inte bra när jag lägger till i tabellen då jag vill att det ska öka. Har förstått att många (på nätet) haft problem med auto_inc just vid inload from file. Kanske är det så att min delete inte fungerar? </p>
+<p>Min invadd() här också begränsad till att inte kunna lägga till produkt på "fel" hylla då jag definerat detta tidigare. Vet inte om det var fel gjort men nu gjorde jag så och det var avsiktligt. Alltså flera produkter kan finnas på en hylla men en produkt kan inte vara på flera hyllor.</p>
+
+<p>Jag har inte jobbat med någon då jag är studerar på distans. Tänker att det finns massor mer att lära sig och att tid skulle kunna gå till utveckling. I någon föreläsning eller genomgång sa ni "försök kolla på allt och strukturera upp och prioritera". Detta kan ju verka enkelt - för någon som programmerat i flera år. För en nybörjare blir allt lika viktigt. Det är lite som att ha en låda muttrar och cykeldelar framför sig och säga till någon som aldrig satt ihop en cykel att försöka prioritera vad som är viktigt att börja med. Alltså inte illvilja bara väldigt svårt!</p>
+<a href="top">Top</a>
+
 </section>
 
 <section>
