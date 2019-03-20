@@ -28,11 +28,16 @@ async function salDiff(db) {
             t.sirname AS SName,
             p.salary AS Presalary,
             t.salary AS Nowsalary,
-            (t.salary - p.salary) AS "Diff"
+            (t.salary - p.salary) AS "Diff",
+            ROUND((t.salary - p.salary) / p.salary * 100, 2)
+                AS "proc",
+	        IF
+            (ROUND(
+                (t.salary - p.salary) / p.salary * 100, 2) < 3, 'nok', 'ok') AS "mini"
         FROM teacher AS t
         	JOIN teacher_pre AS p
         		ON t.acronym = p.acronym
-        ORDER BY Diff DESC;
+        ORDER BY proc DESC;
         `;
 
     res = await db.query(sql);
