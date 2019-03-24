@@ -1,0 +1,62 @@
+<%- include("header", {title: title}); %>
+
+<main>
+
+
+<h1>Adding products to order <%= order[0].orderid %></h1>
+
+<p>Customer ID: <%= order[0].customerid %>
+<p>Name: <%= order[0].customername %>
+
+
+<form method="post" action="/eshop/order-add-product">
+<input type="hidden" name="orderid" value=<%=order[0].orderid %>><% order[0].orderid %></input>
+
+    <table>
+        <tr>
+            <th> Prod.ID </th>
+            <th> Title </th>
+            <th> Info </th>
+            <th> Price </th>
+            <th> In stock </th>
+            <th> SHOP amount</th>
+        </tr>
+    <% for (const product of products) {%>
+        <tr>
+            <td><%= product.id %>
+                <input type="hidden" name="prodid" value=<%= product.id %>></input>
+            </td>
+            <td><%= product.title %></td>
+            <td><%= product.info %></td>
+            <td><%= product.price %></td>
+            <td><%= product.items %></td>
+            <td>
+                <select type="number" name="amount">
+                    <option value="null">Amount</option>
+                    <% for (x = 0; x <= product.items; x++) {%>
+                    <option>
+                        <%= x; %>
+                    </option>
+                        <% }; %>
+                </select>
+            </td>
+
+        </tr>
+    <% }; %>
+    </table>
+    <br>
+    <br>
+    <button>
+        <input type="submit" name="add" value="ADD">
+    </button>
+</form>
+
+
+
+
+
+
+<br>
+<br>
+</main>
+<%- include("footer"); %>

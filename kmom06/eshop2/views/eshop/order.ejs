@@ -1,0 +1,72 @@
+<%- include("header", {title: title}); %>
+
+<main>
+
+<h1><p>Details on your order</p></h1>
+<p>ORDER NUMBER: <%= order[0].orderid %> </p>
+<p>Customer ID: <%= order[0].customerid %> and Customer Name: <%= order[0].customername %></p>
+
+<p>ORDER STATUS: <%= status[0].status %> </p>
+<p>NUMBER OF ROWS: <%= order.length %>
+
+<form method="post" action="/eshop/order-edit">
+<input type="hidden" name="orderid" value=<%=order[0].orderid %>><% order[0].orderid %></input>
+
+<table>
+    <tr>
+        <th> Prod.ID</th>
+        <th> Info</th>
+        <th> Price</th>
+        <th> Amount</th>
+        <th> Sum</th>
+        <th> Edit</th>
+    </tr>
+<% for (const ordinfo of order) { %>
+
+        <tr>
+            <td><%= ordinfo.prodid %>
+            <input type="hidden" name="prodid" value=<%= ordinfo.prodid %>></input>
+            </td>
+            <td><%= ordinfo.prodinfo %></td>
+            <td><%= ordinfo.price %></td>
+            <td><%= ordinfo.amount %></td>
+            <td><%= ordinfo.sum %></td>
+            <td>
+                <select type="number" name="amount">
+                    <option value="null">Amount</option>
+                    <% for (x = 0; x <= ordinfo.items; x++) {%>
+                    <option>
+                        <%= x; %>
+                    </option>
+                        <% }; %>
+                </select>
+                <button>
+                    <input type="submit" name="edit" value="EDIT">
+                </button>
+            </td>
+        </tr>
+<% };%>
+</table>
+
+<br>
+<br>
+
+<button>
+<a href="/eshop/order-fini/<%= order[0].orderid %>/<%= order[0].customerid %>">ORDER</a>
+</button>
+
+<button>
+<a href="/eshop/order-del/<%= order[0].orderid %>/<%= order[0].customerid %>">DELETE</a>
+</button>
+
+<button>
+    <a href="/eshop/order-add-product/<%= order[0].orderid %>">SHOP</a>
+</button>
+<br>
+<br>
+<a href="/eshop/orders/<%= order[0].customerid %>">
+BACK TO ORDER VIEWS</a>
+
+
+</main>
+<%- include("footer"); %>

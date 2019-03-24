@@ -1,0 +1,24 @@
+<%- include("header", {title: title}); %>
+
+<main>
+<h1>Categories</h1>
+
+<p>Here are the available categories in the shop</p>
+
+
+<table>
+    <tr>
+        <th>Categories</th>
+
+    </tr>
+<% for (var i = 0; i < res.length; i ++) { %>
+    <tr>
+        <td><%= res[i].Categories %></td>
+    </tr>
+<% }; %>
+
+</table>
+
+
+</main>
+<%- include("footer"); %>
