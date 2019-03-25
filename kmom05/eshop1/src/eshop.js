@@ -56,11 +56,11 @@ async function showCategory() {
 }
 
 // ADD PRODUCT
-async function addProduct(id, title, info, price, shelf, items) {
-    let sql = `CALL add_product(?, ?, ?, ?, ?, ?);`;
+async function addProduct(id, title, info, price) {
+    let sql = `CALL add_product(?, ?, ?, ?);`;
     let res;
 
-    res = await db.query(sql, [id, title, info, price, shelf, items]);
+    res = await db.query(sql, [id, title, info, price]);
 
     console.info(`addProduct >> SQL: ${sql} got ${res.length} rows`);
 }

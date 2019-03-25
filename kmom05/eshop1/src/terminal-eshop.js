@@ -53,7 +53,7 @@ async function showShelfs() {
 
 // SHOW INVENTORY
 async function showInventory() {
-    let sql = `SELECT * FROM inventory`;
+    let sql = `SELECT * FROM v_inventory`;
     let res;
 
     res = await db.query(sql);

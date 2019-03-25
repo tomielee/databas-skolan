@@ -75,9 +75,7 @@ router.post("/add", urlencodedParser, async (req, res) => {
         req.body.id,
         req.body.title,
         req.body.info,
-        req.body.price,
-        req.body.shelf,
-        req.body.items
+        req.body.price
     );
 
     res.redirect("/eshop/products");
