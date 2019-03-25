@@ -13,7 +13,9 @@ module.exports = {
     finishOrder: finishOrder,
     deleteOrder: deleteOrder,
     editOrder: editOrder,
-    showAllOrders: showAllOrders
+    showAllOrders: showAllOrders,
+    showItemsInStock: showItemsInStock,
+    showTotal: showTotal
 };
 
 const mysql = require("promise-mysql");
@@ -51,11 +53,9 @@ async function showCustomersOrders(id) {
 async function showOrderStatus(id) {
     let sql = `CALL show_status(?);`;
 
-    let status = await db.query(sql, [id])
+    let status = await db.query(sql, [id]);
 
     console.info(`showOrderStatus >> SQL: ${sql} got ${status.length} rows`);
-
-    console.info(status[0]);
 
     return status[0];
 }
@@ -63,26 +63,22 @@ async function showOrderStatus(id) {
 // CREATE ORDER
 async function createOrder(customerid) {
     let sql = `CALL create_order(?);`;
-
-    let orderid = await db.query(sql, [customerid])
+    let orderid = await db.query(sql, [customerid]);
 
     console.info(`createOrder >> SQL: ${sql} got ${orderid.length} rows`);
-    console.info(orderid[0])
-    return orderid[0];
 
+    return orderid[0];
 }
 
 // SHOW ORDER
 async function showOrder(orderid) {
     let sql = `CALL show_order(?);`;
-
     let order = await db.query(sql, [orderid]);
 
     // console.info(`showOrder >> SQL: ${sql} got ${order.length} rows`);
-    // console.info(order[0]);
+
     console.info(`Showing order ${orderid}`);
     return order[0];
-
 }
 
 // ADD TO Order
@@ -90,14 +86,12 @@ async function showOrder(orderid) {
 
 async function addToOrder(orderid, prodid, amount) {
     let sql = `CALL add_to_order(?, ?, ?);`;
-    let orderinfo;
 
     for (var i = 0; i < prodid.length; i++) {
-
         if (amount[i] === "null") {
             continue;
         } else {
-            orderinfo = await db.query(sql, [orderid, prodid[i], amount[i]]);
+            await db.query(sql, [orderid, prodid[i], amount[i]]);
         }
     }
 }
@@ -106,25 +100,24 @@ async function addToOrder(orderid, prodid, amount) {
 async function finishOrder(orderid) {
     let sql = `CALL finish_order(?);`;
 
-    let res = await db.query(sql, [orderid]);
+    await db.query(sql, [orderid]);
 }
 
 async function deleteOrder(orderid) {
     let sql = `CALL delete_order(?);`;
 
-    let res = await db.query(sql, [orderid]);
+    await db.query(sql, [orderid]);
 }
 
 //EDIT ORDER
 async function editOrder(orderid, prodid, amount) {
     let sql = `CALL edit_order(?, ?, ?);`;
-    let orderinfo;
 
     for (var i = 0; i <= prodid.length; i++) {
         if (amount[i] === "null") {
             continue;
         } else {
-            orderinfo = await db.query(sql, [orderid, prodid[i], amount[i]]);
+            await db.query(sql, [orderid, prodid[i], amount[i]]);
         }
     }
 }
@@ -132,7 +125,28 @@ async function editOrder(orderid, prodid, amount) {
 // SHOW ALL ORDERS
 async function showAllOrders() {
     let sql = `CALL show_all_orders();`;
-
     let orders = await db.query(sql);
+
     return orders[0];
+}
+
+//SHOW ITEMS IN stock
+//@params orderid
+async function showItemsInStock(orderid) {
+    let sql = `CALL show_items_in_stock(?);`;
+    let items = await db.query(sql, [orderid]);
+
+    console.info(`ITEMS IN STOCK ${items}`);
+    // console.info(items[0]);
+
+    return items[0];
+}
+
+//SHOW total
+async function showTotal(orderid) {
+    let sql = `CALL show_total(?);`;
+
+    let total = await db.query(sql, [orderid]);
+
+    return total[0];
 }

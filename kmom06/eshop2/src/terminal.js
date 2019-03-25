@@ -135,7 +135,7 @@ async function handleOrder(lineArr) {
     if (lineArr.length == 1) {
         return or.showAllOrders();
     } else {
-        return or.showOrder(lineArr[1])
+        return te.showSearchOrder(lineArr[1]);
     }
 }
 

@@ -6,7 +6,9 @@ html {
 body {
     margin: 8px auto;
     background-image: linear-gradient(#ff7272, #fff);
-    width: 80%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 65%;
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
     letter-spacing: 1.5px;
@@ -17,7 +19,7 @@ main {
     font-size: 12px;
     letter-spacing: 1.5px;
     background-color: #fff;
-    min-height: 250px;
+    min-height: 800px;
 }
 
 table,
@@ -28,6 +30,8 @@ td {
 }
 
 header {
+    position: relative;
+    height: 120px;
     padding: 10px;
     width: 100%;
 }
@@ -44,7 +48,9 @@ h1 {
 
 /* NAVBAR */
 
-.nav {
+nav {
+    position: absolute;
+    bottom: 1em;
     text-transform: uppercase;
 }
 
@@ -95,13 +101,13 @@ input[type=text] {
 /*  button
 */
 
-.button {
-  background-color: #ff7272;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+button {
+    background-color: #ff7272;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }

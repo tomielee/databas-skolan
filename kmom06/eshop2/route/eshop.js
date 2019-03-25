@@ -12,9 +12,8 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 
 const eshop    = require("../src/eshop.js");
-const customer = require("../src/customer.js")
-const order = require("../src/order.js")
-
+const customer = require("../src/customer.js");
+const order = require("../src/order.js");
 
 // FÖRSTA SIDAN
 router.get("/index", (req, res) => {
@@ -26,9 +25,12 @@ router.get("/index", (req, res) => {
 });
 
 // ABOUT
-router.get("/about", async (req, res) => {
+router.get("/about", (req, res) => {
+    let data = {
+        title: "About | The Shop"
+    };
 
-    res.redirect(`/eshop/about`);
+    res.render(`eshop/about`, data);
 });
 
 // CATEGORIES
@@ -75,7 +77,6 @@ router.get("/add", async (req, res) => {
 });
 
 router.post("/add", urlencodedParser, async (req, res) => {
-    // console.log(JSON.stringify(req.body, null, 4));
     await eshop.addProduct(
         req.body.id,
         req.body.title,
@@ -155,6 +156,7 @@ router.get("/orders/:id", async (req, res) => {
         title: "Customer orders | The Shop",
 
     };
+
     data.customer = await customer.showCustomer(id);
     console.log(data.customer);
     data.orders = await order.showCustomersOrders(id);
@@ -166,13 +168,7 @@ router.get("/orders/:id", async (req, res) => {
 // CREATE AN ORDER
 router.get("/order-create/:id", async (req, res) => {
     let customerid = req.params.id;
-    let data = {
-        title: "Create an order | The Shop",
-    };
-
     let orderid = await order.createOrder(customerid);
-
-    //console.log(orderid[0].orderid);
 
     res.redirect(`/eshop/order-add-product/${orderid[0].orderid}`);
 });
@@ -181,14 +177,14 @@ router.get("/order-create/:id", async (req, res) => {
 // SHOW AN ORDER
 router.get("/order/:id", async (req, res) => {
     let orderid = req.params.id; // order id
-
-    console.info(orderid);
-
     let data = {
         title: "Your order| The Shop",
     };
+
     data.order = await order.showOrder(orderid);
     data.status = await order.showOrderStatus(orderid);
+    data.items = await order.showItemsInStock(orderid);
+    data.total = await order.showTotal(orderid);
 
     res.render("eshop/order", data);
 });
@@ -200,20 +196,20 @@ router.get("/order-add-product/:id", async (req, res) => {
         title: "Shop more| The Shop",
 
     };
+
+    data.status = await order.showOrderStatus(id);
     data.products = await eshop.showAllProducts();
     data.order = await order.showOrder(id);
-
 
     res.render("eshop/order-add-product", data);
 });
 
 router.post("/order-add-product", urlencodedParser, async (req, res) => {
+    let orderid = req.body.orderid;
 
-    let id = req.body.orderid; // order id
-
-    console.log(req.body.orderid);
-    console.log(req.body.prodid);
-    console.log(req.body.amount);
+    // console.log(req.body.orderid);
+    // console.log(req.body.prodid);
+    // console.log(req.body.amount);
 
     await order.addToOrder(
         req.body.orderid,
@@ -221,27 +217,26 @@ router.post("/order-add-product", urlencodedParser, async (req, res) => {
         req.body.amount
     );
 
-    res.redirect(`/eshop/order/${id}`);
+    res.redirect(`/eshop/order/${orderid}`);
 });
 
 // EDIT AMOUNT OF PRODUCTS
 router.post("/order-edit", urlencodedParser, async (req, res) => {
-    let id = req.body.orderid; // order id
-    console.log(req.body.amount);
-    console.log(req.body.prodid);
+    let orderid = req.body.orderid; // order id
+
     await order.editOrder(
         req.body.orderid,
         req.body.prodid,
         req.body.amount
     );
 
-    res.redirect(`/eshop/order/${id}`);
+    res.redirect(`/eshop/order/${orderid}`);
 });
 
 // ORDER - FINISH THE ORDER
 router.get("/order-fini/:id/:cid", async (req, res) => {
-    let orderid = req.params.id //orderid
-    let customerid = req.params.cid; // customer id
+    let orderid = req.params.id;
+    let customerid = req.params.cid;
 
     await order.finishOrder(orderid);
 
@@ -250,8 +245,8 @@ router.get("/order-fini/:id/:cid", async (req, res) => {
 
 // DELETE - FINISH THE ORDER
 router.get("/order-del/:id/:cid", async (req, res) => {
-    let orderid = req.params.id //orderid
-    let customerid = req.params.cid; // customer id
+    let orderid = req.params.id;
+    let customerid = req.params.cid;
 
     await order.deleteOrder(orderid);
 
@@ -260,13 +255,11 @@ router.get("/order-del/:id/:cid", async (req, res) => {
 
 // ALL ORDERS
 router.get("/orders-all", async (req, res) => {
-
     let data = {
         title: "All orders| The Shop",
-
     };
-    data.orders = await order.showAllOrders();
 
+    data.orders = await order.showAllOrders();
 
     res.render("eshop/orders-all", data);
 });

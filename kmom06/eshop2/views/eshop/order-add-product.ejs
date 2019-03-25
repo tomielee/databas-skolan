@@ -33,7 +33,7 @@
             <td>
                 <select type="number" name="amount">
                     <option value="null">Amount</option>
-                    <% for (x = 0; x <= product.items; x++) {%>
+                    <% for (x = 1; x <= product.items; x++) {%>
                     <option>
                         <%= x; %>
                     </option>
@@ -46,6 +46,8 @@
     </table>
     <br>
     <br>
+<p> <b>NOTICE</b> If your order status is deleted or ordered you wont be able to change this order.
+    <br>Your order status is: <%= status[0].status %>
     <button>
         <input type="submit" name="add" value="ADD">
     </button>

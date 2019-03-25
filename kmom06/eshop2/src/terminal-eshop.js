@@ -14,7 +14,8 @@ module.exports = {
     addInv: addInv,
     delInv: delInv,
     pickList: pickList,
-    shipOrder: shipOrder
+    shipOrder: shipOrder,
+    showSearchOrder: showSearchOrder
 };
 
 const mysql = require("promise-mysql");
@@ -102,10 +103,22 @@ async function pickList(orderid) {
     return picklist[0];
 }
 
+// SHIP ORDER
 async function shipOrder(orderid) {
     let sql = `CALL ship_order(?);`;
 
     await db.query(sql, [orderid]);
 
     return or.showAllOrders();
+}
+
+// SHOW ORDER FILTERED BY
+//@params order id OR customer id
+
+async function showSearchOrder(id) {
+    let sql = `CALL show_search_order(?);`;
+    let res = await db.query(sql, [id]);
+
+    // console.info(res[0]);
+    return res[0];
 }

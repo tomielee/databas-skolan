@@ -39,7 +39,7 @@ async function showAllCustomers() {
 
 async function showCustomer(id) {
     let sql = `CALL show_customer(?);`;
+    let customer = await db.query(sql, [id]);
 
-    let customer = await db.query(sql, [id])
     return customer[0][0];
 }

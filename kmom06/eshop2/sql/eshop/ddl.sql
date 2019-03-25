@@ -43,8 +43,10 @@ CREATE TABLE product
     info VARCHAR(300), 
     price FLOAT,
     
-    PRIMARY KEY (id)
-);
+    PRIMARY KEY (id),
+	KEY `index_prod_title` (`title`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 
 -- prod_cat(prod_type)
@@ -54,8 +56,9 @@ CREATE TABLE prod_cat
 	id VARCHAR(10),
     cat CHAR(50),
     
-    PRIMARY KEY (id)
-);
+    PRIMARY KEY (id),
+    KEY `index_prod_cat` (`cat`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- prod_2_cat (id, #prod_id, #cat_id)
 --
@@ -80,8 +83,11 @@ CREATE TABLE inventory
     items INT,
     
     PRIMARY KEY (`id`),
-    FOREIGN KEY (prod_id) REFERENCES product(id)
-);
+    FOREIGN KEY (prod_id) REFERENCES product(id),
+	KEY `index_shelf` (`shelf`)
+)
+ENGINE=InnoDB 
+AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 -- CUSTOMER (id)
 --
@@ -97,7 +103,6 @@ CREATE TABLE customer
     
     PRIMARY KEY (id)
 );
-SHOW WARNINGS;
 
 -- `order` (id, #customer_ID)
 -- 
@@ -219,7 +224,9 @@ ON product FOR EACH ROW
 -- ------------------------------------------- INDEX 
 --
 --
--- ALTER TABLE order_row ADD CONSTRAINT prodid_unique UNIQUE (prod_id);
+
+
+
 
 
 

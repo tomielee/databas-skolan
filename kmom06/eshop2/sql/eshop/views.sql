@@ -27,7 +27,7 @@ AS
 ;
 
 --
--- -- ------- VIEW all categories 
+-- -- ------- VIEW all categories THAT HAS PRODUCTS IN THEM. THERE ARE MORE CATS
 -- cat join with product and prod_cat
 DROP VIEW IF EXISTS v_prodcat;
 CREATE VIEW v_prodcat
@@ -42,6 +42,24 @@ AS
 				ON p2.cat_id = pc.id
 	GROUP BY p2.cat_id
 ;
+
+
+
+--
+-- ------- VIEW inventory
+-- 
+DROP VIEW IF EXISTS v_inventory;
+CREATE VIEW v_inventory
+AS
+	SELECT
+		p.id AS prodid,
+		CONCAT(SUBSTRING(p.info, 1, 20), "...") as prodinfo,
+		i.shelf AS shelf,
+        i.items AS items	
+    FROM product AS p
+		LEFT OUTER JOIN inventory AS i
+			ON i.prod_id = p.id;
+ 
 
 
 --

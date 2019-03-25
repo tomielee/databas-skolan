@@ -32,7 +32,9 @@
 <a href="#kmom03">Kmom03</a>
 <a href="#kmom04">Kmom04</a>
 <a href="#kmom05">Kmom05</a>
-Kmom06, Kmom07-10,
+<a href="#kmom06">Kmom06</a>
+
+Kmom07-10,
 
 
 <section>
@@ -108,8 +110,23 @@ Detta i sin tur är också för att jag kanske ville testa att göra det själv.
 </section>
 
 <section>
-<h2>Kmom06</h2>
-<p>Här är redovisningstexten</p>
+<h2 id="kmom06">Kmom06</h2>
+<p>Index är som att skapa ordning i din tabell. Den hjälper dig att hitta snabbare helt enkelt. Index i en databas är som vilket index som helst, ta en receptbok t.ex. Du vill söka recept på pannkakor i en receptbok på 500 sidor, istället för att bläddra genom varje sida kan du gå till registret(/index) och kolla vilken sida recept på pannkakor finns. I en databas handlar det om att göra det lättare att ta fram data utan att behöva gå genom hela databasen. Primära nycklar och Främmande nycklar är per automatik. Det går att skapa index på fler sätt. </p>
+<p>Det var svårt att sätta index på eshopen. Då de flesta av mina tabeller var foreign keys. Index skapades till slut i tabellen prod_cat som är en tabell över kategorierna. Ett index för att kunna söka på själva kategorinamnet. Tänkte att detta skulle vara bra vid en utveckling då jag kanske vill göra en sida som sorterar på kategorierna typ REA 25%, Böcker osv. Inventory fick också ett index över hyllorna som också kan tänkas växa och i längre loppet kanske lagret vill dra ut picklistor som är filtrerade på hyllan så de som jobbar på lagerlokal A bara får en picklist för hyllorna som börjar på A. Det sista index sattes på products och för titlarna, vilket är samma princip som för katalogen.</p>
+<p>Gällande funktioner i databasen tänker jag att ju mer vi kan göra på kortare avstånd desto bättre. Om vi direkt med data i databasen kan generera ny data är det väl bättre än att vi lägger in data i en databas, hämtar det, kör genom det genom en funktion i annat språk och skriver in den nya datan i databasen. </p>
+<p>Min eshop. </p>
+<p>Oj vad mycket jag vill göra. Kanske i skrivande stund har jag fått tid och fixat lite mer. Ett exempel är att jag när en specifik order visas - så ska kunden kunda ändra antalet som vill köpas. Detta amount ska dock vara begränsat till hur många  items som finns i stock. Det fungerade när jag bakade in items in i min vy som renderas, men sen blev det en krock av något slag som jag inte kunde lösa på annat sätt än att ta bort items. Nu av någon anledning funkar inte items[i].items trots att i tickar på och att items[0].items samt items[1].items visar korrekt, för en order med två olika produkter dvs. </p>
+<p>Inga specifika extrauppgifter har gjorts, däremot testade jag att använda lokal variabel för min procedur pick_list(). Denna skickar meddelande att ordern inte ska plockas om orderstatusen inte är "ordered". Satt in några liknande sådana på ett par producedurer</p>
+<p>Skulle också givetvis vilja lösa att inte kunna klicka sig vidare i det fall en order är ordered, deleted eller shipped. </p>
+<p>Hade också råkat uppdatera inventory redan när kunden skapar ordern. Tänker att det kanske görs så i en "vanlig shop" men att denna variabel är tidsbegränsad.</p>
+
+<p><b>Till Krav 6 i Webbklienten</b> Jag hade redan byggt en sida som hette shop/order som visar kundens specifika order - vilket jag tyckte var mer logisk. För kravet har jag gjort en undersida shop/orders-all . Om detta är problem får jag ändra det.
+Klickar ni på ordern kommer ni alltså till eshop/order som är krav 7).</p>
+
+<p>Detta kursmoments TIL! Underskatta inte vad <code> &lt;% }; %&gt </code> kan ge dig för problem. Glömde ta bort en sådan och felsökte i två timmar innan jag hittade felet. Felmeddelandet som gavs var att själva sidan inte gick att hitta i views mappen.</p>
+
+<a href="top">Top</a>
+
 </section>
 
 <section>
@@ -118,7 +135,7 @@ Detta i sin tur är också för att jag kanske ville testa att göra det själv.
 </section>
 
 <footer>
-<p>En footer till artikeln.</p>
+
 </footer>
 
 </article>

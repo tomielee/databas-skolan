@@ -51,6 +51,9 @@ CREATE PROCEDURE filter_inventory(
 	a_value VARCHAR(20)
 )
 BEGIN
+	DECLARE current_value VARCHAR(20);
+    SELECT CONCAT('%', a_value, '%') INTO current_value;
+    
 	SELECT
 		inv.id,
         inv.prod_id,
@@ -60,9 +63,9 @@ BEGIN
     FROM inventory as inv
 		JOIN product as p
 			ON inv.prod_id = p.id
-	WHERE p.title = a_value
-	OR p.id = a_value
-	OR inv.shelf = a_value
+	WHERE p.title LIKE current_value
+	OR p.id LIKE current_value
+	OR inv.shelf LIKE current_value
 	ORDER BY inv.id;
     
 END
@@ -82,19 +85,30 @@ CREATE PROCEDURE add_inventory(
 )
 MAIN:BEGIN
 	DECLARE current_shelf VARCHAR(10);
+    DECLARE current_prod VARCHAR(10);
     
 	SELECT shelf INTO current_shelf FROM inventory WHERE prod_id = a_prodid;
+    SELECT prod_id INTO current_prod FROM inventory WHERE prod_id = a_prodid;
     
     IF current_shelf != a_shelf THEN
 		ROLLBACK;
         SELECT "Could not add products to different shelf. Check 'inventory' to see correct shelf." AS message;
         LEAVE MAIN;
 	END IF;
-
-   	UPDATE inventory
-		SET items = items + a_items
-		WHERE prod_id = a_prodid;
-	    
+	
+    IF EXISTS (
+		SELECT * 
+        FROM inventory
+        WHERE prod_id = a_prodid) THEN
+			UPDATE inventory
+				SET 
+				items = items + a_items
+				WHERE prod_id = a_prodid;
+	ELSE
+		INSERT INTO inventory (prod_id, shelf, items)
+			VALUES(a_prodid, a_shelf, a_items);
+	END IF;
+		
 END
 ;;
 
@@ -132,6 +146,26 @@ DELIMITER ;
 
 
 
+
+--
+-- SHOW ORDER SEARCH ON customerid och orderid
+--
+DROP PROCEDURE IF EXISTS show_search_order;
+DELIMITER ;;
+CREATE PROCEDURE show_search_order(
+	a_id INT
+)
+BEGIN
+
+	SELECT *
+    FROM v_order_info
+    WHERE orderid = a_id OR customerid = a_id;
+    
+END 
+;;
+
+DELIMITER ;
+
 --
 -- CREATE PICKLIST
 --
@@ -141,7 +175,7 @@ CREATE PROCEDURE pick_list(
 	a_orderid INT
 )
 MAIN: BEGIN
-	    DECLARE current_status VARCHAR(10);
+	DECLARE current_status VARCHAR(10);
     
     SELECT `status` INTO current_status FROM v_show_status WHERE orderid = a_orderid;
     
@@ -175,12 +209,22 @@ DELIMITER ;;
 CREATE PROCEDURE ship_order( 
 	a_orderid INT
 )
-BEGIN
+MAIN:BEGIN
+	DECLARE current_stock INT;
+            
+	SELECT diff INTO current_stock FROM v_pick_list WHERE orderid = a_orderid;
+		
+	IF diff < 0 THEN
+		ROLLBACK;
+        SELECT 'There are not enough items in stock' AS message;
+        LEAVE MAIN;
+	END IF;
     
 	UPDATE `order`
 		SET 
 			shipped = current_timestamp()
 	WHERE id = a_orderid;
+    
     
 -- 	UPDATE inventory
 -- 	SET

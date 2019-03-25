@@ -75,7 +75,8 @@ CREATE PROCEDURE show_categories
 (
 )
 BEGIN
-	SELECT * FROM v_prodcat;
+	-- SELECT * FROM v_prodcat; //VISAR BARA KATEGORIER DÄR DET FINNS PRODUKTER
+    SELECT cat AS Categories FROM prod_cat;
 END
 ;;
 DELIMITER ;
@@ -91,23 +92,19 @@ CREATE PROCEDURE add_product
 	a_id VARCHAR(10),
     a_title CHAR(100),
     a_info VARCHAR(300), 
-    a_price FLOAT,
-    a_shelf VARCHAR(8),
-    a_items INT
+    a_price FLOAT
 )
 BEGIN
    
 	INSERT INTO product
 		VALUES(a_id, a_title, a_info, a_price);
         
-	INSERT INTO inventory (prod_id, shelf, items)
-		VALUES(a_id, a_shelf, a_items);
-	
     INSERT INTO prod_2_cat (prod_id, cat_id)
 		VALUES(a_id, 'cat_new');
     
     COMMIT;
-
+-- 	INSERT INTO inventory (prod_id, shelf, items)
+-- 		VALUES(a_id, a_shelf, a_items);
 END
 ;;
 
@@ -331,7 +328,26 @@ CREATE PROCEDURE add_to_order(
     a_prodid VARCHAR(10),
     a_amount INT
 )
-BEGIN
+MAIN:BEGIN
+
+	DECLARE current_status VARCHAR(10);
+    
+    SELECT `status` INTO current_status FROM v_show_status WHERE orderid = a_orderid;
+    
+      -- IF-SATS 
+    IF current_status = "ordered" THEN
+		ROLLBACK;
+        SELECT 'This order has already been ordered and cannot be modified.' AS message;
+        LEAVE MAIN;
+	ELSEIF current_status = "deleted" THEN
+		ROLLBACK;
+        SELECT 'This order is deleted' AS message;
+        LEAVE MAIN;
+	ELSEIF current_status = "shipped" THEN
+		ROLLBACK;
+		SELECT 'This order has already been shipped' AS message;
+		LEAVE MAIN;
+	END IF;
 
 	IF EXISTS (
 		SELECT * FROM order_row
@@ -491,5 +507,52 @@ END
 ;;
 
 DELIMITER ;
+
+
+--
+-- SHOW ITEMS IN STOCK
+--
+DROP PROCEDURE IF EXISTS show_items_in_stock;
+DELIMITER ;;
+CREATE PROCEDURE show_items_in_stock(
+	a_orderid INT
+)
+BEGIN
+	SELECT
+		i.items AS items
+	FROM inventory AS i
+		JOIN order_row AS orow
+			ON orow.prod_id = i.prod_id
+			JOIN `order` AS o
+				ON o.id = orow.order_id
+	WHERE o.id = a_orderid;
+            
+END 
+;;
+
+DELIMITER ;
+
+
+
+--
+-- SHOW TOTAL
+--
+DROP PROCEDURE IF EXISTS show_total;
+DELIMITER ;;
+CREATE PROCEDURE show_total(
+	a_orderid INT
+)
+BEGIN
+	SELECT
+		SUM(`sum`) AS total
+	FROM v_order_info
+	WHERE orderid = a_orderid;
+            
+END 
+;;
+
+DELIMITER ;
+
+
 
 

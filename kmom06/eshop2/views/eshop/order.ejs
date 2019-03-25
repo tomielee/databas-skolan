@@ -2,13 +2,11 @@
 
 <main>
 
-<h1><p>Details on your order</p></h1>
-<p>ORDER NUMBER: <%= order[0].orderid %> </p>
-<p>Customer ID: <%= order[0].customerid %> and Customer Name: <%= order[0].customername %></p>
-
-<p>ORDER STATUS: <%= status[0].status %> </p>
-<p>NUMBER OF ROWS: <%= order.length %>
-
+<h1><p>Details on your order <u><%= order[0].orderid %></u></p></h1>
+<p>Order ID: <%= order[0].orderid %> </p>
+<p>Order status: <u><%= status[0].status %> </u></p>
+<p>Number of products: <%= order.length %></p>
+<h2><p>TOTAL: <%= total[0].total %> SEK</p></h2>
 <form method="post" action="/eshop/order-edit">
 <input type="hidden" name="orderid" value=<%=order[0].orderid %>><% order[0].orderid %></input>
 
@@ -19,9 +17,11 @@
         <th> Price</th>
         <th> Amount</th>
         <th> Sum</th>
-        <th> Edit</th>
+        <th> Edit (DOESN't WORK)</th>
     </tr>
-<% for (const ordinfo of order) { %>
+<%  var i = 0
+    for (const ordinfo of order) {
+    i += 1 %>
 
         <tr>
             <td><%= ordinfo.prodid %>
@@ -30,27 +30,40 @@
             <td><%= ordinfo.prodinfo %></td>
             <td><%= ordinfo.price %></td>
             <td><%= ordinfo.amount %></td>
-            <td><%= ordinfo.sum %></td>
+            <td><%= ordinfo.sum %> kr</td>
             <td>
+
                 <select type="number" name="amount">
                     <option value="null">Amount</option>
-                    <% for (x = 0; x <= ordinfo.items; x++) {%>
+                    <!--  items[i].items doesn't work...-->
+                    <% for (x = 0; x <= items.items ; x++) { %>
                     <option>
                         <%= x; %>
                     </option>
-                        <% }; %>
                 </select>
                 <button>
                     <input type="submit" name="edit" value="EDIT">
                 </button>
+                <% }; %>
             </td>
         </tr>
 <% };%>
 </table>
+<br>
+<p>Customer ID:<%= order[0].customerid %> and Name: <%= order[0].customername %></p>
+<p>
+    <a href="/eshop/orders/<%= order[0].customerid %>">
+BACK TO OVERVIEW OF YOUR ORDERS</a>
+</p>
 
 <br>
 <br>
-
+<button color="pink">
+    <a href="/eshop/order-add-product/<%= order[0].orderid %>">SHOP SOME MORE</a>
+</button>
+<br><br>
+<br>
+<br>
 <button>
 <a href="/eshop/order-fini/<%= order[0].orderid %>/<%= order[0].customerid %>">ORDER</a>
 </button>
@@ -59,14 +72,12 @@
 <a href="/eshop/order-del/<%= order[0].orderid %>/<%= order[0].customerid %>">DELETE</a>
 </button>
 
-<button>
-    <a href="/eshop/order-add-product/<%= order[0].orderid %>">SHOP</a>
-</button>
+<p> <b>NOTICE</b> You can only edit a order that hasn't been ordered/deleted/shipped.</p>
 <br>
 <br>
-<a href="/eshop/orders/<%= order[0].customerid %>">
-BACK TO ORDER VIEWS</a>
-
-
+<br>
+<br>
+<p>Yes, the button above "Shop" shouldn't be clickable if you can't edit your order. (We're working on it) //webmaster</p>
+<br>
 </main>
 <%- include("footer"); %>

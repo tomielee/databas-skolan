@@ -1,7 +1,7 @@
 ProductId,Shelf,Number of Items
-boo1,B:01,100
-boo2,B:02,74
-boo3,B:02,64
-boo4,B:03,85
-cd1,C:01,98
+boo1,B:01,10
+boo2,B:02,20
+boo3,B:02,30
+boo4,B:03,40
+cd1,C:01,50
 merch1,M:01,200
