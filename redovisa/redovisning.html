@@ -119,6 +119,7 @@ Detta i sin tur är också för att jag kanske ville testa att göra det själv.
 <p>Inga specifika extrauppgifter har gjorts, däremot testade jag att använda lokal variabel för min procedur pick_list(). Denna skickar meddelande att ordern inte ska plockas om orderstatusen inte är "ordered". Satt in några liknande sådana på ett par producedurer</p>
 <p>Skulle också givetvis vilja lösa att inte kunna klicka sig vidare i det fall en order är ordered, deleted eller shipped. </p>
 <p>Hade också råkat uppdatera inventory redan när kunden skapar ordern. Tänker att det kanske görs så i en "vanlig shop" men att denna variabel är tidsbegränsad.</p>
+<p>Till sist, meddelandet om att varan inte finns i inventory. Detta blev kruxigt då jag satt amount till att bli max så många varor som finns av produkten - när kunden skapar själva beställningen. Vilket gör att diffen alltid bara bli 0 (då jag ännu inte löst extrauppgiten med att ta bort själva varan från lagret också). Det är lite "fulfixat" med att skicka med en extra kolumn när en skapar sin  picklist. Den säger helt enkelt att du nu när du hämtar varorna tömmer lagret.</p>
 
 <p><b>Till Krav 6 i Webbklienten</b> Jag hade redan byggt en sida som hette shop/order som visar kundens specifika order - vilket jag tyckte var mer logisk. För kravet har jag gjort en undersida shop/orders-all . Om detta är problem får jag ändra det.
 Klickar ni på ordern kommer ni alltså till eshop/order som är krav 7).</p>

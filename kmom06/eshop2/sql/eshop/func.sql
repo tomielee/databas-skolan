@@ -40,3 +40,29 @@ END
 DELIMITER ;
 
 
+
+
+--
+-- ORDER_STATUS()
+DROP FUNCTION IF EXISTS stock_status;
+DELIMITER ;;
+
+CREATE FUNCTION stock_status(
+	a_prodid VARCHAR(10)    
+)
+RETURNS VARCHAR(15)
+DETERMINISTIC
+BEGIN
+	DECLARE current_diff INT;
+    SELECT diff INTO current_diff FROM v_picklist WHERE prodid = a_prodid;
+    
+    IF diff <= 0 THEN
+		RETURN 'NO MORE ITEMS IN STOCK';
+	END IF;
+    
+    RETURN 'OK';
+
+END
+;;
+
+DELIMITER ;

@@ -24,14 +24,14 @@ DROP TABLE IF EXISTS `customer`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `customer` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `mail` varchar(50) DEFAULT NULL,
   `fname` char(100) DEFAULT NULL,
   `sirname` char(100) DEFAULT NULL,
   `adress` varchar(300) DEFAULT NULL,
   `zip` int(10) DEFAULT NULL,
   `city` char(30) DEFAULT NULL,
+  `telefon` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,6 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'jerald@cormier.com','Jerald','Cormier','Granville Lane',3182,'Newark'),(2,'carol@stephenson.com','Carol','Stephenson','Ridge Road',67801,'Dodge City'),(3,'christopher@robin.po','Christofer','Robin','Humanvillage',1234,'Pooh City'),(4,'piglet@thepig.se','Piglet','The pig','Scaredvillage',4567,'Pooh City'),(5,'mary@lamb.se','Mary','Had a little','Lambstreet',12356,'Imaginary');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,6 +57,7 @@ CREATE TABLE `inventory` (
   `items` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `prod_id` (`prod_id`),
+  KEY `index_shelf` (`shelf`),
   CONSTRAINT `inventory_ibfk_1` FOREIGN KEY (`prod_id`) REFERENCES `product` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -68,7 +68,6 @@ CREATE TABLE `inventory` (
 
 LOCK TABLES `inventory` WRITE;
 /*!40000 ALTER TABLE `inventory` DISABLE KEYS */;
-INSERT INTO `inventory` VALUES (1,'boo1','B:01',100),(2,'boo2','B:02',74),(3,'boo3','B:02',64),(4,'boo4','B:03',85),(5,'cd1','C:01',98),(6,'merch1','M:01',200);
 /*!40000 ALTER TABLE `inventory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,15 +107,15 @@ DROP TABLE IF EXISTS `invoice_row`;
 CREATE TABLE `invoice_row` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `prod_id` varchar(10) DEFAULT NULL,
-  `prod_order_id` int(11) DEFAULT NULL,
+  `order_id` int(11) DEFAULT NULL,
   `inv_id` int(11) DEFAULT NULL,
   `total` float DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `prod_id` (`prod_id`),
-  KEY `prod_order_id` (`prod_order_id`),
+  KEY `order_id` (`order_id`),
   KEY `inv_id` (`inv_id`),
   CONSTRAINT `invoice_row_ibfk_1` FOREIGN KEY (`prod_id`) REFERENCES `product` (`id`),
-  CONSTRAINT `invoice_row_ibfk_2` FOREIGN KEY (`prod_order_id`) REFERENCES `prod_order` (`id`),
+  CONSTRAINT `invoice_row_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`),
   CONSTRAINT `invoice_row_ibfk_3` FOREIGN KEY (`inv_id`) REFERENCES `invoice` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -131,6 +130,36 @@ LOCK TABLES `invoice_row` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `order`
+--
+
+DROP TABLE IF EXISTS `order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `customer_id` int(11) DEFAULT NULL,
+  `created` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `ordered` datetime DEFAULT NULL,
+  `deleted` datetime DEFAULT NULL,
+  `shipped` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `customer_id` (`customer_id`),
+  CONSTRAINT `order_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order`
+--
+
+LOCK TABLES `order` WRITE;
+/*!40000 ALTER TABLE `order` DISABLE KEYS */;
+/*!40000 ALTER TABLE `order` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `order_row`
 --
 
@@ -139,13 +168,13 @@ DROP TABLE IF EXISTS `order_row`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `order_row` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `prod_order_id` int(11) DEFAULT NULL,
+  `order_id` int(11) DEFAULT NULL,
   `prod_id` varchar(10) DEFAULT NULL,
   `amount` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `prod_order_id` (`prod_order_id`),
+  KEY `order_id` (`order_id`),
   KEY `prod_id` (`prod_id`),
-  CONSTRAINT `order_row_ibfk_1` FOREIGN KEY (`prod_order_id`) REFERENCES `prod_order` (`id`),
+  CONSTRAINT `order_row_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`),
   CONSTRAINT `order_row_ibfk_2` FOREIGN KEY (`prod_id`) REFERENCES `product` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -160,32 +189,32 @@ LOCK TABLES `order_row` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `plock_list`
+-- Table structure for table `pick_list`
 --
 
-DROP TABLE IF EXISTS `plock_list`;
+DROP TABLE IF EXISTS `pick_list`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `plock_list` (
+CREATE TABLE `pick_list` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `prod_order_id` int(11) DEFAULT NULL,
+  `order_id` int(11) DEFAULT NULL,
   `prod_id` varchar(10) DEFAULT NULL,
-  `items` int(11) DEFAULT NULL,
+  `amount` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `prod_order_id` (`prod_order_id`),
+  KEY `order_id` (`order_id`),
   KEY `prod_id` (`prod_id`),
-  CONSTRAINT `plock_list_ibfk_1` FOREIGN KEY (`prod_order_id`) REFERENCES `prod_order` (`id`),
-  CONSTRAINT `plock_list_ibfk_2` FOREIGN KEY (`prod_id`) REFERENCES `product` (`id`)
+  CONSTRAINT `pick_list_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`),
+  CONSTRAINT `pick_list_ibfk_2` FOREIGN KEY (`prod_id`) REFERENCES `product` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `plock_list`
+-- Dumping data for table `pick_list`
 --
 
-LOCK TABLES `plock_list` WRITE;
-/*!40000 ALTER TABLE `plock_list` DISABLE KEYS */;
-/*!40000 ALTER TABLE `plock_list` ENABLE KEYS */;
+LOCK TABLES `pick_list` WRITE;
+/*!40000 ALTER TABLE `pick_list` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pick_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -204,7 +233,7 @@ CREATE TABLE `prod_2_cat` (
   KEY `cat_id` (`cat_id`),
   CONSTRAINT `prod_2_cat_ibfk_1` FOREIGN KEY (`prod_id`) REFERENCES `product` (`id`),
   CONSTRAINT `prod_2_cat_ibfk_2` FOREIGN KEY (`cat_id`) REFERENCES `prod_cat` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -213,7 +242,6 @@ CREATE TABLE `prod_2_cat` (
 
 LOCK TABLES `prod_2_cat` WRITE;
 /*!40000 ALTER TABLE `prod_2_cat` DISABLE KEYS */;
-INSERT INTO `prod_2_cat` VALUES (1,'boo1','cat_book'),(2,'boo2','cat_book'),(3,'boo2','cat_sale'),(4,'boo3','cat_book'),(5,'boo4','cat_book'),(6,'boo4','cat_new'),(7,'cd1','cat_cd'),(8,'merch1','cat_merch'),(9,'merch1','cat_sale');
 /*!40000 ALTER TABLE `prod_2_cat` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -227,7 +255,8 @@ DROP TABLE IF EXISTS `prod_cat`;
 CREATE TABLE `prod_cat` (
   `id` varchar(10) NOT NULL,
   `cat` char(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `index_prod_cat` (`cat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -237,37 +266,7 @@ CREATE TABLE `prod_cat` (
 
 LOCK TABLES `prod_cat` WRITE;
 /*!40000 ALTER TABLE `prod_cat` DISABLE KEYS */;
-INSERT INTO `prod_cat` VALUES ('cat_book','Book'),('cat_cd','CD'),('cat_merch','Merch'),('cat_new','New'),('cat_sale','Sale');
 /*!40000 ALTER TABLE `prod_cat` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `prod_order`
---
-
-DROP TABLE IF EXISTS `prod_order`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `prod_order` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `customer_id` int(11) DEFAULT NULL,
-  `created` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `deleted` datetime DEFAULT NULL,
-  `delivery` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `customer_id` (`customer_id`),
-  CONSTRAINT `prod_order_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `prod_order`
---
-
-LOCK TABLES `prod_order` WRITE;
-/*!40000 ALTER TABLE `prod_order` DISABLE KEYS */;
-/*!40000 ALTER TABLE `prod_order` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -282,7 +281,8 @@ CREATE TABLE `product` (
   `title` char(100) DEFAULT NULL,
   `info` varchar(300) DEFAULT NULL,
   `price` float DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `index_prod_title` (`title`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -292,57 +292,8 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES ('boo1','Diktboken','Lite lyrik',20),('boo2','Romanboken','En skönlitterär bok',90),('boo3','Kokboken','En massa gott',100),('boo4','Barnboken','Hittepå och färgglatt',50),('cd1','CD','Great music',60),('merch1','Tygkasse','En bra kasse',25);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `log_insert_prod` AFTER INSERT ON `product` FOR EACH ROW INSERT INTO product_log(`what`, `id`, `title`, `info`, `price`)
-		VALUES("trigger - insert", NEW.id, NEW.title, NEW.info, NEW.price) */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `log_update_prod` BEFORE UPDATE ON `product` FOR EACH ROW INSERT INTO product_log(`what`, `id`, `title`, `info`, `price`)
-		VALUES("trigger - update", NEW.id, NEW.title, NEW.info, NEW.price) */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `log_delete_prod` BEFORE DELETE ON `product` FOR EACH ROW INSERT INTO product_log(`what`, `id`, `title`, `info`, `price`)
-		VALUES("trigger - delete", OLD.id, OLD.title, OLD.info, OLD.price) */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `product_log`
@@ -360,7 +311,7 @@ CREATE TABLE `product_log` (
   `info` varchar(300) DEFAULT NULL,
   `price` float DEFAULT NULL,
   PRIMARY KEY (`log`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -369,9 +320,203 @@ CREATE TABLE `product_log` (
 
 LOCK TABLES `product_log` WRITE;
 /*!40000 ALTER TABLE `product_log` DISABLE KEYS */;
-INSERT INTO `product_log` VALUES (1,'boo1','2019-03-20 12:02:34','trigger - insert','Diktboken','Lite lyrik',20),(2,'boo2','2019-03-20 12:02:34','trigger - insert','Romanboken','En skönlitterär bok',90),(3,'boo3','2019-03-20 12:02:34','trigger - insert','Kokboken','En massa gott',100),(4,'boo4','2019-03-20 12:02:34','trigger - insert','Barnboken','Hittepå och färgglatt',50),(5,'cd1','2019-03-20 12:02:34','trigger - insert','CD','Great music',60),(6,'merch1','2019-03-20 12:02:34','trigger - insert','Tygkasse','En bra kasse',25);
 /*!40000 ALTER TABLE `product_log` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `v_all_customers`
+--
+
+DROP TABLE IF EXISTS `v_all_customers`;
+/*!50001 DROP VIEW IF EXISTS `v_all_customers`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8mb4;
+/*!50001 CREATE VIEW `v_all_customers` AS SELECT 
+ 1 AS `id`,
+ 1 AS `name`,
+ 1 AS `adress`,
+ 1 AS `telefon`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `v_all_orders`
+--
+
+DROP TABLE IF EXISTS `v_all_orders`;
+/*!50001 DROP VIEW IF EXISTS `v_all_orders`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8mb4;
+/*!50001 CREATE VIEW `v_all_orders` AS SELECT 
+ 1 AS `orderid`,
+ 1 AS `created`,
+ 1 AS `status`,
+ 1 AS `customer`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `v_customer`
+--
+
+DROP TABLE IF EXISTS `v_customer`;
+/*!50001 DROP VIEW IF EXISTS `v_customer`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8mb4;
+/*!50001 CREATE VIEW `v_customer` AS SELECT 
+ 1 AS `id`,
+ 1 AS `name`,
+ 1 AS `adress`,
+ 1 AS `telefon`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `v_ick_list`
+--
+
+DROP TABLE IF EXISTS `v_ick_list`;
+/*!50001 DROP VIEW IF EXISTS `v_ick_list`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8mb4;
+/*!50001 CREATE VIEW `v_ick_list` AS SELECT 
+ 1 AS `orderid`,
+ 1 AS `prodid`,
+ 1 AS `amount`,
+ 1 AS `in stock`,
+ 1 AS `shelf`,
+ 1 AS `diff`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `v_inventory`
+--
+
+DROP TABLE IF EXISTS `v_inventory`;
+/*!50001 DROP VIEW IF EXISTS `v_inventory`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8mb4;
+/*!50001 CREATE VIEW `v_inventory` AS SELECT 
+ 1 AS `prodid`,
+ 1 AS `prodinfo`,
+ 1 AS `shelf`,
+ 1 AS `items`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `v_order`
+--
+
+DROP TABLE IF EXISTS `v_order`;
+/*!50001 DROP VIEW IF EXISTS `v_order`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8mb4;
+/*!50001 CREATE VIEW `v_order` AS SELECT 
+ 1 AS `orderid`,
+ 1 AS `ordercreated`,
+ 1 AS `customerid`,
+ 1 AS `customername`,
+ 1 AS `prodid`,
+ 1 AS `prodinfo`,
+ 1 AS `price`,
+ 1 AS `amount`,
+ 1 AS `sum`,
+ 1 AS `total`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `v_order_customer`
+--
+
+DROP TABLE IF EXISTS `v_order_customer`;
+/*!50001 DROP VIEW IF EXISTS `v_order_customer`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8mb4;
+/*!50001 CREATE VIEW `v_order_customer` AS SELECT 
+ 1 AS `orderid`,
+ 1 AS `customername`,
+ 1 AS `customerid`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `v_order_info`
+--
+
+DROP TABLE IF EXISTS `v_order_info`;
+/*!50001 DROP VIEW IF EXISTS `v_order_info`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8mb4;
+/*!50001 CREATE VIEW `v_order_info` AS SELECT 
+ 1 AS `orderid`,
+ 1 AS `ordercreated`,
+ 1 AS `customerid`,
+ 1 AS `customername`,
+ 1 AS `prodid`,
+ 1 AS `prodinfo`,
+ 1 AS `price`,
+ 1 AS `amount`,
+ 1 AS `sum`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `v_order_items`
+--
+
+DROP TABLE IF EXISTS `v_order_items`;
+/*!50001 DROP VIEW IF EXISTS `v_order_items`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8mb4;
+/*!50001 CREATE VIEW `v_order_items` AS SELECT 
+ 1 AS `items`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `v_order_prod`
+--
+
+DROP TABLE IF EXISTS `v_order_prod`;
+/*!50001 DROP VIEW IF EXISTS `v_order_prod`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8mb4;
+/*!50001 CREATE VIEW `v_order_prod` AS SELECT 
+ 1 AS `orderid`,
+ 1 AS `prodid`,
+ 1 AS `prodinfo`,
+ 1 AS `price`,
+ 1 AS `amount`,
+ 1 AS `summ`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `v_order_row_info`
+--
+
+DROP TABLE IF EXISTS `v_order_row_info`;
+/*!50001 DROP VIEW IF EXISTS `v_order_row_info`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8mb4;
+/*!50001 CREATE VIEW `v_order_row_info` AS SELECT 
+ 1 AS `orderid`,
+ 1 AS `prodid`,
+ 1 AS `prodinfo`,
+ 1 AS `price`,
+ 1 AS `amount`,
+ 1 AS `sum`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `v_pick_list`
+--
+
+DROP TABLE IF EXISTS `v_pick_list`;
+/*!50001 DROP VIEW IF EXISTS `v_pick_list`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8mb4;
+/*!50001 CREATE VIEW `v_pick_list` AS SELECT 
+ 1 AS `orderid`,
+ 1 AS `prodid`,
+ 1 AS `amount`,
+ 1 AS `in stock`,
+ 1 AS `shelf`,
+ 1 AS `diff`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Temporary view structure for view `v_prodcat`
@@ -401,8 +546,89 @@ SET character_set_client = utf8mb4;
 SET character_set_client = @saved_cs_client;
 
 --
+-- Temporary view structure for view `v_show_status`
+--
+
+DROP TABLE IF EXISTS `v_show_status`;
+/*!50001 DROP VIEW IF EXISTS `v_show_status`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8mb4;
+/*!50001 CREATE VIEW `v_show_status` AS SELECT 
+ 1 AS `orderid`,
+ 1 AS `status`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Dumping routines for database 'eshop'
 --
+/*!50003 DROP FUNCTION IF EXISTS `order_status` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `order_status`(
+	a_created DATETIME,
+    a_updated DATETIME,
+    a_ordered DATETIME,
+    a_deleted DATETIME,
+    a_shipped DATETIME
+    
+) RETURNS varchar(15) CHARSET utf8mb4
+    DETERMINISTIC
+BEGIN
+
+	IF a_updated > a_created AND a_updated > a_ordered AND a_updated > a_deleted THEN
+		RETURN 'UPDATED ';
+	ELSEIF a_ordered = a_updated THEN
+		RETURN 'ORDERED';
+	ELSEIF a_deleted = a_updated THEN
+		RETURN 'DELETED';
+	ELSEIF a_shipped = a_updated THEN
+		RETURN 'SHIPPED';
+	END IF;
+    RETURN 'CREATED';
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `stock_status` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `stock_status`(
+	a_prodid VARCHAR(10)    
+) RETURNS varchar(15) CHARSET utf8mb4
+    DETERMINISTIC
+BEGIN
+	DECLARE current_diff INT;
+    SELECT diff INTO current_diff FROM v_picklist WHERE prodid = a_prodid;
+    
+    IF diff <= 0 THEN
+		RETURN 'NO MORE ITEMS IN STOCK';
+	END IF;
+    
+    RETURN 'OK';
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `add_inventory` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -420,19 +646,30 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `add_inventory`(
 )
 MAIN:BEGIN
 	DECLARE current_shelf VARCHAR(10);
+    DECLARE current_prod VARCHAR(10);
     
 	SELECT shelf INTO current_shelf FROM inventory WHERE prod_id = a_prodid;
+    SELECT prod_id INTO current_prod FROM inventory WHERE prod_id = a_prodid;
     
     IF current_shelf != a_shelf THEN
 		ROLLBACK;
         SELECT "Could not add products to different shelf. Check 'inventory' to see correct shelf." AS message;
         LEAVE MAIN;
 	END IF;
-
-   	UPDATE inventory
-		SET items = items + a_items
-		WHERE prod_id = a_prodid;
-	    
+	
+    IF EXISTS (
+		SELECT * 
+        FROM inventory
+        WHERE prod_id = a_prodid) THEN
+			UPDATE inventory
+				SET 
+				items = items + a_items
+				WHERE prod_id = a_prodid;
+	ELSE
+		INSERT INTO inventory (prod_id, shelf, items)
+			VALUES(a_prodid, a_shelf, a_items);
+	END IF;
+		
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -453,23 +690,127 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `add_product`(
 	a_id VARCHAR(10),
     a_title CHAR(100),
     a_info VARCHAR(300), 
-    a_price FLOAT,
-    a_shelf VARCHAR(8),
-    a_items INT
+    a_price FLOAT
 )
 BEGIN
    
 	INSERT INTO product
 		VALUES(a_id, a_title, a_info, a_price);
         
-	INSERT INTO inventory (prod_id, shelf, items)
-		VALUES(a_id, a_shelf, a_items);
-	
     INSERT INTO prod_2_cat (prod_id, cat_id)
 		VALUES(a_id, 'cat_new');
     
     COMMIT;
+-- 	INSERT INTO inventory (prod_id, shelf, items)
+-- 		VALUES(a_id, a_shelf, a_items);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `add_to_order` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `add_to_order`(
+	a_orderid INT,
+    a_prodid VARCHAR(10),
+    a_amount INT
+)
+MAIN:BEGIN
 
+	DECLARE current_status VARCHAR(10);
+    
+    SELECT `status` INTO current_status FROM v_show_status WHERE orderid = a_orderid;
+    
+      -- IF-SATS 
+    IF current_status = "ordered" THEN
+		ROLLBACK;
+        SELECT 'This order has already been ordered and cannot be modified.' AS message;
+        LEAVE MAIN;
+	ELSEIF current_status = "deleted" THEN
+		ROLLBACK;
+        SELECT 'This order is deleted' AS message;
+        LEAVE MAIN;
+	ELSEIF current_status = "shipped" THEN
+		ROLLBACK;
+		SELECT 'This order has already been shipped' AS message;
+		LEAVE MAIN;
+	END IF;
+
+	IF EXISTS (
+		SELECT * FROM order_row
+        WHERE order_id = a_orderid AND prod_id = a_prodid) THEN
+			UPDATE order_row
+				SET amount = amount + a_amount 
+                WHERE prod_id = a_prodid;
+	ELSE
+		INSERT INTO order_row (order_id, prod_id, amount)
+			VALUES (a_orderid, a_prodid, a_amount);
+
+	END IF;
+    
+    IF EXISTS (
+		SELECT * FROM pick_list
+        WHERE order_id = a_orderid AND prod_id = a_prodid) THEN
+        UPDATE pick_list
+			SET amount = amount + a_amount
+            WHERE prod_id = a_prodid;
+	ELSE
+       INSERT INTO pick_list(order_id, prod_id, amount)
+		VALUES(a_orderid, a_prodid, a_amount);
+	END IF;
+        
+    UPDATE `order`
+		SET 
+        updated = CURRENT_TIMESTAMP
+	WHERE id = a_orderid;
+        
+--     UPDATE inventory
+-- 		SET
+-- 			items = items - a_amount
+-- 		WHERE prod_id = a_prodid;
+	
+ 
+    COMMIT;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `create_order` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `create_order`(
+	a_customerid INT
+)
+BEGIN
+	INSERT INTO `order` (customer_id)
+		VALUES(a_customerid);
+	
+    SELECT 
+		id AS orderid
+	FROM `order` 
+    WHERE `order`.customer_id = a_customerid
+    ORDER BY id DESC LIMIT 1; 
+    
+			
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -506,6 +847,33 @@ MAIN:BEGIN
 		SET items = items - a_items
 		WHERE prod_id = a_prodid;
 	    
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `delete_order` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_order`(
+	a_orderid INT
+)
+BEGIN
+
+  UPDATE `order` 
+	SET
+		deleted = current_timestamp
+	WHERE
+		id = a_orderid;
+  
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -579,6 +947,55 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `edit_order` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `edit_order`(
+	a_orderid INT,
+    a_prodid VARCHAR(10),
+    a_amount INT
+)
+BEGIN
+	DECLARE current_amount INT;
+    SELECT amount INTO current_amount from order_row WHERE order_id = a_orderid AND prod_id = a_prodid;
+    
+	UPDATE order_row
+		SET amount = a_amount 
+		WHERE order_id = a_orderid AND prod_id = a_prodid;
+     
+    UPDATE `order`
+		SET 
+        updated = CURRENT_TIMESTAMP
+	WHERE id = a_orderid;
+        
+    
+    IF current_amount >= a_amount THEN
+		UPDATE inventory
+			SET
+				items = items + a_amount
+			WHERE prod_id = a_prodid;
+	ELSEIF amount < a_amount THEN
+		UPDATE inventory
+			SET
+				items = items - a_amount
+			WHERE prod_id = a_prodid;	
+	END IF;
+    
+    COMMIT;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `edit_product` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -632,6 +1049,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `filter_inventory`(
 	a_value VARCHAR(20)
 )
 BEGIN
+	DECLARE current_value VARCHAR(20);
+    SELECT CONCAT('%', a_value, '%') INTO current_value;
+    
 	SELECT
 		inv.id,
         inv.prod_id,
@@ -641,11 +1061,153 @@ BEGIN
     FROM inventory as inv
 		JOIN product as p
 			ON inv.prod_id = p.id
-	WHERE p.title = a_value
-	OR p.id = a_value
-	OR inv.shelf = a_value
+	WHERE p.title LIKE current_value
+	OR p.id LIKE current_value
+	OR inv.shelf LIKE current_value
 	ORDER BY inv.id;
     
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `finish_order` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `finish_order`(
+	a_orderid INT
+)
+BEGIN
+
+  UPDATE `order` 
+	SET
+		ordered = current_timestamp
+	WHERE
+		id = a_orderid;
+  
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `pick_list` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `pick_list`(
+	a_orderid INT
+)
+MAIN: BEGIN
+	DECLARE current_status VARCHAR(10);
+    
+    SELECT `status` INTO current_status FROM v_show_status WHERE orderid = a_orderid;
+    
+   
+      -- IF- STATUS
+    IF current_status != "ordered" THEN
+		ROLLBACK;
+        SELECT 'This order is not ready to get picked.' AS message;
+        LEAVE MAIN;
+	END IF;
+    
+
+	SELECT
+		*,
+        IF (diff <= 0, 'stock is now empty', 'ok') AS stock
+	FROM v_pick_list
+	WHERE orderid = a_orderid
+	ORDER BY shelf;
+
+		
+		
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `ship_order` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ship_order`( 
+	a_orderid INT
+)
+MAIN:BEGIN
+	DECLARE current_stock INT;
+            
+	SELECT diff INTO current_stock FROM v_pick_list WHERE orderid = a_orderid;
+		
+	IF diff < 0 THEN
+		ROLLBACK;
+        SELECT 'There are not enough items in stock' AS message;
+        LEAVE MAIN;
+	END IF;
+    
+	UPDATE `order`
+		SET 
+			shipped = current_timestamp()
+	WHERE id = a_orderid;
+    
+    
+-- 	UPDATE inventory
+-- 	SET
+-- 		items = items - a_amount
+-- 	WHERE prod_id = a_prodid;
+    
+    
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `show_all_orders` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `show_all_orders`(
+)
+BEGIN
+	SELECT
+		orderid,
+		created,
+		`status`,
+		customer,
+		COUNT(orow.order_id) AS orderrows
+	FROM v_all_orders as o
+		JOIN order_row as orow
+			ON orow.order_id = o.orderid
+	GROUP BY orderid
+    ORDER BY created;
+            
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -674,7 +1236,7 @@ BEGIN
 	FROM product as prod
 		JOIN inventory as inv
 			ON prod.id = inv.prod_id;
-
+-- 	GROUP BY prod.id;
     
 END ;;
 DELIMITER ;
@@ -695,7 +1257,104 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `show_categories`(
 )
 BEGIN
-	SELECT * FROM v_prodcat;
+	-- SELECT * FROM v_prodcat; //VISAR BARA KATEGORIER DÄR DET FINNS PRODUKTER
+    SELECT cat AS Categories FROM prod_cat;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `show_customer` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `show_customer`(
+	a_id INT
+)
+BEGIN
+	SELECT 
+		*
+	FROM v_customer
+    WHERE id = a_id;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `show_customers_orders` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `show_customers_orders`(
+	a_id INT
+)
+BEGIN
+
+	SELECT
+		od.id AS orderid,
+        od.customer_id as customerid,
+        CONCAT(c.fname, " ", c.sirname) as `name`,
+        od.created as created,
+        od.updated as updated,
+        od.ordered as ordered,
+        od.deleted as deleted,
+        od.shipped as shipped,
+        order_status(od.created, od.updated, od.ordered, od.deleted, od.shipped) as status
+	FROM `order`as od
+		JOIN customer as c
+			ON c.id = od.customer_id
+	WHERE c.id = a_id
+    ORDER BY updated DESC;
+    
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `show_c_order` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `show_c_order`(
+	a_id INT
+)
+BEGIN
+	SELECT
+		od.id AS orderid,
+        od.customer_id as ID,
+        CONCAT(c.fname, " ", c.sirname) as `name`,
+        od.created as created,
+        od.updated as updated,
+        od.ordered as ordered,
+        od.deleted as deleted,
+        od.shipped as shipped
+	FROM `order`as od
+		JOIN order_row as odr
+			ON odr.order_id = od.id
+		JOIN customers as c
+			ON c.id = od.customer_id;
+	
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -724,6 +1383,35 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `show_items_in_stock` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `show_items_in_stock`(
+	a_orderid INT
+)
+BEGIN
+	SELECT
+		i.items AS items
+	FROM inventory AS i
+		JOIN order_row AS orow
+			ON orow.prod_id = i.prod_id
+			JOIN `order` AS o
+				ON o.id = orow.order_id
+	WHERE o.id = a_orderid;
+            
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `show_log` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -743,6 +1431,48 @@ BEGIN
 	
     
 END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `show_order` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `show_order`(
+	a_orderid INT
+)
+BEGIN
+
+	IF EXISTS (
+		SELECT * FROM order_row
+        WHERE order_id = a_orderid) THEN
+			SELECT * 
+				FROM v_order_info 
+				WHERE orderid = a_orderid;
+	ELSE 
+		SELECT
+			o.id as orderid,
+			o.created as ordercreated,
+			o.customer_id as customerid,
+			vc.name as customername
+		FROM `order` AS o
+			LEFT OUTER JOIN v_customer as vc
+				ON vc.id = o.customer_id
+		WHERE o.id = a_orderid
+		ORDER BY o.id;
+        
+	END IF;
+
+      
+  END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
@@ -809,6 +1539,31 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `show_search_order` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `show_search_order`(
+	a_id INT
+)
+BEGIN
+
+	SELECT *
+    FROM v_order_info
+    WHERE orderid = a_id OR customerid = a_id;
+    
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `show_shelfs` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -833,6 +1588,297 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `show_status` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `show_status`(
+	a_id INT
+)
+BEGIN
+	SELECT
+		order_status(created, updated, ordered, deleted, shipped) as `status`
+	FROM `order`
+    WHERE id = a_id;
+	    
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `show_togal` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `show_togal`(
+	a_orderid INT
+)
+BEGIN
+	SELECT
+		SUM(`sum`) AS total
+	FROM v_order_info
+	WHERE o.id = a_orderid;
+            
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `show_total` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `show_total`(
+	a_orderid INT
+)
+BEGIN
+	SELECT
+		SUM(`sum`) AS total
+	FROM v_order_info
+	WHERE orderid = a_orderid;
+            
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Final view structure for view `v_all_customers`
+--
+
+/*!50001 DROP VIEW IF EXISTS `v_all_customers`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`user`@`%` SQL SECURITY DEFINER */
+/*!50001 VIEW `v_all_customers` AS select `customer`.`id` AS `id`,concat(`customer`.`fname`,' ',`customer`.`sirname`) AS `name`,concat(`customer`.`adress`,', ',`customer`.`zip`,', ',`customer`.`city`) AS `adress`,`customer`.`telefon` AS `telefon` from `customer` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `v_all_orders`
+--
+
+/*!50001 DROP VIEW IF EXISTS `v_all_orders`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `v_all_orders` AS select `o`.`id` AS `orderid`,`o`.`created` AS `created`,`order_status`(`o`.`created`,`o`.`updated`,`o`.`ordered`,`o`.`deleted`,`o`.`shipped`) AS `status`,concat(`c`.`fname`,' ',`c`.`sirname`,' (ID: ',`c`.`id`,')') AS `customer` from (`order` `o` join `customer` `c` on((`c`.`id` = `o`.`customer_id`))) order by `o`.`id` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `v_customer`
+--
+
+/*!50001 DROP VIEW IF EXISTS `v_customer`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `v_customer` AS select `customer`.`id` AS `id`,concat(`customer`.`fname`,' ',`customer`.`sirname`) AS `name`,concat(`customer`.`adress`,', ',`customer`.`zip`,', ',`customer`.`city`) AS `adress`,`customer`.`telefon` AS `telefon` from `customer` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `v_ick_list`
+--
+
+/*!50001 DROP VIEW IF EXISTS `v_ick_list`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `v_ick_list` AS select `pl`.`order_id` AS `orderid`,`pl`.`prod_id` AS `prodid`,`pl`.`amount` AS `amount`,`i`.`items` AS `in stock`,`i`.`shelf` AS `shelf`,(`i`.`items` - `pl`.`amount`) AS `diff` from (`pick_list` `pl` join `inventory` `i` on((`i`.`prod_id` = `pl`.`prod_id`))) order by `i`.`shelf` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `v_inventory`
+--
+
+/*!50001 DROP VIEW IF EXISTS `v_inventory`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `v_inventory` AS select `p`.`id` AS `prodid`,concat(substr(`p`.`info`,1,20),'...') AS `prodinfo`,`i`.`shelf` AS `shelf`,`i`.`items` AS `items` from (`product` `p` left join `inventory` `i` on((`i`.`prod_id` = `p`.`id`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `v_order`
+--
+
+/*!50001 DROP VIEW IF EXISTS `v_order`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `v_order` AS select `voi`.`orderid` AS `orderid`,`voi`.`ordercreated` AS `ordercreated`,`voi`.`customerid` AS `customerid`,`voi`.`customername` AS `customername`,`vori`.`prodid` AS `prodid`,`vori`.`prodinfo` AS `prodinfo`,`vori`.`price` AS `price`,`vori`.`amount` AS `amount`,`vori`.`sum` AS `sum`,sum(`vori`.`sum`) AS `total` from (`v_order_info` `voi` left join `v_order_row_info` `vori` on((`vori`.`orderid` = `voi`.`orderid`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `v_order_customer`
+--
+
+/*!50001 DROP VIEW IF EXISTS `v_order_customer`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `v_order_customer` AS select `o`.`id` AS `orderid`,concat(`c`.`fname`,' ',`c`.`sirname`) AS `customername`,`c`.`id` AS `customerid` from (`customer` `c` join `order` `o` on((`o`.`customer_id` = `c`.`id`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `v_order_info`
+--
+
+/*!50001 DROP VIEW IF EXISTS `v_order_info`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `v_order_info` AS select `o`.`id` AS `orderid`,`o`.`created` AS `ordercreated`,`o`.`customer_id` AS `customerid`,`vc`.`name` AS `customername`,`orow`.`prod_id` AS `prodid`,concat(substr(`p`.`info`,1,20),'...') AS `prodinfo`,`p`.`price` AS `price`,`orow`.`amount` AS `amount`,(`p`.`price` * `orow`.`amount`) AS `sum` from (((`order` `o` left join `order_row` `orow` on((`orow`.`order_id` = `o`.`id`))) left join `product` `p` on((`p`.`id` = `orow`.`prod_id`))) left join `v_customer` `vc` on((`vc`.`id` = `o`.`customer_id`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `v_order_items`
+--
+
+/*!50001 DROP VIEW IF EXISTS `v_order_items`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `v_order_items` AS select `i`.`items` AS `items` from (`inventory` `i` join `order_row` `orow` on((`orow`.`prod_id` = `i`.`prod_id`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `v_order_prod`
+--
+
+/*!50001 DROP VIEW IF EXISTS `v_order_prod`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `v_order_prod` AS select `orow`.`id` AS `orderid`,`p`.`id` AS `prodid`,concat(substr(`p`.`info`,1,20),'...') AS `prodinfo`,`p`.`price` AS `price`,`orow`.`amount` AS `amount`,(`p`.`price` * `orow`.`amount`) AS `summ` from (`product` `p` join `order_row` `orow` on((`orow`.`prod_id` = `p`.`id`))) order by `orow`.`id` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `v_order_row_info`
+--
+
+/*!50001 DROP VIEW IF EXISTS `v_order_row_info`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `v_order_row_info` AS select `orow`.`id` AS `orderid`,`p`.`id` AS `prodid`,concat(substr(`p`.`info`,1,20),'...') AS `prodinfo`,`p`.`price` AS `price`,`orow`.`amount` AS `amount`,(`p`.`price` * `orow`.`amount`) AS `sum` from (`order_row` `orow` join `product` `p` on((`p`.`id` = `orow`.`prod_id`))) group by `prodid` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `v_pick_list`
+--
+
+/*!50001 DROP VIEW IF EXISTS `v_pick_list`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `v_pick_list` AS select `pl`.`order_id` AS `orderid`,`pl`.`prod_id` AS `prodid`,`pl`.`amount` AS `amount`,`i`.`items` AS `in stock`,`i`.`shelf` AS `shelf`,(`i`.`items` - `pl`.`amount`) AS `diff` from (`pick_list` `pl` join `inventory` `i` on((`i`.`prod_id` = `pl`.`prod_id`))) order by `i`.`shelf` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
 -- Final view structure for view `v_prodcat`
@@ -869,6 +1915,24 @@ DELIMITER ;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `v_show_status`
+--
+
+/*!50001 DROP VIEW IF EXISTS `v_show_status`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `v_show_status` AS select `order`.`id` AS `orderid`,`order_status`(`order`.`created`,`order`.`updated`,`order`.`ordered`,`order`.`deleted`,`order`.`shipped`) AS `status` from `order` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -879,4 +1943,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-20 13:54:19
+-- Dump completed on 2019-03-26  9:34:15

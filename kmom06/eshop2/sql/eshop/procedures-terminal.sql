@@ -179,15 +179,18 @@ MAIN: BEGIN
     
     SELECT `status` INTO current_status FROM v_show_status WHERE orderid = a_orderid;
     
-      -- IF-SATS 
+   
+      -- IF- STATUS
     IF current_status != "ordered" THEN
 		ROLLBACK;
-        SELECT 'This ordered is not done' AS message;
+        SELECT 'This order is not ready to get picked.' AS message;
         LEAVE MAIN;
 	END IF;
+    
 
 	SELECT
-		*
+		*,
+        IF (diff <= 0, 'stock is now empty', 'ok') AS stock
 	FROM v_pick_list
 	WHERE orderid = a_orderid
 	ORDER BY shelf;

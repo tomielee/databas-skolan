@@ -75,3 +75,5 @@ CALL filter_inventory('b');
 SELECT * FROM v_inventory;
 CALL add_inventory('New', 'C:02', 200);
 SELECT * FROM v_inventory;
+
+CALL pick_list(2);
