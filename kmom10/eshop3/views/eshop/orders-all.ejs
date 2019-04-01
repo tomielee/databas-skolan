@@ -1,0 +1,38 @@
+<%- include("header", {title: title}); %>
+
+<main>
+
+<h1>All orders</h1>
+
+<table>
+    <tr>
+        <th> Order ID</th>
+        <th> Customername (ID)</th>
+        <th> Created</th>
+        <th> Products </th>
+        <th> Status</th>
+        <th> Details</th>
+    </tr>
+<% for (const order of orders) { %>
+        <tr>
+            <td><%= order.orderid %></td>
+            <td><%= order.customer %></td>
+            <td><%= order.created %></td>
+            <td><%= order.orderrows %></td>
+            <td><%= order.status %></td>
+            <td>
+                <button>
+                    <a href="/eshop/order/<%= order.orderid%>">
+                    INFO</a>
+                </button>
+            </td>
+<%};%>
+        </tr>
+
+</table>
+
+<br>
+<br>
+
+</main>
+<%- include("footer"); %>

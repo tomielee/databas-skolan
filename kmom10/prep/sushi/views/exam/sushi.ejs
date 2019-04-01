@@ -1,0 +1,24 @@
+<%- include("header", {title: title}); %>
+<main>
+    <h1>ALL sushis</h1>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name of the sushi</th>
+        <th>Description</th>
+        <th>Created</th>
+    </tr>
+
+<%for (const s of sushi) { %>
+    <tr>
+        <td><%= s.id%></td>
+        <td><%= s.sushiname%></td>
+        <td><%= s.info%> <img class="thumbnail-left" src="/img/<%= s.picture%>"</td>
+        <td><%= s.created%></td>
+    </tr>
+<% }; %>
+</table>
+
+</main>
+<%- include("footer"); %>

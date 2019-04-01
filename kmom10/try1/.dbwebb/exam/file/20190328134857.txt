@@ -1,0 +1,638 @@
+20190328134857
+.
+total 32
+drwxr-xr-x   3 JLEE  staff    96 28 Mar 09:02 .dbwebb
+-rw-r--r--   1 JLEE  staff  9261 28 Mar 09:02 INSTRUKTION.md
+-rw-r--r--   1 JLEE  staff  3893 28 Mar 09:02 README_FIRST.md
+drwxr-xr-x  17 JLEE  staff   544 28 Mar 13:11 sapo
+./.dbwebb
+total 0
+drwxr-xr-x  5 JLEE  staff  160 28 Mar 09:02 exam
+./.dbwebb/exam
+total 8
+drwxr-xr-x  9 JLEE  staff  288 28 Mar 13:48 file
+-rw-r--r--  1 JLEE  staff   35 28 Mar 09:02 id.md
+drwxr-xr-x  9 JLEE  staff  288 28 Mar 13:48 receipt
+./.dbwebb/exam/file
+total 312
+-rw-r--r--  1 JLEE  staff    622 28 Mar 09:02 20190328090207.txt
+-rw-r--r--  1 JLEE  staff  28344 28 Mar 12:44 20190328124408.txt
+-rw-r--r--  1 JLEE  staff  28475 28 Mar 13:09 20190328130952.txt
+-rw-r--r--  1 JLEE  staff  28581 28 Mar 13:36 20190328133608.txt
+-rw-r--r--  1 JLEE  staff  28708 28 Mar 13:43 20190328134314.txt
+-rw-r--r--  1 JLEE  staff  28835 28 Mar 13:44 20190328134442.txt
+-rw-r--r--  1 JLEE  staff    515 28 Mar 13:48 20190328134857.txt
+./.dbwebb/exam/receipt
+total 56
+-rw-r--r--  1 JLEE  staff  574 28 Mar 09:02 20190328080207.md
+-rw-r--r--@ 1 JLEE  staff  574 28 Mar 12:44 20190328124407.md
+-rw-r--r--  1 JLEE  staff  651 28 Mar 13:44 20190328124442.md
+-rw-r--r--@ 1 JLEE  staff  574 28 Mar 13:09 20190328130951.md
+-rw-r--r--@ 1 JLEE  staff  574 28 Mar 13:36 20190328133608.md
+-rw-r--r--@ 1 JLEE  staff  574 28 Mar 13:43 20190328134314.md
+-rw-r--r--@ 1 JLEE  staff  651 28 Mar 13:48 20190328134856.md
+./sapo
+total 72
+-rw-r--r--@  1 JLEE  staff   6148 28 Mar 13:11 .DS_Store
+-rw-r--r--   1 JLEE  staff      0 28 Mar 10:55 backup.sql
+-rw-r--r--   1 JLEE  staff   1007 28 Mar 10:42 cli.js
+drwxr-xr-x   3 JLEE  staff     96 28 Mar 09:08 config
+drwxr-xr-x   4 JLEE  staff    128 28 Mar 13:17 doc
+-rw-r--r--   1 JLEE  staff   1536 28 Mar 10:39 index.js
+drwxr-xr-x   3 JLEE  staff     96 28 Mar 09:10 middleware
+drwxr-xr-x  52 JLEE  staff   1664 28 Mar 09:11 node_modules
+-rw-r--r--   1 JLEE  staff  13328 18 Mar 09:40 package-lock.json
+-rw-r--r--   1 JLEE  staff    306 18 Mar 09:40 package.json
+drwxr-xr-x   4 JLEE  staff    128 28 Mar 09:51 public
+drwxr-xr-x   3 JLEE  staff     96 28 Mar 09:49 route
+drwxr-xr-x  12 JLEE  staff    384 28 Mar 13:18 sql
+drwxr-xr-x   5 JLEE  staff    160 28 Mar 10:50 src
+drwxr-xr-x   3 JLEE  staff     96 28 Mar 10:12 views
+./sapo/middleware
+total 8
+-rw-r--r--  1 JLEE  staff  523 28 Mar 09:10 index.js
+./sapo/route
+total 8
+-rw-r--r--  1 JLEE  staff  2040 28 Mar 13:29 sapo.js
+./sapo/config
+total 0
+drwxr-xr-x  3 JLEE  staff  96 28 Mar 09:09 db
+./sapo/config/db
+total 8
+-rw-r--r--  1 JLEE  staff  134 28 Mar 09:09 sapo.json
+./sapo/node_modules
+total 0
+drwxr-xr-x   3 JLEE  staff   96 28 Mar 09:11 .bin
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 accepts
+drwxr-xr-x   6 JLEE  staff  192 28 Mar 09:11 array-flatten
+drwxr-xr-x   8 JLEE  staff  256 28 Mar 09:11 body-parser
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 bytes
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 content-disposition
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 content-type
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 cookie
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 cookie-signature
+drwxr-xr-x  15 JLEE  staff  480 28 Mar 09:11 debug
+drwxr-xr-x   8 JLEE  staff  256 28 Mar 09:11 depd
+drwxr-xr-x   6 JLEE  staff  192 28 Mar 09:11 destroy
+drwxr-xr-x   6 JLEE  staff  192 28 Mar 09:11 ee-first
+drwxr-xr-x   9 JLEE  staff  288 28 Mar 09:11 ejs
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 encodeurl
+drwxr-xr-x   6 JLEE  staff  192 28 Mar 09:11 escape-html
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 etag
+drwxr-xr-x   8 JLEE  staff  256 28 Mar 09:11 express
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 finalhandler
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 forwarded
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 fresh
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 http-errors
+drwxr-xr-x   9 JLEE  staff  288 28 Mar 09:11 iconv-lite
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 inherits
+drwxr-xr-x   6 JLEE  staff  192 28 Mar 09:11 ipaddr.js
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 media-typer
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 merge-descriptors
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 methods
+drwxr-xr-x   9 JLEE  staff  288 28 Mar 09:11 mime
+drwxr-xr-x   8 JLEE  staff  256 28 Mar 09:11 mime-db
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 mime-types
+drwxr-xr-x   6 JLEE  staff  192 28 Mar 09:11 ms
+drwxr-xr-x   8 JLEE  staff  256 28 Mar 09:11 negotiator
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 on-finished
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 parseurl
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 path-to-regexp
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 proxy-addr
+drwxr-xr-x  12 JLEE  staff  384 28 Mar 09:11 qs
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 range-parser
+drwxr-xr-x   8 JLEE  staff  256 28 Mar 09:11 raw-body
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 safe-buffer
+drwxr-xr-x   9 JLEE  staff  288 28 Mar 09:11 safer-buffer
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 send
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 serve-static
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 setprototypeof
+drwxr-xr-x   8 JLEE  staff  256 28 Mar 09:11 statuses
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 type-is
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 unpipe
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 utils-merge
+drwxr-xr-x   7 JLEE  staff  224 28 Mar 09:11 vary
+./sapo/node_modules/destroy
+total 32
+-rw-r--r--  1 JLEE  staff  1099 14 Aug  2014 LICENSE
+-rw-r--r--  1 JLEE  staff  2185 13 Jan  2016 README.md
+-rw-r--r--  1 JLEE  staff  1043 13 Jan  2016 index.js
+-rw-r--r--  1 JLEE  staff  1777 28 Mar 09:11 package.json
+./sapo/node_modules/.bin
+total 0
+lrwxr-xr-x  1 JLEE  staff  14 28 Mar 09:11 mime -> ../mime/cli.js
+./sapo/node_modules/content-type
+total 48
+-rw-r--r--  1 JLEE  staff   436 11 Sep  2017 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1089 11 Sep  2017 LICENSE
+-rw-r--r--  1 JLEE  staff  2796 11 Sep  2017 README.md
+-rw-r--r--  1 JLEE  staff  4809 11 Sep  2017 index.js
+-rw-r--r--  1 JLEE  staff  2149 28 Mar 09:11 package.json
+./sapo/node_modules/ms
+total 32
+-rw-r--r--  1 JLEE  staff  2764 16 Maj  2017 index.js
+-rw-r--r--  1 JLEE  staff  1077 16 Maj  2017 license.md
+-rw-r--r--  1 JLEE  staff  1566 28 Mar 09:11 package.json
+-rw-r--r--  1 JLEE  staff  1721 16 Maj  2017 readme.md
+./sapo/node_modules/content-disposition
+total 64
+-rw-r--r--  1 JLEE  staff    866  9 Dec  2016 HISTORY.md
+-rw-r--r--  1 JLEE  staff   1089 19 Sep  2014 LICENSE
+-rw-r--r--  1 JLEE  staff   5148  9 Dec  2016 README.md
+-rw-r--r--  1 JLEE  staff  10399  9 Dec  2016 index.js
+-rw-r--r--  1 JLEE  staff   2108 28 Mar 09:11 package.json
+./sapo/node_modules/methods
+total 40
+-rw-r--r--  1 JLEE  staff   427 18 Jan  2016 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1180 18 Jan  2016 LICENSE
+-rw-r--r--  1 JLEE  staff  1694 18 Jan  2016 README.md
+-rw-r--r--  1 JLEE  staff  1040 18 Jan  2016 index.js
+-rw-r--r--  1 JLEE  staff  1999 28 Mar 09:11 package.json
+./sapo/node_modules/proxy-addr
+total 56
+-rw-r--r--  1 JLEE  staff  2737 26 Jul  2018 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1094 25 Jul  2017 LICENSE
+-rw-r--r--  1 JLEE  staff  4498 26 Jul  2018 README.md
+-rw-r--r--  1 JLEE  staff  5977 20 Feb  2018 index.js
+-rw-r--r--  1 JLEE  staff  2218 28 Mar 09:11 package.json
+./sapo/node_modules/depd
+total 72
+-rw-r--r--  1 JLEE  staff   2060 12 Jan  2018 History.md
+-rw-r--r--  1 JLEE  staff   1094 12 Jan  2018 LICENSE
+-rw-r--r--  1 JLEE  staff  10025 12 Jan  2018 Readme.md
+-rw-r--r--  1 JLEE  staff  10669 12 Jan  2018 index.js
+drwxr-xr-x  4 JLEE  staff    128 28 Mar 09:11 lib
+-rw-r--r--  1 JLEE  staff   2119 28 Mar 09:11 package.json
+./sapo/node_modules/depd/lib
+total 0
+drwxr-xr-x  3 JLEE  staff   96 28 Mar 09:11 browser
+drwxr-xr-x  5 JLEE  staff  160 28 Mar 09:11 compat
+./sapo/node_modules/depd/lib/compat
+total 24
+-rw-r--r--  1 JLEE  staff  2229 12 Jan  2018 callsite-tostring.js
+-rw-r--r--  1 JLEE  staff   338 12 Jan  2018 event-listener-count.js
+-rw-r--r--  1 JLEE  staff  1421 12 Jan  2018 index.js
+./sapo/node_modules/depd/lib/browser
+total 8
+-rw-r--r--  1 JLEE  staff  1512 27 Jul  2017 index.js
+./sapo/node_modules/range-parser
+total 40
+-rw-r--r--  1 JLEE  staff   832  1 Jun  2016 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1178  1 Jun  2016 LICENSE
+-rw-r--r--  1 JLEE  staff  1996  1 Jun  2016 README.md
+-rw-r--r--  1 JLEE  staff  2805  1 Jun  2016 index.js
+-rw-r--r--  1 JLEE  staff  2245 28 Mar 09:11 package.json
+./sapo/node_modules/bytes
+total 40
+-rw-r--r--  1 JLEE  staff  1509 31 Aug  2017 History.md
+-rw-r--r--  1 JLEE  staff  1153  2 Jan  2017 LICENSE
+-rw-r--r--  1 JLEE  staff  3888 31 Aug  2017 Readme.md
+-rw-r--r--  1 JLEE  staff  3390 31 Aug  2017 index.js
+-rw-r--r--  1 JLEE  staff  1901 28 Mar 09:11 package.json
+./sapo/node_modules/express
+total 256
+-rw-r--r--   1 JLEE  staff  107836 26 Okt  1985 History.md
+-rw-r--r--   1 JLEE  staff    1249 26 Okt  1985 LICENSE
+-rw-r--r--   1 JLEE  staff    4777 26 Okt  1985 Readme.md
+-rw-r--r--   1 JLEE  staff     224 26 Okt  1985 index.js
+drwxr-xr-x  10 JLEE  staff     320 28 Mar 09:11 lib
+-rw-r--r--   1 JLEE  staff    4008 28 Mar 09:11 package.json
+./sapo/node_modules/express/lib
+total 152
+-rw-r--r--  1 JLEE  staff  14270 26 Okt  1985 application.js
+-rw-r--r--  1 JLEE  staff   2349 26 Okt  1985 express.js
+drwxr-xr-x  4 JLEE  staff    128 28 Mar 09:11 middleware
+-rw-r--r--  1 JLEE  staff  12298 26 Okt  1985 request.js
+-rw-r--r--  1 JLEE  staff  26964 26 Okt  1985 response.js
+drwxr-xr-x  5 JLEE  staff    160 28 Mar 09:11 router
+-rw-r--r--  1 JLEE  staff   5972 26 Okt  1985 utils.js
+-rw-r--r--  1 JLEE  staff   3326 26 Okt  1985 view.js
+./sapo/node_modules/express/lib/middleware
+total 16
+-rw-r--r--  1 JLEE  staff  853 26 Okt  1985 init.js
+-rw-r--r--  1 JLEE  staff  885 26 Okt  1985 query.js
+./sapo/node_modules/express/lib/router
+total 56
+-rw-r--r--  1 JLEE  staff  14883 26 Okt  1985 index.js
+-rw-r--r--  1 JLEE  staff   3296 26 Okt  1985 layer.js
+-rw-r--r--  1 JLEE  staff   4149 26 Okt  1985 route.js
+./sapo/node_modules/encodeurl
+total 40
+-rw-r--r--  1 JLEE  staff   238 22 Jan  2018 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1089 22 Jan  2018 LICENSE
+-rw-r--r--  1 JLEE  staff  3855 22 Jan  2018 README.md
+-rw-r--r--  1 JLEE  staff  1586 22 Jan  2018 index.js
+-rw-r--r--  1 JLEE  staff  2120 28 Mar 09:11 package.json
+./sapo/node_modules/merge-descriptors
+total 40
+-rw-r--r--  1 JLEE  staff   363 18 Jan  2016 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1167 18 Jan  2016 LICENSE
+-rw-r--r--  1 JLEE  staff  1213 22 Maj  2015 README.md
+-rw-r--r--  1 JLEE  staff  1215 18 Jan  2016 index.js
+-rw-r--r--  1 JLEE  staff  1983 28 Mar 09:11 package.json
+./sapo/node_modules/array-flatten
+total 32
+-rw-r--r--  1 JLEE  staff  1103 15 Mar  2014 LICENSE
+-rw-r--r--  1 JLEE  staff  1245  9 Maj  2015 README.md
+-rw-r--r--  1 JLEE  staff  1195  9 Jul  2015 array-flatten.js
+-rw-r--r--  1 JLEE  staff  1651 28 Mar 09:11 package.json
+./sapo/node_modules/safe-buffer
+total 88
+-rw-r--r--  1 JLEE  staff   1081 26 Okt  1985 LICENSE
+-rw-r--r--  1 JLEE  staff  19555 26 Okt  1985 README.md
+-rw-r--r--  1 JLEE  staff   8738 26 Okt  1985 index.d.ts
+-rw-r--r--  1 JLEE  staff   1529 26 Okt  1985 index.js
+-rw-r--r--  1 JLEE  staff   1599 28 Mar 09:11 package.json
+./sapo/node_modules/ee-first
+total 32
+-rw-r--r--  1 JLEE  staff  1099 15 Aug  2014 LICENSE
+-rw-r--r--  1 JLEE  staff  2617 25 Maj  2015 README.md
+-rw-r--r--  1 JLEE  staff  1684 25 Maj  2015 index.js
+-rw-r--r--  1 JLEE  staff  1782 28 Mar 09:11 package.json
+./sapo/node_modules/inherits
+total 40
+-rw-r--r--  1 JLEE  staff   749 20 Aug  2013 LICENSE
+-rw-r--r--  1 JLEE  staff  1625 16 Maj  2013 README.md
+-rw-r--r--  1 JLEE  staff   192  7 Sep  2016 inherits.js
+-rw-r--r--  1 JLEE  staff   672 16 Maj  2013 inherits_browser.js
+-rw-r--r--  1 JLEE  staff  1488 28 Mar 09:11 package.json
+./sapo/node_modules/iconv-lite
+total 56
+-rw-r--r--   1 JLEE  staff   268 13 Jun  2017 .travis.yml
+-rw-r--r--   1 JLEE  staff  4268  8 Maj  2018 Changelog.md
+-rw-r--r--   1 JLEE  staff  1064  9 Nov  2011 LICENSE
+-rw-r--r--   1 JLEE  staff  6534  7 Apr  2018 README.md
+drwxr-xr-x  12 JLEE  staff   384 28 Mar 09:11 encodings
+drwxr-xr-x   7 JLEE  staff   224 28 Mar 09:11 lib
+-rw-r--r--   1 JLEE  staff  1982 28 Mar 09:11 package.json
+./sapo/node_modules/iconv-lite/encodings
+total 224
+-rw-r--r--   1 JLEE  staff  21415  7 Apr  2018 dbcs-codec.js
+-rw-r--r--   1 JLEE  staff   8291 21 Apr  2017 dbcs-data.js
+-rw-r--r--   1 JLEE  staff    710 21 Apr  2017 index.js
+-rw-r--r--   1 JLEE  staff   6115  7 Apr  2018 internal.js
+-rw-r--r--   1 JLEE  staff   2199  7 Apr  2018 sbcs-codec.js
+-rw-r--r--   1 JLEE  staff  32034 10 Sep  2017 sbcs-data-generated.js
+-rw-r--r--   1 JLEE  staff   4321 10 Sep  2017 sbcs-data.js
+drwxr-xr-x  10 JLEE  staff    320 28 Mar 09:11 tables
+-rw-r--r--   1 JLEE  staff   5011  7 Apr  2018 utf16.js
+-rw-r--r--   1 JLEE  staff   9215  7 Apr  2018 utf7.js
+./sapo/node_modules/iconv-lite/encodings/tables
+total 456
+-rw-r--r--  1 JLEE  staff  17717 28 Maj  2014 big5-added.json
+-rw-r--r--  1 JLEE  staff  47320 28 Maj  2014 cp936.json
+-rw-r--r--  1 JLEE  staff  38122 28 Maj  2014 cp949.json
+-rw-r--r--  1 JLEE  staff  42356 28 Maj  2014 cp950.json
+-rw-r--r--  1 JLEE  staff  41064 28 Maj  2014 eucjp.json
+-rw-r--r--  1 JLEE  staff   2216 28 Maj  2014 gb18030-ranges.json
+-rw-r--r--  1 JLEE  staff   1227 28 Maj  2014 gbk-added.json
+-rw-r--r--  1 JLEE  staff  23782 28 Maj  2014 shiftjis.json
+./sapo/node_modules/iconv-lite/lib
+total 64
+-rw-r--r--  1 JLEE  staff  1109 21 Apr  2017 bom-handling.js
+-rw-r--r--  1 JLEE  staff  8701  8 Maj  2018 extend-node.js
+-rw-r--r--  1 JLEE  staff   982  8 Maj  2018 index.d.ts
+-rw-r--r--  1 JLEE  staff  5123  7 Apr  2018 index.js
+-rw-r--r--  1 JLEE  staff  3387 21 Apr  2017 streams.js
+./sapo/node_modules/fresh
+total 40
+-rw-r--r--  1 JLEE  staff  1500 14 Sep  2017 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1174 20 Feb  2017 LICENSE
+-rw-r--r--  1 JLEE  staff  3374 14 Sep  2017 README.md
+-rw-r--r--  1 JLEE  staff  2711 14 Sep  2017 index.js
+-rw-r--r--  1 JLEE  staff  2392 28 Mar 09:11 package.json
+./sapo/node_modules/qs
+total 104
+-rw-r--r--  1 JLEE  staff    399 26 Jul  2017 .editorconfig
+-rw-r--r--  1 JLEE  staff      5 23 Dec  2015 .eslintignore
+-rw-r--r--  1 JLEE  staff    554  2 Maj  2018 .eslintrc
+-rw-r--r--  1 JLEE  staff  12742  3 Maj  2018 CHANGELOG.md
+-rw-r--r--  1 JLEE  staff   1654 23 Dec  2015 LICENSE
+-rw-r--r--  1 JLEE  staff  14636 14 Jun  2017 README.md
+drwxr-xr-x  3 JLEE  staff     96 28 Mar 09:11 dist
+drwxr-xr-x  7 JLEE  staff    224 28 Mar 09:11 lib
+-rw-r--r--  1 JLEE  staff   2235 28 Mar 09:11 package.json
+drwxr-xr-x  7 JLEE  staff    224 28 Mar 09:11 test
+./sapo/node_modules/qs/test
+total 120
+-rw-r--r--  1 JLEE  staff    348  9 Sep  2017 .eslintrc
+-rw-r--r--  1 JLEE  staff     81 30 Maj  2017 index.js
+-rw-r--r--  1 JLEE  staff  22265  2 Maj  2018 parse.js
+-rw-r--r--  1 JLEE  staff  20783  2 Maj  2018 stringify.js
+-rw-r--r--  1 JLEE  staff   1432 14 Jun  2017 utils.js
+./sapo/node_modules/qs/dist
+total 40
+-rw-r--r--  1 JLEE  staff  19393  4 Maj  2018 qs.js
+./sapo/node_modules/qs/lib
+total 64
+-rw-r--r--  1 JLEE  staff   387 30 Maj  2017 formats.js
+-rw-r--r--  1 JLEE  staff   211 14 Jun  2017 index.js
+-rw-r--r--  1 JLEE  staff  5817  9 Sep  2017 parse.js
+-rw-r--r--  1 JLEE  staff  6288  9 Sep  2017 stringify.js
+-rw-r--r--  1 JLEE  staff  5554  2 Maj  2018 utils.js
+./sapo/node_modules/path-to-regexp
+total 40
+-rw-r--r--  1 JLEE  staff   694 28 Jul  2015 History.md
+-rw-r--r--  1 JLEE  staff  1103 28 Jul  2015 LICENSE
+-rw-r--r--  1 JLEE  staff  1102 28 Jul  2015 Readme.md
+-rw-r--r--  1 JLEE  staff  3328 28 Jul  2015 index.js
+-rw-r--r--  1 JLEE  staff  1488 28 Mar 09:11 package.json
+./sapo/node_modules/safer-buffer
+total 120
+-rw-r--r--  1 JLEE  staff   1094 26 Okt  1985 LICENSE
+-rw-r--r--  1 JLEE  staff  12794 26 Okt  1985 Porting-Buffer.md
+-rw-r--r--  1 JLEE  staff   8261 26 Okt  1985 Readme.md
+-rw-r--r--  1 JLEE  staff   1483 26 Okt  1985 dangerous.js
+-rw-r--r--  1 JLEE  staff   1714 28 Mar 09:11 package.json
+-rw-r--r--  1 JLEE  staff   2110 26 Okt  1985 safer.js
+-rw-r--r--  1 JLEE  staff  15735 26 Okt  1985 tests.js
+./sapo/node_modules/ejs
+total 200
+-rw-r--r--  1 JLEE  staff   1901  5 Maj  2018 Jakefile
+-rw-r--r--  1 JLEE  staff  11358  5 Maj  2018 LICENSE
+-rw-r--r--  1 JLEE  staff   9455  5 Maj  2018 README.md
+-rw-r--r--  1 JLEE  staff  44325  5 Maj  2018 ejs.js
+-rw-r--r--  1 JLEE  staff  21483  5 Maj  2018 ejs.min.js
+drwxr-xr-x  4 JLEE  staff    128 28 Mar 09:11 lib
+-rw-r--r--  1 JLEE  staff   1937 28 Mar 09:11 package.json
+./sapo/node_modules/ejs/lib
+total 64
+-rwxr-xr-x  1 JLEE  staff  26594  5 Maj  2018 ejs.js
+-rw-r--r--  1 JLEE  staff   3803  5 Maj  2018 utils.js
+./sapo/node_modules/mime-types
+total 48
+-rw-r--r--  1 JLEE  staff  6110 26 Okt  1985 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1167 26 Okt  1985 LICENSE
+-rw-r--r--  1 JLEE  staff  3494 26 Okt  1985 README.md
+-rw-r--r--  1 JLEE  staff  3663 26 Okt  1985 index.js
+-rw-r--r--  1 JLEE  staff  2269 28 Mar 09:11 package.json
+./sapo/node_modules/type-is
+total 64
+-rw-r--r--  1 JLEE  staff  4626 16 Feb  2018 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1172 16 Okt  2017 LICENSE
+-rw-r--r--  1 JLEE  staff  4161 16 Okt  2017 README.md
+-rw-r--r--  1 JLEE  staff  5525 16 Okt  2017 index.js
+-rw-r--r--  1 JLEE  staff  2345 28 Mar 09:11 package.json
+./sapo/node_modules/vary
+total 40
+-rw-r--r--  1 JLEE  staff   792 24 Sep  2017 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1094 20 Mar  2017 LICENSE
+-rw-r--r--  1 JLEE  staff  2716 20 Mar  2017 README.md
+-rw-r--r--  1 JLEE  staff  2930 23 Sep  2017 index.js
+-rw-r--r--  1 JLEE  staff  2124 28 Mar 09:11 package.json
+./sapo/node_modules/unpipe
+total 40
+-rw-r--r--  1 JLEE  staff    59 14 Jun  2015 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1114 14 Jun  2015 LICENSE
+-rw-r--r--  1 JLEE  staff  1250 14 Jun  2015 README.md
+-rw-r--r--  1 JLEE  staff  1118 14 Jun  2015 index.js
+-rw-r--r--  1 JLEE  staff  1735 28 Mar 09:11 package.json
+./sapo/node_modules/raw-body
+total 72
+-rw-r--r--  1 JLEE  staff  5066  8 Maj  2018 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1181  8 Sep  2017 LICENSE
+-rw-r--r--  1 JLEE  staff  6339 14 Apr  2018 README.md
+-rw-r--r--  1 JLEE  staff  2286  8 Sep  2017 index.d.ts
+-rw-r--r--  1 JLEE  staff  6059  8 Sep  2017 index.js
+-rw-r--r--  1 JLEE  staff  2599 28 Mar 09:11 package.json
+./sapo/node_modules/http-errors
+total 56
+-rw-r--r--  1 JLEE  staff  2819 29 Mar  2018 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1168  3 Aug  2017 LICENSE
+-rw-r--r--  1 JLEE  staff  4803  3 Aug  2017 README.md
+-rw-r--r--  1 JLEE  staff  5758 29 Mar  2018 index.js
+-rw-r--r--  1 JLEE  staff  2389 28 Mar 09:11 package.json
+./sapo/node_modules/accepts
+total 64
+-rw-r--r--  1 JLEE  staff  4736  1 Mar  2018 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1167  1 Apr  2017 LICENSE
+-rw-r--r--  1 JLEE  staff  4130  1 Apr  2017 README.md
+-rw-r--r--  1 JLEE  staff  5252  1 Apr  2017 index.js
+-rw-r--r--  1 JLEE  staff  2270 28 Mar 09:11 package.json
+./sapo/node_modules/cookie-signature
+total 40
+-rw-r--r--  1 JLEE  staff    29 28 Jan  2014 .npmignore
+-rw-r--r--  1 JLEE  staff   695  3 Feb  2015 History.md
+-rw-r--r--  1 JLEE  staff  1490 19 Jun  2014 Readme.md
+-rw-r--r--  1 JLEE  staff  1230  3 Feb  2015 index.js
+-rw-r--r--  1 JLEE  staff  1521 28 Mar 09:11 package.json
+./sapo/node_modules/forwarded
+total 40
+-rw-r--r--  1 JLEE  staff   306 15 Sep  2017 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1094 15 Sep  2017 LICENSE
+-rw-r--r--  1 JLEE  staff  1637 15 Sep  2017 README.md
+-rw-r--r--  1 JLEE  staff  1360 15 Sep  2017 index.js
+-rw-r--r--  1 JLEE  staff  2126 28 Mar 09:11 package.json
+./sapo/node_modules/negotiator
+total 48
+-rw-r--r--  1 JLEE  staff  2296  3 Maj  2016 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1177 28 Apr  2016 LICENSE
+-rw-r--r--  1 JLEE  staff  4811  3 Maj  2016 README.md
+-rw-r--r--  1 JLEE  staff  3344  3 Maj  2016 index.js
+drwxr-xr-x  6 JLEE  staff   192 28 Mar 09:11 lib
+-rw-r--r--  1 JLEE  staff  2082 28 Mar 09:11 package.json
+./sapo/node_modules/negotiator/lib
+total 40
+-rw-r--r--  1 JLEE  staff  3082  3 Maj  2016 charset.js
+-rw-r--r--  1 JLEE  staff  3507  3 Maj  2016 encoding.js
+-rw-r--r--  1 JLEE  staff  3413  3 Maj  2016 language.js
+-rw-r--r--  1 JLEE  staff  5358  3 Maj  2016 mediaType.js
+./sapo/node_modules/body-parser
+total 96
+-rw-r--r--  1 JLEE  staff  14541 14 Maj  2018 HISTORY.md
+-rw-r--r--  1 JLEE  staff   1172  9 Aug  2017 LICENSE
+-rw-r--r--  1 JLEE  staff  17188  9 Jan  2018 README.md
+-rw-r--r--  1 JLEE  staff   2656  9 Aug  2017 index.js
+drwxr-xr-x  4 JLEE  staff    128 28 Mar 09:11 lib
+-rw-r--r--  1 JLEE  staff   2631 28 Mar 09:11 package.json
+./sapo/node_modules/body-parser/lib
+total 8
+-rw-r--r--  1 JLEE  staff  3894 19 Okt  2017 read.js
+drwxr-xr-x  6 JLEE  staff   192 28 Mar 09:11 types
+./sapo/node_modules/body-parser/lib/types
+total 48
+-rw-r--r--  1 JLEE  staff  4918  8 Maj  2018 json.js
+-rw-r--r--  1 JLEE  staff  1884  9 Aug  2017 raw.js
+-rw-r--r--  1 JLEE  staff  2285  9 Aug  2017 text.js
+-rw-r--r--  1 JLEE  staff  5795  8 Sep  2017 urlencoded.js
+./sapo/node_modules/utils-merge
+total 40
+-rw-r--r--  1 JLEE  staff    79 20 Sep  2017 .npmignore
+-rw-r--r--  1 JLEE  staff  1084 20 Sep  2017 LICENSE
+-rw-r--r--  1 JLEE  staff  1319 20 Sep  2017 README.md
+-rw-r--r--  1 JLEE  staff   381 20 Sep  2017 index.js
+-rw-r--r--  1 JLEE  staff  1660 28 Mar 09:11 package.json
+./sapo/node_modules/serve-static
+total 72
+-rw-r--r--  1 JLEE  staff  9694  7 Feb  2018 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1189 21 Sep  2017 LICENSE
+-rw-r--r--  1 JLEE  staff  7735  7 Feb  2018 README.md
+-rw-r--r--  1 JLEE  staff  4571  7 Feb  2018 index.js
+-rw-r--r--  1 JLEE  staff  2248 28 Mar 09:11 package.json
+./sapo/node_modules/mime
+total 104
+-rw-r--r--  1 JLEE  staff   1098 12 Maj  2017 LICENSE
+-rw-r--r--  1 JLEE  staff   2119 25 Sep  2017 README.md
+drwxr-xr-x  4 JLEE  staff    128 28 Mar 09:11 build
+-rwxr-xr-x  1 JLEE  staff    149 25 Sep  2017 cli.js
+-rw-r--r--  1 JLEE  staff   2726 25 Sep  2017 mime.js
+-rw-r--r--  1 JLEE  staff   1673 28 Mar 09:11 package.json
+-rw-r--r--  1 JLEE  staff  31541 25 Sep  2017 types.json
+./sapo/node_modules/mime/build
+total 16
+-rw-r--r--  1 JLEE  staff   231 25 Sep  2017 build.js
+-rw-r--r--  1 JLEE  staff  2346 25 Sep  2017 test.js
+./sapo/node_modules/ipaddr.js
+total 56
+-rw-r--r--  1 JLEE  staff  8310 21 Aug  2017 README.md
+-rw-r--r--  1 JLEE  staff  9261 10 Jul  2018 ipaddr.min.js
+drwxr-xr-x  4 JLEE  staff   128 28 Mar 09:11 lib
+-rw-r--r--  1 JLEE  staff  1663 28 Mar 09:11 package.json
+./sapo/node_modules/ipaddr.js/lib
+total 48
+-rw-r--r--  1 JLEE  staff  18182 10 Jul  2018 ipaddr.js
+-rw-r--r--  1 JLEE  staff   2861 10 Jul  2018 ipaddr.js.d.ts
+./sapo/node_modules/cookie
+total 56
+-rw-r--r--  1 JLEE  staff  2626 27 Maj  2016 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1175 21 Maj  2016 LICENSE
+-rw-r--r--  1 JLEE  staff  8208 27 Maj  2016 README.md
+-rw-r--r--  1 JLEE  staff  3969 27 Maj  2016 index.js
+-rw-r--r--  1 JLEE  staff  1819 28 Mar 09:11 package.json
+./sapo/node_modules/escape-html
+total 32
+-rw-r--r--  1 JLEE  staff  1157  1 Sep  2015 LICENSE
+-rw-r--r--  1 JLEE  staff   707  1 Sep  2015 Readme.md
+-rw-r--r--  1 JLEE  staff  1362  1 Sep  2015 index.js
+-rw-r--r--  1 JLEE  staff  1449 28 Mar 09:11 package.json
+./sapo/node_modules/statuses
+total 48
+-rw-r--r--  1 JLEE  staff   957 20 Okt  2017 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1172 20 Okt  2017 LICENSE
+-rw-r--r--  1 JLEE  staff  3458 20 Okt  2017 README.md
+-rw-r--r--  1 JLEE  staff  1797 20 Okt  2017 codes.json
+-rw-r--r--  1 JLEE  staff  2088 20 Okt  2017 index.js
+-rw-r--r--  1 JLEE  staff  2599 28 Mar 09:11 package.json
+./sapo/node_modules/parseurl
+total 40
+-rw-r--r--  1 JLEE  staff   954  9 Sep  2017 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1173  9 Sep  2017 LICENSE
+-rw-r--r--  1 JLEE  staff  3639  9 Sep  2017 README.md
+-rw-r--r--  1 JLEE  staff  2774  9 Sep  2017 index.js
+-rw-r--r--  1 JLEE  staff  2236 28 Mar 09:11 package.json
+./sapo/node_modules/etag
+total 48
+-rw-r--r--  1 JLEE  staff  1732 13 Sep  2017 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1094 19 Feb  2017 LICENSE
+-rw-r--r--  1 JLEE  staff  4198 13 Sep  2017 README.md
+-rw-r--r--  1 JLEE  staff  2479 13 Sep  2017 index.js
+-rw-r--r--  1 JLEE  staff  2272 28 Mar 09:11 package.json
+./sapo/node_modules/send
+total 112
+-rw-r--r--  1 JLEE  staff  11568  7 Feb  2018 HISTORY.md
+-rw-r--r--  1 JLEE  staff   1128  3 Aug  2017 LICENSE
+-rw-r--r--  1 JLEE  staff   8878 22 Jan  2018 README.md
+-rw-r--r--  1 JLEE  staff  23318 22 Jan  2018 index.js
+-rw-r--r--  1 JLEE  staff   2797 28 Mar 09:11 package.json
+./sapo/node_modules/finalhandler
+total 48
+-rw-r--r--  1 JLEE  staff  3938  6 Mar  2018 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1119  4 Aug  2017 LICENSE
+-rw-r--r--  1 JLEE  staff  4010  6 Mar  2018 README.md
+-rw-r--r--  1 JLEE  staff  6518  6 Mar  2018 index.js
+-rw-r--r--  1 JLEE  staff  2383 28 Mar 09:11 package.json
+./sapo/node_modules/on-finished
+total 48
+-rw-r--r--  1 JLEE  staff  1694 27 Maj  2015 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1167 16 Aug  2014 LICENSE
+-rw-r--r--  1 JLEE  staff  4886 26 Maj  2015 README.md
+-rw-r--r--  1 JLEE  staff  3686 26 Maj  2015 index.js
+-rw-r--r--  1 JLEE  staff  1976 28 Mar 09:11 package.json
+./sapo/node_modules/debug
+total 144
+-rw-r--r--  1 JLEE  staff     46 15 Jun  2017 .coveralls.yml
+-rw-r--r--  1 JLEE  staff    180 22 Sep  2017 .eslintrc
+-rw-r--r--  1 JLEE  staff     72 15 Jun  2017 .npmignore
+-rw-r--r--  1 JLEE  staff    140 22 Sep  2017 .travis.yml
+-rw-r--r--  1 JLEE  staff  11707 22 Sep  2017 CHANGELOG.md
+-rw-r--r--  1 JLEE  staff   1107 15 Jun  2017 LICENSE
+-rw-r--r--  1 JLEE  staff   1059 22 Sep  2017 Makefile
+-rw-r--r--  1 JLEE  staff  17918 22 Sep  2017 README.md
+-rw-r--r--  1 JLEE  staff    321 22 Sep  2017 component.json
+-rw-r--r--  1 JLEE  staff   1736 15 Jun  2017 karma.conf.js
+-rw-r--r--  1 JLEE  staff     40 15 Jun  2017 node.js
+-rw-r--r--  1 JLEE  staff   2211 28 Mar 09:11 package.json
+drwxr-xr-x  7 JLEE  staff    224 28 Mar 09:11 src
+./sapo/node_modules/debug/src
+total 64
+-rw-r--r--  1 JLEE  staff  4734 22 Sep  2017 browser.js
+-rw-r--r--  1 JLEE  staff  4394 22 Sep  2017 debug.js
+-rw-r--r--  1 JLEE  staff   263 22 Sep  2017 index.js
+-rw-r--r--  1 JLEE  staff   373 21 Sep  2017 inspector-log.js
+-rw-r--r--  1 JLEE  staff  6015 22 Sep  2017 node.js
+./sapo/node_modules/media-typer
+total 48
+-rw-r--r--  1 JLEE  staff   461  8 Sep  2014 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1089  8 Sep  2014 LICENSE
+-rw-r--r--  1 JLEE  staff  2371  8 Sep  2014 README.md
+-rw-r--r--  1 JLEE  staff  6375  8 Sep  2014 index.js
+-rw-r--r--  1 JLEE  staff  1745 28 Mar 09:11 package.json
+./sapo/node_modules/mime-db
+total 392
+-rw-r--r--  1 JLEE  staff    9930 26 Okt  1985 HISTORY.md
+-rw-r--r--  1 JLEE  staff    1099 26 Okt  1985 LICENSE
+-rw-r--r--  1 JLEE  staff    3698 26 Okt  1985 README.md
+-rw-r--r--  1 JLEE  staff  170630 26 Okt  1985 db.json
+-rw-r--r--  1 JLEE  staff     136 26 Okt  1985 index.js
+-rw-r--r--  1 JLEE  staff    2668 28 Mar 09:11 package.json
+./sapo/node_modules/setprototypeof
+total 40
+-rw-r--r--  1 JLEE  staff   727  7 Feb  2016 LICENSE
+-rw-r--r--  1 JLEE  staff   500 14 Sep  2017 README.md
+-rw-r--r--  1 JLEE  staff    93 14 Sep  2017 index.d.ts
+-rw-r--r--  1 JLEE  staff   334 20 Feb  2017 index.js
+-rw-r--r--  1 JLEE  staff  1492 28 Mar 09:11 package.json
+./sapo/public
+total 0
+drwxr-xr-x@ 4 JLEE  staff  128 28 Mar 10:19 img
+drwxr-xr-x  3 JLEE  staff   96 28 Mar 09:12 style
+./sapo/public/style
+total 8
+-rw-r--r--  1 JLEE  staff  2127 28 Mar 13:34 style.css
+./sapo/public/img
+total 272
+-rw-r--r--@ 1 JLEE  staff   23924 28 Mar 09:51 front.jpg
+-rw-r--r--@ 1 JLEE  staff  114318 28 Mar 10:19 sapo.png
+./sapo/doc
+total 120
+-rw-r--r--@ 1 JLEE  staff   6148 28 Mar 13:17 .DS_Store
+-rw-r--r--@ 1 JLEE  staff  49204 28 Mar 13:17 er.pdf
+./sapo/views
+total 0
+drwxr-xr-x  9 JLEE  staff  288 28 Mar 13:29 sapo
+./sapo/views/sapo
+total 56
+-rw-r--r--  1 JLEE  staff  350 28 Mar 13:30 about.ejs
+-rw-r--r--  1 JLEE  staff  178 28 Mar 13:24 footer.ejs
+-rw-r--r--  1 JLEE  staff  633 28 Mar 13:31 header.ejs
+-rw-r--r--  1 JLEE  staff  500 28 Mar 13:35 index.ejs
+-rw-r--r--  1 JLEE  staff  679 28 Mar 11:28 logg.ejs
+-rw-r--r--  1 JLEE  staff  400 28 Mar 12:35 rapport.ejs
+-rw-r--r--  1 JLEE  staff  359 28 Mar 13:32 search.ejs
+./sapo/src
+total 24
+-rw-r--r--  1 JLEE  staff   953 28 Mar 13:22 sapo-terminal.js
+-rw-r--r--  1 JLEE  staff  1106 28 Mar 13:22 sapo.js
+-rw-r--r--  1 JLEE  staff  2165 28 Mar 13:34 terminal.js
+./sapo/sql
+total 136
+-rw-r--r--  1 JLEE  staff  21328 28 Mar 13:41 backup.sql
+-rw-r--r--  1 JLEE  staff   6320 28 Mar 12:53 ddl.sql
+-rw-r--r--  1 JLEE  staff   5505 28 Mar 12:29 dml.sql
+-rw-r--r--  1 JLEE  staff   1257 28 Mar 09:48 insert.sql
+-rw-r--r--@ 1 JLEE  staff     62 28 Mar 09:20 kategori.csv
+-rw-r--r--@ 1 JLEE  staff    817 28 Mar 09:20 logg.csv
+-rw-r--r--@ 1 JLEE  staff    106 28 Mar 09:42 org.csv
+-rw-r--r--@ 1 JLEE  staff    106 28 Mar 09:20 organsation.csv
+-rw-r--r--@ 1 JLEE  staff     93 28 Mar 09:20 person.csv
+-rw-r--r--  1 JLEE  staff    542 28 Mar 09:46 setup.sql

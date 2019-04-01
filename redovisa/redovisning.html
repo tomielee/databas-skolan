@@ -33,9 +33,7 @@
 <a href="#kmom04">Kmom04</a>
 <a href="#kmom05">Kmom05</a>
 <a href="#kmom06">Kmom06</a>
-
-Kmom07-10,
-
+<a href="#kmom10">Kmom10</a>
 
 <section>
 <h2 id="kmom01">Kmom01</h2>
@@ -131,8 +129,35 @@ Klickar ni på ordern kommer ni alltså till eshop/order som är krav 7).</p>
 </section>
 
 <section>
-<h2>Kmom07-10</h2>
+<h2>Kmom10</h2>
 <p>Här är redovisningstexten</p>
+
+<p><b>Tentan</b> hade många delar men jag tyckte det var rimligt. Även om kursen varit mer omfattande så var jag ändå glad över att inte tentan försökte täcka alla delar. Jag hade gjort en preptenta innan så det hjälpte mig att förstå omfattningen och var jag kunde lägga tid. Att helt enkelt bygga upp något från början - även om många delar från de tidigare kursmomenten gick att återanvända. Hade också "tur" att jag dagen innan tentan hade kollat på kmom10 och projektarbetet där det finns ett krav för sök-funktion. Denna satt jag med under hela eftermiddagen och kunde därmed återanvända lösningar till tentan. Vet ej om jag hunnit med annars.</p>
+
+<p><b>Projekt eshop 3</b>.</p>
+
+<p><b>Krav 1</b>.</p>
+<p><b>About </b>Sidan about uppdateras så att informationen om vem som gjort uppgift och delmomenten eshop1, 2, 3. Tabellen visas i terminal- och webbklienten.</p>
+<p><b>Log </b>Missuppfattade först uppgiften så show_log() kan nu filtreras i antingen söksträng eller via antalet loggar.  Den tidigare show_log() ändrades till att show_log(a_num) där a_num är valet av antalet loggar som ska visas. Default = 0 och då visas alla - begränsat till 20. </p>
+<p>Söksträngen är concatinerad med % både före och efter userinput.</p>
+<p><b>Kategorierna </b> Categories är nu uppdaterad klickbart. ID skickas med som get från webbklienten och en ny sorterad produktsida visas. </p>
+<p>Admin - är sidan där du kan editera och deleta produkter. När du edit-product kan du även lägga till fler kategorier. Edit-product kommer alltså skicka in en lista med kategorier. Metoden som hanterar detta är satt på en loop som kallar på edit_product för varje kategori. Själva proceduren är i sin tur satt så att om product + kategori kopplingen redan finns i prod_2_cat så görs inget, annars skapas ett nytt. Jag har dock inte hanterat att radera kategorierier som är ditlagda.</p>
+
+<p><b>Krav 2</b>. Hade inte tänkt att göra denna, men såg att jag eventuellt redan löst ett par krav på denna.</p>
+<p><b>Hantera/visa sin order</b>. Kunderna kan visa CUSTOMERS &gt; ORDERS se sina orders. Här kan kunden se viktiga datum och status för ordern. Därifrån kan kunden klicka på respektive order &gt; VIEW/EDIT och få fram all info enligt krav och välja att beställa (ORDER) delete (DELETE) eller ändra (SHOP SOME MORE). Om ordern är annat än created/updated kan du inte göra något. Dessvärre är ju allt klickbart - men inget händer. Notera att "order-rows" anges som "Number of products".</p>
+<p><b>Lagret</b>. Har inte löst lagerstatus.</p>
+
+<p><b>Övergripande </b> Det är svårt att implementera utveckling då statusen för själva eshopen är något annorlunda än vad den kanske bör. Alltså att ha löst vissa vyer/procedurer på ett sätt skapar mer eller mindre problem senare. Krav 2 där det ska finnas en komplet order med kunddetaljer. Hade jag gjort i eshop1 (?) men så tog jag bort kunddetaljerna för att jag tänkte om kunden själv klickat sig in så vet den nog sitt namn, adress osv. Tog alltså bort det för att nu i eshop3 lägga till det igen. </p>
+<p>Det var helt klart rimligt att denna del av kursen var optionell. Då det också av anledningar nämnda ovan, blir svårare och svårare att utveckla. Inte för att uppgifterna blir svårare utan för att koden helt enkelt är fel från början. Tiden att skriva den nya koden för de nya kraven är en del, men ju längre kursen gick desto mer blev det att "jaga felen bakåt". Vilket i sin tur såklart är lärorikt i sig. Men det hjälper en inte att bli klar.</p>
+
+<p><b>Om kursen.</b> Det har väl redan påtalats att kursen varit massiv. Och att det varit väldigt många delar. Har tidigare redovisningar också poängterat i att allt blir lika viktigt och lika svårt - till en början. Nu såhär i slutet kan jag ju övergripande prioritera och därmed strukturera koden bättre.</p>
+<p> Kanske skulle kursen kompletteras med korta videos som förklarar sql koden? Som ett komplement/ersättning till övningarna. Övningarna i sin tur kanske skulle vara mer av övningar - med förklarande videos för att ge koden en viss utvecklingschans? Noterade att flera skrev "det är bara att kopiera koden" i chatten. Vilket skulle ha varit bra för mig att göra då det inte blivit lika mycket free-styleande och huvudbry för er lärare som rättar...</p>
+<p>Jättesvår kurs! Många delar. Har lagt mer tid på denna kurs än någon annan. Och även om resulterande kod är rörig och på många sätt kunde göras bättre, så kan jag ju se att det kan göras bättre och det är ju bra. Det blir ändå en 5:a. Något för mycket material - kanske kunde webbklienten vara optionell eller en del av kursen likt FLASK i oopython? Kanske hade det då getts mer tid till att utveckla SQLkoden? Optimera, felsöka, joina, skriva fler funktioner. Men det kanske å andra sidan är för avancerat. </p>
+
+
+
+<a href="top">Top</a>
+
 </section>
 
 <footer>

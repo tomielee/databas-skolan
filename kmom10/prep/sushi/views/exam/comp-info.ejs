@@ -1,0 +1,27 @@
+<%- include("header", {title: title}); %>
+<main>
+    <h1>Information om <%= sc[0].compname %></h1>
+
+
+<h3>Information: </h3><%= sc[0].compinfo_long %>
+<h3>När: <%= sc[0].compdate %></h3>
+
+<h2>Och här är rätterna som tävlade!</h2>
+<table>
+    <tr>
+        <th>Name of the sushi</th>
+        <th>Description</th>
+        <th>Created</th>
+    </tr>
+
+<%for (const s of sc) { %>
+    <tr>
+        <td><%= s.sushiname%></td>
+        <td><%= s.sushiinfo_long%> <img class="thumbnail-left" src="/img/<%= s.picture%>"</td>
+        <td><%= s.created%></td>
+    </tr>
+<% }; %>
+</table>
+
+</main>
+<%- include("footer"); %>

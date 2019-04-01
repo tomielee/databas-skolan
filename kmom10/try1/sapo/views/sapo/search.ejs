@@ -1,0 +1,16 @@
+<%- include("header", {title: title}); %>
+<main>
+    <h1><%= headline %></h1>
+
+    <p><%= info %></p>
+
+<form method="post" action="/sapo/search">
+    <input type="text" name="search" placeholder="Skriv in det du söker efter här"></input>
+<br>
+<br>
+<button type="submit" name="go" value="search">
+    SÖK
+</button>
+</form>
+</main>
+<%- include("footer"); %>

@@ -1,0 +1,20 @@
+20190328090207
+.
+total 32
+drwxr-xr-x  3 JLEE  staff    96 28 Mar 09:02 .dbwebb
+-rw-r--r--  1 JLEE  staff  9261 28 Mar 09:02 INSTRUKTION.md
+-rw-r--r--  1 JLEE  staff  3893 28 Mar 09:02 README_FIRST.md
+./.dbwebb
+total 0
+drwxr-xr-x  5 JLEE  staff  160 28 Mar 09:02 exam
+./.dbwebb/exam
+total 8
+drwxr-xr-x  3 JLEE  staff  96 28 Mar 09:02 file
+-rw-r--r--  1 JLEE  staff  35 28 Mar 09:02 id.md
+drwxr-xr-x  3 JLEE  staff  96 28 Mar 09:02 receipt
+./.dbwebb/exam/file
+total 8
+-rw-r--r--  1 JLEE  staff  458 28 Mar 09:02 20190328090207.txt
+./.dbwebb/exam/receipt
+total 8
+-rw-r--r--  1 JLEE  staff  574 28 Mar 09:02 20190328080207.md

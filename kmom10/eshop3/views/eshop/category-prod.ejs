@@ -1,0 +1,33 @@
+<%- include("header", {title: title}); %>
+
+<main>
+<h1>Products in category: <u><%= cat[0].cat %></u></h1>
+
+<table>
+    <tr>
+        <th> Prod.ID </th>
+        <th> Title </th>
+        <th> Info </th>
+        <th> Price </th>
+        <th> In stock </th>
+        <th> In categories </th>
+    </tr>
+
+<%
+    for (const p of prod) { %>
+        <tr>
+            <td><%= p.id %></td>
+            <td><%= p.title %></td>
+            <td><%= p.info %></td>
+            <td><%= p.price %></td>
+            <td><%= p.items %></td>
+            <td><%= p.categories %></td>
+        </tr>
+
+<%    }; %>
+
+</table>
+
+
+</main>
+<%- include("footer"); %>

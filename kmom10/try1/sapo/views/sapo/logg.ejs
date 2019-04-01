@@ -1,0 +1,41 @@
+<%- include("header", {title: title}); %>
+<main>
+
+    <h1><%= headline %></h1>
+
+    <p><%= info %></p>
+
+<table>
+    <th>Loggid</th>
+    <th>Kategorityp</th>
+    <th>Nivå</th>
+
+    <th>Org.id</th>
+    <th>Organisationsnamn</th>
+
+    <th>Pers.id</th>
+    <th>Personnamn</th>
+
+    <th>Vad</th>
+    <tr>
+<% for (const l of logg) {  %>
+        <td><%= l.loggid %></td>
+        <td><%= l.kategorityp %></td>
+        <td><%= l.niva %></td>
+        <td><%= l.orgid %></td>
+        <td><%= l.orgnamn %></td>
+        <td><%= l.personid%></td>
+        <td><%= l.namn %></td>
+        <td><%= l.vad%></td>
+
+    </tr>
+<% }; %>
+
+<br>
+<br>
+<br>
+<br>
+</table>
+
+</main>
+<%- include("footer"); %>

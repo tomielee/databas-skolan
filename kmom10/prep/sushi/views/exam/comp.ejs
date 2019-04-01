@@ -1,0 +1,29 @@
+<%- include("header", {title: title}); %>
+<main>
+    <h1>En japansk smakresa ordnar tävlingar också!</h1>
+<p>Nedan hittar du våra tävlingar</p>
+<table>
+    <tr>
+        <th>Name of the competition</th>
+        <th>Description</th>
+        <th>When</th>
+        <th>More</th>
+    </tr>
+
+<%for (const c of comp) { %>
+    <tr>
+        <td><a href="comp-info/<%= c.id%>"><%= c.compname%></a></td>
+        <td><%= c.info%></td>
+        <td class="date"><%= c.compdate%></td>
+        <td>
+            <button>
+                <a href="comp-info/<%= c.id%>">
+            info</a>
+                </button>
+        </td>
+    </tr>
+<% }; %>
+</table>
+
+</main>
+<%- include("footer"); %>

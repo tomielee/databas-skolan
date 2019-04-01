@@ -1,0 +1,28 @@
+<%- include("header", {title: title}); %>
+<main>
+
+    <h1><%= headline %></h1>
+
+    <p><%= info %></p>
+
+<table>
+    <th>Namn</th>
+    <th>Antal</th>
+    <th>Organisation</th>
+    <tr>
+<% for (const r of res) {  %>
+        <td><%= r.Namn %></td>
+        <td><%= r.Antal %></td>
+        <td><%= r.Organsation %></td>
+
+    </tr>
+<% }; %>
+
+<br>
+<br>
+<br>
+<br>
+</table>
+
+</main>
+<%- include("footer"); %>

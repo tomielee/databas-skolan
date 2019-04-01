@@ -1,0 +1,40 @@
+<%- include("header", {title: title}); %>
+
+<main>
+<h1>ADD A PRODUCT</h1>
+
+<p>Create a product</p>
+<p>	id VARCHAR(10),
+    title CHAR(100),
+    info VARCHAR(300),
+    price FLOAT,
+</p>
+
+<form method="post">
+    <fieldset>
+        <legend>ADD PRODUCT </legend>
+
+        <label for="id">Id</label>
+        <input id="id" type="text" name="id">
+<br>
+        <label for="title">Title</label>
+        <input id="title" type="text" name="title">
+<br>
+        <label for="info">Info</label>
+        <input id="info" type="text" name="info">
+<br>
+        <label for="price">Price</label>
+        <input id="price" type="number" name="price">
+<br>
+<br>
+<br>
+<br>
+        <input type="submit" name="doit" value="ADD PRODUCT">
+
+
+    </fieldset>
+</form>
+
+
+</main>
+<%- include("footer"); %>

@@ -1,0 +1,27 @@
+<%- include("header", {title: title}); %>
+
+<main>
+<h1>Categories</h1>
+
+<p>Here are the available categories in the shop</p>
+<p>Not all of the categories got products though </p>
+
+<table>
+    <tr>
+        <th>Categories</th>
+
+    </tr>
+<% for (var i = 0; i < res.length; i ++) { %>
+    <tr>
+        <td>
+            <a href="category-prod/<%= res[i].id %>"><%= res[i].cat %>
+            </a>
+        </td>
+    </tr>
+<% }; %>
+
+</table>
+
+
+</main>
+<%- include("footer"); %>

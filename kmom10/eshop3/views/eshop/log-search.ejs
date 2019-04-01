@@ -1,0 +1,49 @@
+<%- include("header", {title: title}); %>
+<main>
+    <h1>Log</h1>
+
+<p>Search result for <b>"<%= search %>"</b></p>
+<table>
+    <th>lognum</th>
+    <th>id of the changed object</th>
+    <th>when</th>
+<th>what</th>
+<th>title</th>
+<th>info</th>
+<th>price</th>
+    <tr>
+<% for (const l of log) {  %>
+        <td><%= l.log %></td>
+        <td><%= l.id %></td>
+        <td><%= l.when %></td>
+        <td><%= l.what %></td>
+        <td><%= l.title %></td>
+        <td><%= l.info %></td>
+        <td><%= l.price %></td>
+    </tr>
+<% }; %>
+
+<form method="post" action="/eshop/log-sorted">
+</table>
+<br>
+<br>
+<select type="number" name="num">
+    <option value="0">show no of rows</option>
+    <% for (x = 1; x <= log[0].log; x++) { %>
+    <option>
+        <%= x; %>
+    </option>
+    <% }; %>
+</select>
+
+
+
+<button type="submit" name="sort" value="SORT">
+    SORT
+</button>
+<br>
+<br>
+<br>
+<a href="/eshop/log/0">Show all</a>
+</main>
+<%- include("footer"); %>

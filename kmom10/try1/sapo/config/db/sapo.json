@@ -1,0 +1,7 @@
+{
+    "host": "localhost",
+    "user": "dbwebb",
+    "password": "password",
+    "database": "sapo",
+    "multipleStatements": true
+}

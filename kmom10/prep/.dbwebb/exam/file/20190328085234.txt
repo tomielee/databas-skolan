@@ -1,0 +1,636 @@
+20190328085234
+.
+total 56
+drwxr-xr-x   3 JLEE  staff    96 26 Mar 09:59 .dbwebb
+-rw-r--r--   1 JLEE  staff  6375 28 Mar 08:49 INSTRUKTION_2018-03-21_upplevelse.md
+-rw-r--r--   1 JLEE  staff  7468 28 Mar 08:49 INSTRUKTION_2018-05-31_det-stora-slaget-om-tartan.md
+-rw-r--r--   1 JLEE  staff  7764 28 Mar 08:49 INSTRUKTION_2019-08-31_en-japansk-smakresa.md
+-rw-r--r--   1 JLEE  staff  3852 28 Mar 08:49 README_FIRST.md
+drwxr-xr-x  15 JLEE  staff   480 26 Mar 12:31 sushi
+./.dbwebb
+total 0
+drwxr-xr-x  5 JLEE  staff  160 28 Mar 08:49 exam
+./.dbwebb/exam
+total 8
+drwxr-xr-x  7 JLEE  staff  224 28 Mar 08:52 file
+-rw-r--r--  1 JLEE  staff   35 28 Mar 08:49 id.md
+drwxr-xr-x  7 JLEE  staff  224 28 Mar 08:52 receipt
+./.dbwebb/exam/file
+total 208
+-rw-r--r--  1 JLEE  staff    833 26 Mar 09:59 20190326095908.txt
+-rw-r--r--  1 JLEE  staff  28682 28 Mar 08:49 20190328084900.txt
+-rw-r--r--  1 JLEE  staff  28813 28 Mar 08:50 20190328085031.txt
+-rw-r--r--  1 JLEE  staff  28941 28 Mar 08:52 20190328085204.txt
+-rw-r--r--  1 JLEE  staff    729 28 Mar 08:52 20190328085234.txt
+./.dbwebb/exam/receipt
+total 40
+-rw-r--r--  1 JLEE  staff  582 26 Mar 09:59 20190326085908.md
+-rw-r--r--  1 JLEE  staff  664 28 Mar 08:49 20190328074900.md
+-rw-r--r--  1 JLEE  staff  741 28 Mar 08:52 20190328075204.md
+-rw-r--r--@ 1 JLEE  staff  664 28 Mar 08:50 20190328085030.md
+-rw-r--r--@ 1 JLEE  staff  741 28 Mar 08:52 20190328085234.md
+./sushi
+total 88
+-rw-r--r--   1 JLEE  staff    930 26 Mar 12:41 cli.js
+drwxr-xr-x   3 JLEE  staff     96 26 Mar 10:43 config
+-rw-r--r--   1 JLEE  staff   1444 26 Mar 11:17 index.js
+drwxr-xr-x   3 JLEE  staff     96 26 Mar 10:44 middleware
+drwxr-xr-x  52 JLEE  staff   1664 26 Mar 10:45 node_modules
+-rw-r--r--   1 JLEE  staff  13328 26 Mar 11:01 package-lock.json
+-rw-r--r--   1 JLEE  staff  13328 26 Mar 11:01 package-lock0.json
+-rw-r--r--   1 JLEE  staff    306 26 Mar 11:01 package.json
+drwxr-xr-x@  5 JLEE  staff    160 26 Mar 10:51 public
+drwxr-xr-x   4 JLEE  staff    128 26 Mar 11:16 route
+drwxr-xr-x  11 JLEE  staff    352 28 Mar 08:44 sql
+drwxr-xr-x   4 JLEE  staff    128 26 Mar 12:41 src
+drwxr-xr-x   4 JLEE  staff    128 26 Mar 10:54 views
+./sushi/middleware
+total 8
+-rw-r--r--  1 JLEE  staff  568 26 Mar 10:47 index.js
+./sushi/route
+total 16
+-rw-r--r--  1 JLEE  staff  1480 26 Mar 14:33 exam.js
+-rw-r--r--  1 JLEE  staff   350 26 Mar 11:14 index.js
+./sushi/config
+total 0
+drwxr-xr-x  3 JLEE  staff  96 26 Mar 10:43 db
+./sushi/config/db
+total 8
+-rw-r--r--  1 JLEE  staff  134 26 Mar 12:05 exam.json
+./sushi/node_modules
+total 0
+drwxr-xr-x   3 JLEE  staff   96 26 Mar 10:45 .bin
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 accepts
+drwxr-xr-x   6 JLEE  staff  192 26 Mar 10:45 array-flatten
+drwxr-xr-x   8 JLEE  staff  256 26 Mar 10:45 body-parser
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 bytes
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 content-disposition
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 content-type
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 cookie
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 cookie-signature
+drwxr-xr-x  15 JLEE  staff  480 26 Mar 10:45 debug
+drwxr-xr-x   8 JLEE  staff  256 26 Mar 10:45 depd
+drwxr-xr-x   6 JLEE  staff  192 26 Mar 10:45 destroy
+drwxr-xr-x   6 JLEE  staff  192 26 Mar 10:45 ee-first
+drwxr-xr-x   9 JLEE  staff  288 26 Mar 10:45 ejs
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 encodeurl
+drwxr-xr-x   6 JLEE  staff  192 26 Mar 10:45 escape-html
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 etag
+drwxr-xr-x   8 JLEE  staff  256 26 Mar 10:45 express
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 finalhandler
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 forwarded
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 fresh
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 http-errors
+drwxr-xr-x   9 JLEE  staff  288 26 Mar 10:45 iconv-lite
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 inherits
+drwxr-xr-x   6 JLEE  staff  192 26 Mar 10:45 ipaddr.js
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 media-typer
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 merge-descriptors
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 methods
+drwxr-xr-x   9 JLEE  staff  288 26 Mar 10:45 mime
+drwxr-xr-x   8 JLEE  staff  256 26 Mar 10:45 mime-db
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 mime-types
+drwxr-xr-x   6 JLEE  staff  192 26 Mar 10:45 ms
+drwxr-xr-x   8 JLEE  staff  256 26 Mar 10:45 negotiator
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 on-finished
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 parseurl
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 path-to-regexp
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 proxy-addr
+drwxr-xr-x  12 JLEE  staff  384 26 Mar 10:45 qs
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 range-parser
+drwxr-xr-x   8 JLEE  staff  256 26 Mar 10:45 raw-body
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 safe-buffer
+drwxr-xr-x   9 JLEE  staff  288 26 Mar 10:45 safer-buffer
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 send
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 serve-static
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 setprototypeof
+drwxr-xr-x   8 JLEE  staff  256 26 Mar 10:45 statuses
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 type-is
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 unpipe
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 utils-merge
+drwxr-xr-x   7 JLEE  staff  224 26 Mar 10:45 vary
+./sushi/node_modules/destroy
+total 32
+-rw-r--r--  1 JLEE  staff  1099 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  2185 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  1043 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  1804 26 Mar 10:45 package.json
+./sushi/node_modules/.bin
+total 8
+-rw-r--r--  1 JLEE  staff  149 26 Mar 10:45 mime
+./sushi/node_modules/content-type
+total 48
+-rw-r--r--  1 JLEE  staff   436 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1089 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  2796 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  4809 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  2179 26 Mar 10:45 package.json
+./sushi/node_modules/ms
+total 32
+-rw-r--r--  1 JLEE  staff  2764 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  1077 26 Mar 10:45 license.md
+-rw-r--r--  1 JLEE  staff  1591 26 Mar 10:45 package.json
+-rw-r--r--  1 JLEE  staff  1721 26 Mar 10:45 readme.md
+./sushi/node_modules/content-disposition
+total 64
+-rw-r--r--  1 JLEE  staff    866 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff   1089 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff   5148 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  10399 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff   2135 26 Mar 10:45 package.json
+./sushi/node_modules/methods
+total 40
+-rw-r--r--  1 JLEE  staff   427 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1180 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  1694 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  1040 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  2029 26 Mar 10:45 package.json
+./sushi/node_modules/proxy-addr
+total 56
+-rw-r--r--  1 JLEE  staff  2737 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1094 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  4498 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  5977 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  2248 26 Mar 10:45 package.json
+./sushi/node_modules/depd
+total 72
+-rw-r--r--  1 JLEE  staff   2060 26 Mar 10:45 History.md
+-rw-r--r--  1 JLEE  staff   1094 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  10025 26 Mar 10:45 Readme.md
+-rw-r--r--  1 JLEE  staff  10669 26 Mar 10:45 index.js
+drwxr-xr-x  4 JLEE  staff    128 26 Mar 10:45 lib
+-rw-r--r--  1 JLEE  staff   2149 26 Mar 10:45 package.json
+./sushi/node_modules/depd/lib
+total 0
+drwxr-xr-x  3 JLEE  staff   96 26 Mar 10:45 browser
+drwxr-xr-x  5 JLEE  staff  160 26 Mar 10:45 compat
+./sushi/node_modules/depd/lib/compat
+total 24
+-rw-r--r--  1 JLEE  staff  2229 26 Mar 10:45 callsite-tostring.js
+-rw-r--r--  1 JLEE  staff   338 26 Mar 10:45 event-listener-count.js
+-rw-r--r--  1 JLEE  staff  1421 26 Mar 10:45 index.js
+./sushi/node_modules/depd/lib/browser
+total 8
+-rw-r--r--  1 JLEE  staff  1512 26 Mar 10:45 index.js
+./sushi/node_modules/range-parser
+total 40
+-rw-r--r--  1 JLEE  staff   832 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1178 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  1996 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  2805 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  2275 26 Mar 10:45 package.json
+./sushi/node_modules/bytes
+total 40
+-rw-r--r--  1 JLEE  staff  1509 26 Mar 10:45 History.md
+-rw-r--r--  1 JLEE  staff  1153 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  3888 26 Mar 10:45 Readme.md
+-rw-r--r--  1 JLEE  staff  3390 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  1932 26 Mar 10:45 package.json
+./sushi/node_modules/express
+total 256
+-rw-r--r--   1 JLEE  staff  107836 26 Mar 10:45 History.md
+-rw-r--r--   1 JLEE  staff    1249 26 Mar 10:45 LICENSE
+-rw-r--r--   1 JLEE  staff    4777 26 Mar 10:45 Readme.md
+-rw-r--r--   1 JLEE  staff     224 26 Mar 10:45 index.js
+drwxr-xr-x  10 JLEE  staff     320 26 Mar 10:45 lib
+-rw-r--r--   1 JLEE  staff    4029 26 Mar 10:45 package.json
+./sushi/node_modules/express/lib
+total 152
+-rw-r--r--  1 JLEE  staff  14270 26 Mar 10:45 application.js
+-rw-r--r--  1 JLEE  staff   2349 26 Mar 10:45 express.js
+drwxr-xr-x  4 JLEE  staff    128 26 Mar 10:45 middleware
+-rw-r--r--  1 JLEE  staff  12298 26 Mar 10:45 request.js
+-rw-r--r--  1 JLEE  staff  26964 26 Mar 10:45 response.js
+drwxr-xr-x  5 JLEE  staff    160 26 Mar 10:45 router
+-rw-r--r--  1 JLEE  staff   5972 26 Mar 10:45 utils.js
+-rw-r--r--  1 JLEE  staff   3326 26 Mar 10:45 view.js
+./sushi/node_modules/express/lib/middleware
+total 16
+-rw-r--r--  1 JLEE  staff  853 26 Mar 10:45 init.js
+-rw-r--r--  1 JLEE  staff  885 26 Mar 10:45 query.js
+./sushi/node_modules/express/lib/router
+total 56
+-rw-r--r--  1 JLEE  staff  14883 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff   3296 26 Mar 10:45 layer.js
+-rw-r--r--  1 JLEE  staff   4149 26 Mar 10:45 route.js
+./sushi/node_modules/encodeurl
+total 40
+-rw-r--r--  1 JLEE  staff   238 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1089 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  3855 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  1586 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  2150 26 Mar 10:45 package.json
+./sushi/node_modules/merge-descriptors
+total 40
+-rw-r--r--  1 JLEE  staff   363 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1167 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  1213 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  1215 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  2010 26 Mar 10:45 package.json
+./sushi/node_modules/array-flatten
+total 32
+-rw-r--r--  1 JLEE  staff  1103 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  1245 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  1195 26 Mar 10:45 array-flatten.js
+-rw-r--r--  1 JLEE  staff  1678 26 Mar 10:45 package.json
+./sushi/node_modules/safe-buffer
+total 88
+-rw-r--r--  1 JLEE  staff   1081 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  19555 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff   8738 26 Mar 10:45 index.d.ts
+-rw-r--r--  1 JLEE  staff   1529 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff   1626 26 Mar 10:45 package.json
+./sushi/node_modules/ee-first
+total 32
+-rw-r--r--  1 JLEE  staff  1099 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  2617 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  1684 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  1813 26 Mar 10:45 package.json
+./sushi/node_modules/inherits
+total 40
+-rw-r--r--  1 JLEE  staff   749 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  1625 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff   192 26 Mar 10:45 inherits.js
+-rw-r--r--  1 JLEE  staff   672 26 Mar 10:45 inherits_browser.js
+-rw-r--r--  1 JLEE  staff  1519 26 Mar 10:45 package.json
+./sushi/node_modules/iconv-lite
+total 56
+-rw-r--r--   1 JLEE  staff   268 26 Mar 10:45 .travis.yml
+-rw-r--r--   1 JLEE  staff  4268 26 Mar 10:45 Changelog.md
+-rw-r--r--   1 JLEE  staff  1064 26 Mar 10:45 LICENSE
+-rw-r--r--   1 JLEE  staff  6534 26 Mar 10:45 README.md
+drwxr-xr-x  12 JLEE  staff   384 26 Mar 10:45 encodings
+drwxr-xr-x   7 JLEE  staff   224 26 Mar 10:45 lib
+-rw-r--r--   1 JLEE  staff  2012 26 Mar 10:45 package.json
+./sushi/node_modules/iconv-lite/encodings
+total 224
+-rw-r--r--   1 JLEE  staff  21415 26 Mar 10:45 dbcs-codec.js
+-rw-r--r--   1 JLEE  staff   8291 26 Mar 10:45 dbcs-data.js
+-rw-r--r--   1 JLEE  staff    710 26 Mar 10:45 index.js
+-rw-r--r--   1 JLEE  staff   6115 26 Mar 10:45 internal.js
+-rw-r--r--   1 JLEE  staff   2199 26 Mar 10:45 sbcs-codec.js
+-rw-r--r--   1 JLEE  staff  32034 26 Mar 10:45 sbcs-data-generated.js
+-rw-r--r--   1 JLEE  staff   4321 26 Mar 10:45 sbcs-data.js
+drwxr-xr-x  10 JLEE  staff    320 26 Mar 10:45 tables
+-rw-r--r--   1 JLEE  staff   5011 26 Mar 10:45 utf16.js
+-rw-r--r--   1 JLEE  staff   9215 26 Mar 10:45 utf7.js
+./sushi/node_modules/iconv-lite/encodings/tables
+total 456
+-rw-r--r--  1 JLEE  staff  17717 26 Mar 10:45 big5-added.json
+-rw-r--r--  1 JLEE  staff  47320 26 Mar 10:45 cp936.json
+-rw-r--r--  1 JLEE  staff  38122 26 Mar 10:45 cp949.json
+-rw-r--r--  1 JLEE  staff  42356 26 Mar 10:45 cp950.json
+-rw-r--r--  1 JLEE  staff  41064 26 Mar 10:45 eucjp.json
+-rw-r--r--  1 JLEE  staff   2216 26 Mar 10:45 gb18030-ranges.json
+-rw-r--r--  1 JLEE  staff   1227 26 Mar 10:45 gbk-added.json
+-rw-r--r--  1 JLEE  staff  23782 26 Mar 10:45 shiftjis.json
+./sushi/node_modules/iconv-lite/lib
+total 64
+-rw-r--r--  1 JLEE  staff  1109 26 Mar 10:45 bom-handling.js
+-rw-r--r--  1 JLEE  staff  8701 26 Mar 10:45 extend-node.js
+-rw-r--r--  1 JLEE  staff   982 26 Mar 10:45 index.d.ts
+-rw-r--r--  1 JLEE  staff  5123 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  3387 26 Mar 10:45 streams.js
+./sushi/node_modules/fresh
+total 40
+-rw-r--r--  1 JLEE  staff  1500 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1174 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  3374 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  2711 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  2419 26 Mar 10:45 package.json
+./sushi/node_modules/qs
+total 104
+-rw-r--r--  1 JLEE  staff    399 26 Mar 10:45 .editorconfig
+-rw-r--r--  1 JLEE  staff      5 26 Mar 10:45 .eslintignore
+-rw-r--r--  1 JLEE  staff    554 26 Mar 10:45 .eslintrc
+-rw-r--r--  1 JLEE  staff  12742 26 Mar 10:45 CHANGELOG.md
+-rw-r--r--  1 JLEE  staff   1654 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  14636 26 Mar 10:45 README.md
+drwxr-xr-x  3 JLEE  staff     96 26 Mar 10:45 dist
+drwxr-xr-x  7 JLEE  staff    224 26 Mar 10:45 lib
+-rw-r--r--  1 JLEE  staff   2262 26 Mar 10:45 package.json
+drwxr-xr-x  7 JLEE  staff    224 26 Mar 10:45 test
+./sushi/node_modules/qs/test
+total 120
+-rw-r--r--  1 JLEE  staff    348 26 Mar 10:45 .eslintrc
+-rw-r--r--  1 JLEE  staff     81 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  22265 26 Mar 10:45 parse.js
+-rw-r--r--  1 JLEE  staff  20783 26 Mar 10:45 stringify.js
+-rw-r--r--  1 JLEE  staff   1432 26 Mar 10:45 utils.js
+./sushi/node_modules/qs/dist
+total 40
+-rw-r--r--  1 JLEE  staff  19393 26 Mar 10:45 qs.js
+./sushi/node_modules/qs/lib
+total 64
+-rw-r--r--  1 JLEE  staff   387 26 Mar 10:45 formats.js
+-rw-r--r--  1 JLEE  staff   211 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  5817 26 Mar 10:45 parse.js
+-rw-r--r--  1 JLEE  staff  6288 26 Mar 10:45 stringify.js
+-rw-r--r--  1 JLEE  staff  5554 26 Mar 10:45 utils.js
+./sushi/node_modules/path-to-regexp
+total 40
+-rw-r--r--  1 JLEE  staff   694 26 Mar 10:45 History.md
+-rw-r--r--  1 JLEE  staff  1103 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  1102 26 Mar 10:45 Readme.md
+-rw-r--r--  1 JLEE  staff  3328 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  1515 26 Mar 10:45 package.json
+./sushi/node_modules/safer-buffer
+total 120
+-rw-r--r--  1 JLEE  staff   1094 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  12794 26 Mar 10:45 Porting-Buffer.md
+-rw-r--r--  1 JLEE  staff   8261 26 Mar 10:45 Readme.md
+-rw-r--r--  1 JLEE  staff   1483 26 Mar 10:45 dangerous.js
+-rw-r--r--  1 JLEE  staff   1777 26 Mar 10:45 package.json
+-rw-r--r--  1 JLEE  staff   2110 26 Mar 10:45 safer.js
+-rw-r--r--  1 JLEE  staff  15735 26 Mar 10:45 tests.js
+./sushi/node_modules/ejs
+total 200
+-rw-r--r--  1 JLEE  staff   1901 26 Mar 10:45 Jakefile
+-rw-r--r--  1 JLEE  staff  11358 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff   9455 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  44325 26 Mar 10:45 ejs.js
+-rw-r--r--  1 JLEE  staff  21483 26 Mar 10:45 ejs.min.js
+drwxr-xr-x  4 JLEE  staff    128 26 Mar 10:45 lib
+-rw-r--r--  1 JLEE  staff   1959 26 Mar 10:45 package.json
+./sushi/node_modules/ejs/lib
+total 64
+-rw-r--r--  1 JLEE  staff  26594 26 Mar 10:45 ejs.js
+-rw-r--r--  1 JLEE  staff   3803 26 Mar 10:45 utils.js
+./sushi/node_modules/mime-types
+total 48
+-rw-r--r--  1 JLEE  staff  6110 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1167 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  3494 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  3663 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  2298 26 Mar 10:45 package.json
+./sushi/node_modules/type-is
+total 64
+-rw-r--r--  1 JLEE  staff  4626 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1172 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  4161 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  5525 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  2374 26 Mar 10:45 package.json
+./sushi/node_modules/vary
+total 40
+-rw-r--r--  1 JLEE  staff   792 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1094 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  2716 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  2930 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  2154 26 Mar 10:45 package.json
+./sushi/node_modules/unpipe
+total 40
+-rw-r--r--  1 JLEE  staff    59 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1114 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  1250 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  1118 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  1763 26 Mar 10:45 package.json
+./sushi/node_modules/raw-body
+total 72
+-rw-r--r--  1 JLEE  staff  5066 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1181 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  6339 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  2286 26 Mar 10:45 index.d.ts
+-rw-r--r--  1 JLEE  staff  6059 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  2630 26 Mar 10:45 package.json
+./sushi/node_modules/http-errors
+total 56
+-rw-r--r--  1 JLEE  staff  2819 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1168 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  4803 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  5758 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  2423 26 Mar 10:45 package.json
+./sushi/node_modules/accepts
+total 64
+-rw-r--r--  1 JLEE  staff  4736 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1167 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  4130 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  5252 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  2300 26 Mar 10:45 package.json
+./sushi/node_modules/cookie-signature
+total 40
+-rw-r--r--  1 JLEE  staff    29 26 Mar 10:45 .npmignore
+-rw-r--r--  1 JLEE  staff   695 26 Mar 10:45 History.md
+-rw-r--r--  1 JLEE  staff  1490 26 Mar 10:45 Readme.md
+-rw-r--r--  1 JLEE  staff  1230 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  1548 26 Mar 10:45 package.json
+./sushi/node_modules/forwarded
+total 40
+-rw-r--r--  1 JLEE  staff   306 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1094 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  1637 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  1360 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  2159 26 Mar 10:45 package.json
+./sushi/node_modules/negotiator
+total 48
+-rw-r--r--  1 JLEE  staff  2296 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1177 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  4811 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  3344 26 Mar 10:45 index.js
+drwxr-xr-x  6 JLEE  staff   192 26 Mar 10:45 lib
+-rw-r--r--  1 JLEE  staff  2109 26 Mar 10:45 package.json
+./sushi/node_modules/negotiator/lib
+total 40
+-rw-r--r--  1 JLEE  staff  3082 26 Mar 10:45 charset.js
+-rw-r--r--  1 JLEE  staff  3507 26 Mar 10:45 encoding.js
+-rw-r--r--  1 JLEE  staff  3413 26 Mar 10:45 language.js
+-rw-r--r--  1 JLEE  staff  5358 26 Mar 10:45 mediaType.js
+./sushi/node_modules/body-parser
+total 96
+-rw-r--r--  1 JLEE  staff  14541 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff   1172 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  17188 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff   2656 26 Mar 10:45 index.js
+drwxr-xr-x  4 JLEE  staff    128 26 Mar 10:45 lib
+-rw-r--r--  1 JLEE  staff   2611 26 Mar 10:45 package.json
+./sushi/node_modules/body-parser/lib
+total 8
+-rw-r--r--  1 JLEE  staff  3894 26 Mar 10:45 read.js
+drwxr-xr-x  6 JLEE  staff   192 26 Mar 10:45 types
+./sushi/node_modules/body-parser/lib/types
+total 48
+-rw-r--r--  1 JLEE  staff  4918 26 Mar 10:45 json.js
+-rw-r--r--  1 JLEE  staff  1884 26 Mar 10:45 raw.js
+-rw-r--r--  1 JLEE  staff  2285 26 Mar 10:45 text.js
+-rw-r--r--  1 JLEE  staff  5795 26 Mar 10:45 urlencoded.js
+./sushi/node_modules/utils-merge
+total 40
+-rw-r--r--  1 JLEE  staff    79 26 Mar 10:45 .npmignore
+-rw-r--r--  1 JLEE  staff  1084 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  1319 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff   381 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  1687 26 Mar 10:45 package.json
+./sushi/node_modules/serve-static
+total 72
+-rw-r--r--  1 JLEE  staff  9694 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1189 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  7735 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  4571 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  2274 26 Mar 10:45 package.json
+./sushi/node_modules/mime
+total 104
+-rw-r--r--  1 JLEE  staff   1098 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff   2119 26 Mar 10:45 README.md
+drwxr-xr-x  4 JLEE  staff    128 26 Mar 10:45 build
+-rw-r--r--  1 JLEE  staff    149 26 Mar 10:45 cli.js
+-rw-r--r--  1 JLEE  staff   2726 26 Mar 10:45 mime.js
+-rw-r--r--  1 JLEE  staff   1697 26 Mar 10:45 package.json
+-rw-r--r--  1 JLEE  staff  31541 26 Mar 10:45 types.json
+./sushi/node_modules/mime/build
+total 16
+-rw-r--r--  1 JLEE  staff   231 26 Mar 10:45 build.js
+-rw-r--r--  1 JLEE  staff  2346 26 Mar 10:45 test.js
+./sushi/node_modules/ipaddr.js
+total 56
+-rw-r--r--  1 JLEE  staff  8310 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  9261 26 Mar 10:45 ipaddr.min.js
+drwxr-xr-x  4 JLEE  staff   128 26 Mar 10:45 lib
+-rw-r--r--  1 JLEE  staff  1693 26 Mar 10:45 package.json
+./sushi/node_modules/ipaddr.js/lib
+total 48
+-rw-r--r--  1 JLEE  staff  18182 26 Mar 10:45 ipaddr.js
+-rw-r--r--  1 JLEE  staff   2861 26 Mar 10:45 ipaddr.js.d.ts
+./sushi/node_modules/cookie
+total 56
+-rw-r--r--  1 JLEE  staff  2626 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1175 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  8208 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  3969 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  1846 26 Mar 10:45 package.json
+./sushi/node_modules/escape-html
+total 32
+-rw-r--r--  1 JLEE  staff  1157 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff   707 26 Mar 10:45 Readme.md
+-rw-r--r--  1 JLEE  staff  1362 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  1479 26 Mar 10:45 package.json
+./sushi/node_modules/statuses
+total 48
+-rw-r--r--  1 JLEE  staff   957 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1172 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  3458 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  1797 26 Mar 10:45 codes.json
+-rw-r--r--  1 JLEE  staff  2088 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  2629 26 Mar 10:45 package.json
+./sushi/node_modules/parseurl
+total 40
+-rw-r--r--  1 JLEE  staff   954 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1173 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  3639 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  2774 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  2266 26 Mar 10:45 package.json
+./sushi/node_modules/etag
+total 48
+-rw-r--r--  1 JLEE  staff  1732 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1094 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  4198 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  2479 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  2302 26 Mar 10:45 package.json
+./sushi/node_modules/send
+total 112
+-rw-r--r--  1 JLEE  staff  11568 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff   1128 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff   8878 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  23318 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff   2823 26 Mar 10:45 package.json
+./sushi/node_modules/finalhandler
+total 48
+-rw-r--r--  1 JLEE  staff  3938 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1119 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  4010 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  6518 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  2410 26 Mar 10:45 package.json
+./sushi/node_modules/on-finished
+total 48
+-rw-r--r--  1 JLEE  staff  1694 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1167 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  4886 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  3686 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  2006 26 Mar 10:45 package.json
+./sushi/node_modules/debug
+total 144
+-rw-r--r--  1 JLEE  staff     46 26 Mar 10:45 .coveralls.yml
+-rw-r--r--  1 JLEE  staff    180 26 Mar 10:45 .eslintrc
+-rw-r--r--  1 JLEE  staff     72 26 Mar 10:45 .npmignore
+-rw-r--r--  1 JLEE  staff    140 26 Mar 10:45 .travis.yml
+-rw-r--r--  1 JLEE  staff  11707 26 Mar 10:45 CHANGELOG.md
+-rw-r--r--  1 JLEE  staff   1107 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff   1059 26 Mar 10:45 Makefile
+-rw-r--r--  1 JLEE  staff  17918 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff    321 26 Mar 10:45 component.json
+-rw-r--r--  1 JLEE  staff   1736 26 Mar 10:45 karma.conf.js
+-rw-r--r--  1 JLEE  staff     40 26 Mar 10:45 node.js
+-rw-r--r--  1 JLEE  staff   2238 26 Mar 10:45 package.json
+drwxr-xr-x  7 JLEE  staff    224 26 Mar 10:45 src
+./sushi/node_modules/debug/src
+total 64
+-rw-r--r--  1 JLEE  staff  4734 26 Mar 10:45 browser.js
+-rw-r--r--  1 JLEE  staff  4394 26 Mar 10:45 debug.js
+-rw-r--r--  1 JLEE  staff   263 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff   373 26 Mar 10:45 inspector-log.js
+-rw-r--r--  1 JLEE  staff  6015 26 Mar 10:45 node.js
+./sushi/node_modules/media-typer
+total 48
+-rw-r--r--  1 JLEE  staff   461 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff  1089 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff  2371 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  6375 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  1772 26 Mar 10:45 package.json
+./sushi/node_modules/mime-db
+total 392
+-rw-r--r--  1 JLEE  staff    9930 26 Mar 10:45 HISTORY.md
+-rw-r--r--  1 JLEE  staff    1099 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff    3698 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff  170630 26 Mar 10:45 db.json
+-rw-r--r--  1 JLEE  staff     136 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff    2700 26 Mar 10:45 package.json
+./sushi/node_modules/setprototypeof
+total 40
+-rw-r--r--  1 JLEE  staff   727 26 Mar 10:45 LICENSE
+-rw-r--r--  1 JLEE  staff   500 26 Mar 10:45 README.md
+-rw-r--r--  1 JLEE  staff    93 26 Mar 10:45 index.d.ts
+-rw-r--r--  1 JLEE  staff   334 26 Mar 10:45 index.js
+-rw-r--r--  1 JLEE  staff  1519 26 Mar 10:45 package.json
+./sushi/public
+total 72
+-rw-r--r--@ 1 JLEE  staff  35111 26 Mar 10:51 favicon.png
+drwxr-xr-x  9 JLEE  staff    288 26 Mar 14:01 img
+drwxr-xr-x  3 JLEE  staff     96 26 Mar 10:45 style
+./sushi/public/style
+total 8
+-rw-r--r--  1 JLEE  staff  2025 26 Mar 14:47 style.css
+./sushi/public/img
+total 2144
+-rw-r--r--@ 1 JLEE  staff  193312 26 Mar 10:23 1.jpg
+-rw-r--r--@ 1 JLEE  staff  243840 26 Mar 10:24 2.jpg
+-rw-r--r--@ 1 JLEE  staff  128401 26 Mar 10:25 3.jpg
+-rw-r--r--@ 1 JLEE  staff  155492 26 Mar 10:26 4.jpg
+-rw-r--r--@ 1 JLEE  staff  133115 26 Mar 10:26 5.jpg
+-rw-r--r--@ 1 JLEE  staff  148830 26 Mar 14:01 6.jpg
+-rw-r--r--@ 1 JLEE  staff   80529 26 Mar 10:50 bg.gif
+./sushi/views
+total 8
+drwxr-xr-x  9 JLEE  staff  288 26 Mar 14:26 exam
+-rw-r--r--  1 JLEE  staff  248 26 Mar 10:54 index.ejs
+./sushi/views/exam
+total 56
+-rw-r--r--  1 JLEE  staff  361 26 Mar 10:53 about.ejs
+-rw-r--r--  1 JLEE  staff  613 26 Mar 14:59 comp-info.ejs
+-rw-r--r--  1 JLEE  staff  680 26 Mar 14:46 comp.ejs
+-rw-r--r--  1 JLEE  staff  179 26 Mar 12:21 footer.ejs
+-rw-r--r--  1 JLEE  staff  591 26 Mar 13:24 header.ejs
+-rw-r--r--  1 JLEE  staff  270 26 Mar 11:04 index.ejs
+-rw-r--r--  1 JLEE  staff  494 26 Mar 12:15 sushi.ejs
+./sushi/src
+total 16
+-rw-r--r--  1 JLEE  staff  1363 26 Mar 15:27 exam.js
+-rw-r--r--  1 JLEE  staff  2356 26 Mar 15:31 terminal.js
+./sushi/sql
+total 88
+-rw-r--r--  1 JLEE  staff   233 26 Mar 14:01 comp.csv
+-rw-r--r--  1 JLEE  staff   779 26 Mar 14:25 ddl.sql
+-rw-r--r--  1 JLEE  staff  3514 26 Mar 15:45 dml.sql
+-rw-r--r--  1 JLEE  staff  1257 26 Mar 14:04 insert.sql
+-rw-r--r--  1 JLEE  staff   488 26 Mar 14:06 reset.bash
+-rw-r--r--  1 JLEE  staff   661 26 Mar 10:31 setup.sql
+-rw-r--r--@ 1 JLEE  staff  6309 28 Mar 08:44 sushi.csv
+-rw-r--r--@ 1 JLEE  staff    45 26 Mar 14:05 sushi_2_comp.csv
+-rw-r--r--@ 1 JLEE  staff  7962 26 Mar 14:02 sushi_2_comp.ods

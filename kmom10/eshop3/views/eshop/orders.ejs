@@ -1,0 +1,53 @@
+<%- include("header", {title: title}); %>
+
+<main>
+
+<h1>Hi! <%= customer.name %></h1>
+
+<p>These are your orders</p>
+<p>Your customer ID is: <b><%= customer.id %></b>
+
+
+<table>
+    <tr>
+        <th> Order ID</th>
+        <th> Created</th>
+        <th> Updated</th>
+        <th> Ordered</th>
+        <th> Deleted</th>
+        <th> Shipped</th>
+        <th> Status</th>
+
+
+        <th></th>
+    </tr>
+<% for (const order of orders) { %>
+        <tr>
+            <td><%= order.orderid %></td>
+            <td><%= order.created %></td>
+            <td><%= order.updated %></td>
+            <td><%= order.ordered %></td>
+            <td><%= order.deleted %></td>
+            <td><%= order.shipped %></td>
+            <td><%= order.status %></td>
+            <td>
+                <button>
+                    <a href="/eshop/order/<%= order.orderid%>">
+                    VIEW/EDIT</a>
+                </button>
+            </td>
+<%};%>
+        </tr>
+
+</table>
+
+<br>
+<br>
+<button>
+    <a href="/eshop/order-create/<%= customer.id %>">
+CREATE A NEW ORDER</a>
+</button>
+
+
+</main>
+<%- include("footer"); %>

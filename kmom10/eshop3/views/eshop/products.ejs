@@ -1,0 +1,36 @@
+<%- include("header", {title: title}); %>
+
+<main>
+<h1>Products</h1>
+
+<p>This is the avaible products in stock right now.</p>
+
+
+<table>
+    <tr>
+        <th> Prod.ID </th>
+        <th> Title </th>
+        <th> Info </th>
+        <th> Price </th>
+        <th> In stock </th>
+        <th> Categories </th>
+    </tr>
+
+<%
+    for (var i = 0; i < res.length; i ++) { %>
+        <tr>
+            <td><%= res[i].id %></td>
+            <td><%= res[i].title %></td>
+            <td><%= res[i].info %></td>
+            <td><%= res[i].price %></td>
+            <td><%= res[i].items %></td>
+            <td><%= res[i].categories %></td>
+        </tr>
+
+<%    }; %>
+
+</table>
+
+
+</main>
+<%- include("footer"); %>

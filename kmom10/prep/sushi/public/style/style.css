@@ -1,0 +1,150 @@
+/**
+ * Stylesheet.
+ * @author Jennifer Lee jelf18
+ * 2019-03-26
+ */
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 8px auto;
+    background-image: url("/img/bg.gif");
+    background-attachment: fixed;
+    width: 50%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+}
+
+main {
+    padding: 12px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    background-color: #fff;
+    min-height: 500px;
+}
+
+table,
+th,
+td {
+    border: 1px solid #210f0f;
+    border-collapse: collapse;
+    padding: 10px;
+}
+
+/* HEADER */
+
+header {
+    background-color: rgba(255, 255, 255, 0.5);
+    position: relative;
+    margin-top: 0;
+    height: 80px;
+    padding: 10px;
+}
+
+/* NAVBAR */
+
+nav {
+    position: absolute;
+    bottom: 1em;
+    text-transform: uppercase;
+}
+
+/* FOOTER */
+
+footer {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+}
+
+/* H-FONT SETTINGS */
+
+h1 {
+    font-family: 'Crimson Text', serif;
+    font-size: 22px;
+}
+
+h2 {
+    font-family: 'Crimson Text', serif;
+    font-size: 19px;
+}
+
+h3 {
+    font-family: 'Crimson Text', serif;
+    font-size: 15px;
+}
+
+
+
+/* A- LINK */
+
+a:link {
+    color: black;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #ffe5dc;
+    text-decoration: underline line-through;
+}
+
+a:active {
+    color: #ffe5dc;
+    text-decoration: underline line-through;
+}
+
+a:visited {
+    color: black;
+}
+
+.number-right {
+    text-align: right;
+}
+
+/* FORM FORM FORM
+* kolla mer på htmlphp kmom06 css stylesheet
+*/
+
+.form {
+    margin: 5px;
+    width: 80%;
+}
+
+legend {
+    font-size: 20px;
+}
+
+input[type=text] {
+    width: 80%;
+    padding: 5px;
+    margin: 5px;
+}
+
+/*  button
+*/
+
+button {
+    background-color: lightblue;
+    border: none;
+    color: white;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+}
+
+
+/* PICTURE SIZE */
+.thumbnail-left {
+    height: 50px;
+    float: left;
+    padding-top: 1px;
+    padding-right: 10px;
+}
+
+.big-img {
+    height: 200px;
+}

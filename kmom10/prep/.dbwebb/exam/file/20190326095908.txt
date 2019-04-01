@@ -1,0 +1,22 @@
+20190326095908
+.
+total 56
+drwxr-xr-x  3 JLEE  staff    96 26 Mar 09:59 .dbwebb
+-rw-r--r--  1 JLEE  staff  6375 26 Mar 09:59 INSTRUKTION_2018-03-21_upplevelse.md
+-rw-r--r--  1 JLEE  staff  7468 26 Mar 09:59 INSTRUKTION_2018-05-31_det-stora-slaget-om-tartan.md
+-rw-r--r--  1 JLEE  staff  7764 26 Mar 09:59 INSTRUKTION_2019-08-31_en-japansk-smakresa.md
+-rw-r--r--  1 JLEE  staff  3852 26 Mar 09:59 README_FIRST.md
+./.dbwebb
+total 0
+drwxr-xr-x  5 JLEE  staff  160 26 Mar 09:59 exam
+./.dbwebb/exam
+total 8
+drwxr-xr-x  3 JLEE  staff  96 26 Mar 09:59 file
+-rw-r--r--  1 JLEE  staff  35 26 Mar 09:59 id.md
+drwxr-xr-x  3 JLEE  staff  96 26 Mar 09:59 receipt
+./.dbwebb/exam/file
+total 8
+-rw-r--r--  1 JLEE  staff  669 26 Mar 09:59 20190326095908.txt
+./.dbwebb/exam/receipt
+total 8
+-rw-r--r--  1 JLEE  staff  582 26 Mar 09:59 20190326085908.md
