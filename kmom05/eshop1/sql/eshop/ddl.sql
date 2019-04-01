@@ -15,8 +15,12 @@ SET NAMES utf8mb4;
 -- tables with most foreign keys last!
 --
 
+-- need to drop tables from kmom06
+DROP TABLE IF EXISTS pick_list;
+DROP TABLE IF EXISTS `order`;
 
 
+-- drop table for kmom05;
 DROP TABLE IF EXISTS prod_2_cat;
 DROP TABLE IF EXISTS prod_cat;
 
@@ -286,18 +290,13 @@ CREATE PROCEDURE add_product
 	a_id VARCHAR(10),
     a_title CHAR(100),
     a_info VARCHAR(300), 
-    a_price FLOAT,
-    a_shelf VARCHAR(8),
-    a_items INT
+    a_price FLOAT
 )
 BEGIN
    
 	INSERT INTO product
 		VALUES(a_id, a_title, a_info, a_price);
         
-	INSERT INTO inventory (prod_id, shelf, items)
-		VALUES(a_id, a_shelf, a_items);
-	
     INSERT INTO prod_2_cat (prod_id, cat_id)
 		VALUES(a_id, 'cat_new');
     
