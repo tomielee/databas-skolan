@@ -14,6 +14,11 @@ SET NAMES utf8mb4;
 -- drop all tables if exists
 -- tables with most foreign keys last!
 --
+--
+-- need to drop tables from kmom05 that I renamed!
+DROP TABLE IF EXISTS plock_list;
+DROP TABLE IF EXISTS prod_order;
+--
 
 
 DROP TABLE IF EXISTS prod_2_cat;

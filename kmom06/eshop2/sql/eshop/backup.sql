@@ -31,7 +31,7 @@ CREATE TABLE `customer` (
   `city` char(30) DEFAULT NULL,
   `telefon` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +40,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+INSERT INTO `customer` VALUES (1,'Jerald','Cormier','Granville Lane',3182,'Newark','073-123456'),(2,'Carol','Stephenson','Ridge Road',67801,'Dodge City','070-123456'),(3,'Christofer','Robin','Humanvillage',1234,'Pooh City','075-123456'),(4,'Piglet','The pig','Scaredvillage',4567,'Pooh City','077-123456'),(5,'Mary','Had a little','Lambstreet',12356,'Imaginary','079-123456');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -68,6 +69,7 @@ CREATE TABLE `inventory` (
 
 LOCK TABLES `inventory` WRITE;
 /*!40000 ALTER TABLE `inventory` DISABLE KEYS */;
+INSERT INTO `inventory` VALUES (1,'boo1','B:01',10),(2,'boo2','B:02',20),(3,'boo3','B:02',30),(4,'boo4','B:03',40),(5,'cd1','C:01',50),(6,'merch1','M:01',200);
 /*!40000 ALTER TABLE `inventory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -233,7 +235,7 @@ CREATE TABLE `prod_2_cat` (
   KEY `cat_id` (`cat_id`),
   CONSTRAINT `prod_2_cat_ibfk_1` FOREIGN KEY (`prod_id`) REFERENCES `product` (`id`),
   CONSTRAINT `prod_2_cat_ibfk_2` FOREIGN KEY (`cat_id`) REFERENCES `prod_cat` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -242,6 +244,7 @@ CREATE TABLE `prod_2_cat` (
 
 LOCK TABLES `prod_2_cat` WRITE;
 /*!40000 ALTER TABLE `prod_2_cat` DISABLE KEYS */;
+INSERT INTO `prod_2_cat` VALUES (1,'boo1','cat_book'),(2,'boo2','cat_book'),(3,'boo3','cat_book'),(4,'boo4','cat_book'),(5,'boo4','cat_new'),(6,'cd1','cat_cd'),(7,'merch1','cat_merch'),(16,'ny1','cat_new');
 /*!40000 ALTER TABLE `prod_2_cat` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -266,6 +269,7 @@ CREATE TABLE `prod_cat` (
 
 LOCK TABLES `prod_cat` WRITE;
 /*!40000 ALTER TABLE `prod_cat` DISABLE KEYS */;
+INSERT INTO `prod_cat` VALUES ('cat_book','Book'),('cat_cd','CD'),('cat_merch','Merch'),('cat_new','New'),('cat_sale25','Sale 25%'),('cat_sale_5','Sale 50%'),('cat_sale_s','Sale Spring 2019');
 /*!40000 ALTER TABLE `prod_cat` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -292,8 +296,57 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` VALUES ('boo1','Diktboken','Lite lyrik',20),('boo2','Romanboken','En skönlitterär bok',90),('boo3','Kokboken','En massa gott',100),('boo4','Barnboken','Hittepå och färgglatt',50),('cd1','CD','Great music',60),('merch1','Tygkasse','En bra kasse',25),('ny1','titel','info',20);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `log_insert_prod` AFTER INSERT ON `product` FOR EACH ROW INSERT INTO product_log(`what`, `id`, `title`, `info`, `price`)
+		VALUES("trigger - insert", NEW.id, NEW.title, NEW.info, NEW.price) */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `log_update_prod` BEFORE UPDATE ON `product` FOR EACH ROW INSERT INTO product_log(`what`, `id`, `title`, `info`, `price`)
+		VALUES("trigger - update", NEW.id, NEW.title, NEW.info, NEW.price) */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `log_delete_prod` BEFORE DELETE ON `product` FOR EACH ROW INSERT INTO product_log(`what`, `id`, `title`, `info`, `price`)
+		VALUES("trigger - delete", OLD.id, OLD.title, OLD.info, OLD.price) */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `product_log`
@@ -311,7 +364,7 @@ CREATE TABLE `product_log` (
   `info` varchar(300) DEFAULT NULL,
   `price` float DEFAULT NULL,
   PRIMARY KEY (`log`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -320,6 +373,7 @@ CREATE TABLE `product_log` (
 
 LOCK TABLES `product_log` WRITE;
 /*!40000 ALTER TABLE `product_log` DISABLE KEYS */;
+INSERT INTO `product_log` VALUES (1,'boo1','2019-03-27 11:24:18','trigger - insert','Diktboken','Lite lyrik',20),(2,'boo2','2019-03-27 11:24:18','trigger - insert','Romanboken','En skönlitterär bok',90),(3,'boo3','2019-03-27 11:24:18','trigger - insert','Kokboken','En massa gott',100),(4,'boo4','2019-03-27 11:24:18','trigger - insert','Barnboken','Hittepå och färgglatt',50),(5,'cd1','2019-03-27 11:24:18','trigger - insert','CD','Great music',60),(6,'merch1','2019-03-27 11:24:18','trigger - insert','Tygkasse','En bra kasse',25),(7,'ny1','2019-03-27 11:27:03','trigger - insert','titel','info',20);
 /*!40000 ALTER TABLE `product_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1943,4 +1997,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-26  9:34:15
+-- Dump completed on 2019-03-27 12:30:09

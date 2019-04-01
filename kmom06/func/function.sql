@@ -102,6 +102,7 @@ CREATE FUNCTION grade2(
     score INTEGER
 )
 RETURNS CHAR(1)
+DETERMINISTIC
 BEGIN
     IF score >= 90 THEN
         RETURN '5';
